@@ -1,0 +1,1425 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>System Security Plan · 2026-08-14</title>
+<link rel="stylesheet" href="../../report.css"></head><body><main>
+<p class="back"><a href="../../index.html">← proof171 demo</a> · snapshot 2026-08-14</p><h1>System Security Plan: Severn Ridge Precision LLC</h1>
+<p><em>Generated from synthetic demo data for a fictional company. Not an assessment, not legal advice, and not affiliated with DoD or the Cyber AB.</em></p>
+<p>Snapshot <strong>2026-08-14</strong> · bundle <code>c5fad9fa7099</code> · score <strong>106</strong> of 110 · Conditional Level 2 (Self) eligible</p>
+<h2>System boundary</h2>
+<ul>
+<li><strong>Organization:</strong> Severn Ridge Precision LLC, Odenton, MD (22 staff)</li>
+<li><strong>Work:</strong> CNC machining of aluminum and titanium brackets for two defense primes</li>
+<li><strong>Enclave:</strong> Microsoft 365 GCC High tenant severnridge.us + 14 managed laptops + 2 CAM workstations</li>
+<li><strong>CUI assets:</strong> laptops, CAM workstations, fw-01, sw-core, Haas VF-4 x2, Zeiss CMM</li>
+<li><strong>Out of scope:</strong> guest Wi-Fi, break-room TV</li>
+</ul>
+<h2>Requirements</h2>
+<p>Each requirement lists every 800-171A objective, the evidence that decided it, and that evidence's hash.</p>
+<h3>Access Control</h3>
+<h4>AC.L2-3.1.1: Limit system access to authorized users, processes acting on behalf of authorized users, and devices (including other systems).</h4>
+<p><strong>Status:</strong> MET · value 5 point(s)</p>
+<p>Implementation: governed by policy POL-AC §3.1.1; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.1.1[a]</code> authorized users are identified.<br />
+<em>automated · entra-identity:</em> all 23 enabled people map to active HR records</li>
+<li>✓ <code>3.1.1[b]</code> processes acting on behalf of authorized users are identified.<br />
+<em>automated · entra-identity:</em> 1 service account(s), each with a named owner</li>
+<li>✓ <code>3.1.1[c]</code> devices (including other systems) authorized to connect to the system are identified.<br />
+<em>automated · intune-devices:</em> all 16 managed devices are in the asset inventory</li>
+<li>✓ <code>3.1.1[d]</code> system access is limited to authorized users.<br />
+<em>automated · entra-identity:</em> no enabled accounts for departed staff</li>
+<li>✓ <code>3.1.1[e]</code> system access is limited to processes acting on behalf of authorized users.<br />
+<em>automated · entra-identity:</em> service accounts hold no admin roles and use certificates</li>
+<li>✓ <code>3.1.1[f]</code> system access is limited to authorized devices (including other systems).<br />
+<em>automated · intune-devices:</em> all 16 managed devices are in the asset inventory</li>
+</ul>
+<h4>AC.L2-3.1.2: Limit system access to the types of transactions and functions that authorized users are permitted to execute.</h4>
+<p><strong>Status:</strong> MET · value 5 point(s)</p>
+<p>Implementation: governed by policy POL-AC §3.1.2; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.1.2[a]</code> the types of transactions and functions that authorized users are permitted to execute are defined<br />
+<em>policy · POL-AC:</em> Access Control policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.1.2[b]</code> system access is limited to the defined types of transactions and functions for authorized users.<br />
+<em>policy · POL-AC:</em> Access Control policy, approved 2026-03-02 by Dana Whitlock</li>
+</ul>
+<h4>AC.L2-3.1.3: Control the flow of CUI in accordance with approved authorizations.</h4>
+<p><strong>Status:</strong> MET · value 1 point(s)</p>
+<p>Implementation: governed by policy POL-AC §3.1.3; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.1.3[a]</code> information flow control policies are defined.<br />
+<em>policy · POL-AC:</em> Access Control policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.1.3[b]</code> methods and enforcement mechanisms for controlling the flow of CUI are defined.<br />
+<em>policy · POL-AC:</em> Access Control policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.1.3[c]</code> designated sources and destinations (e.g., networks, individuals, and devices) for CUI within systems and between interconnected systems are identified.<br />
+<em>policy · POL-AC:</em> Access Control policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.1.3[d]</code> authorizations for controlling the flow of CUI are defined.<br />
+<em>policy · POL-AC:</em> Access Control policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.1.3[e]</code> approved authorizations for controlling the flow of CUI are enforced.<br />
+<em>policy · POL-AC:</em> Access Control policy, approved 2026-03-02 by Dana Whitlock</li>
+</ul>
+<h4>AC.L2-3.1.4: Separate the duties of individuals to reduce the risk of malevolent activity without collusion.</h4>
+<p><strong>Status:</strong> MET · value 1 point(s)</p>
+<p>Implementation: governed by policy POL-AC §3.1.4; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.1.4[a]</code> the duties of individuals requiring separation to reduce the risk of malevolent activity are defined.<br />
+<em>policy · POL-AC:</em> Access Control policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.1.4[b]</code> organization-defined duties of individuals requiring separation are separated.<br />
+<em>policy · POL-AC:</em> Access Control policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.1.4[c]</code> separate accounts for individuals whose duties and accesses must be separated to reduce the risk of malevolent activity or collusion are established<br />
+<em>policy · POL-AC:</em> Access Control policy, approved 2026-03-02 by Dana Whitlock</li>
+</ul>
+<h4>AC.L2-3.1.5: Employ the principle of least privilege, including for specific security functions and privileged accounts.</h4>
+<p><strong>Status:</strong> MET · value 3 point(s)</p>
+<p>Implementation: governed by policy POL-AC §3.1.5; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.1.5[a]</code> privileged accounts are identified.<br />
+<em>automated · entra-identity:</em> 1 privileged account(s) identified</li>
+<li>✓ <code>3.1.5[b]</code> access to privileged accounts is authorized in accordance with the principle of least privilege.<br />
+<em>automated · entra-identity:</em> 1 privileged account(s), within the approved limit of 2</li>
+<li>✓ <code>3.1.5[c]</code> security functions are identified.<br />
+<em>policy · POL-AC:</em> Access Control policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.1.5[d]</code> access to security functions is authorized in accordance with the principle of least privilege.<br />
+<em>policy · POL-AC:</em> Access Control policy, approved 2026-03-02 by Dana Whitlock</li>
+</ul>
+<h4>AC.L2-3.1.6: Use non-privileged accounts or roles when accessing nonsecurity functions</h4>
+<p><strong>Status:</strong> MET · value 1 point(s)</p>
+<p>Implementation: governed by policy POL-AC §3.1.6; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.1.6[a]</code> nonsecurity functions are identified.<br />
+<em>policy · POL-AC:</em> Access Control policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.1.6[b]</code> users are required to use non-privileged accounts or roles when accessing nonsecurity functions.<br />
+<em>automated · entra-identity:</em> admin roles held only by separate adm- accounts</li>
+</ul>
+<h4>AC.L2-3.1.7: Prevent non-privileged users from executing privileged functions and capture the execution of such functions in audit logs.</h4>
+<p><strong>Status:</strong> MET · value 1 point(s)</p>
+<p>Implementation: governed by policy POL-AC §3.1.7; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.1.7[a]</code> privileged functions are defined.<br />
+<em>policy · POL-AC:</em> Access Control policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.1.7[b]</code> non-privileged users are defined.<br />
+<em>automated · entra-identity:</em> 22 non-privileged accounts defined</li>
+<li>✓ <code>3.1.7[c]</code> non-privileged users are prevented from executing privileged functions.<br />
+<em>policy · POL-AC:</em> Access Control policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.1.7[d]</code> the execution of privileged functions is captured in audit logs.<br />
+<em>automated · audit:</em> unified audit log on, 365-day retention</li>
+</ul>
+<h4>AC.L2-3.1.8: Limit unsuccessful logon attempts.</h4>
+<p><strong>Status:</strong> MET · value 1 point(s)</p>
+<p>Implementation: governed by policy POL-AC §3.1.8; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.1.8[a]</code> the means of limiting unsuccessful logon attempts is defined.<br />
+<em>automated · entra-policies:</em> lockout after 5 failed attempts for 30 min</li>
+<li>✓ <code>3.1.8[b]</code> the defined means of limiting unsuccessful logon attempts is implemented.<br />
+<em>automated · entra-policies:</em> lockout enforced tenant-wide</li>
+</ul>
+<h4>AC.L2-3.1.9: Provide privacy and security notices consistent with applicable CUI rules.</h4>
+<p><strong>Status:</strong> MET · value 1 point(s)</p>
+<p>Implementation: governed by policy POL-AC §3.1.9; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.1.9[a]</code> privacy and security notices required by CUI-specified rules are identified, consistent, and associated with the specific CUI category<br />
+<em>policy · POL-AC:</em> Access Control policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.1.9[b]</code> privacy and security notices are displayed.<br />
+<em>automated · entra-policies:</em> CUI logon banner displayed</li>
+</ul>
+<h4>AC.L2-3.1.10: Use session lock with pattern-hiding displays to prevent access and viewing of data after a period of inactivity</h4>
+<p><strong>Status:</strong> MET · value 1 point(s)</p>
+<p>Implementation: governed by policy POL-AC §3.1.10; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.1.10[a]</code> the period of inactivity after which the system initiates a session lock is defined.<br />
+<em>automated · entra-policies:</em> session lock after 15 minutes</li>
+<li>✓ <code>3.1.10[b]</code> access to the system and viewing of data is prevented by initiating a session lock after the defined period of inactivity.<br />
+<em>automated · intune-devices:</em> 15-minute screen lock enforced on every device</li>
+<li>✓ <code>3.1.10[c]</code> previously visible information is concealed via a pattern-hiding display after the defined period of inactivity.<br />
+<em>automated · intune-devices:</em> pattern-hiding lock screen enforced</li>
+</ul>
+<h4>AC.L2-3.1.11: Terminate (automatically) a user session after a defined condition.</h4>
+<p><strong>Status:</strong> MET · value 1 point(s)</p>
+<p>Implementation: governed by policy POL-AC §3.1.11; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.1.11[a]</code> conditions requiring a user session to terminate are defined.<br />
+<em>automated · entra-policies:</em> sessions end on sign-in frequency and sign-out</li>
+<li>✓ <code>3.1.11[b]</code> a user session is automatically terminated after any of the defined conditions occur.<br />
+<em>automated · entra-policies:</em> sign-in frequency policy enabled</li>
+</ul>
+<h4>AC.L2-3.1.12: Monitor and control remote access sessions.</h4>
+<p><strong>Status:</strong> MET · value 5 point(s)</p>
+<p>Implementation: governed by policy POL-AC §3.1.12; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.1.12[a]</code> remote access sessions are permitted.<br />
+<em>automated · firewall:</em> remote access permitted via ssl-vpn</li>
+<li>✓ <code>3.1.12[b]</code> the types of permitted remote access are identified.<br />
+<em>automated · firewall:</em> remote access permitted via ssl-vpn</li>
+<li>✓ <code>3.1.12[c]</code> remote access sessions are controlled.<br />
+<em>automated · firewall:</em> VPN requires MFA (Entra SAML)</li>
+<li>✓ <code>3.1.12[d]</code> remote access sessions are monitored.<br />
+<em>automated · firewall:</em> all accept rules logged to Microsoft Sentinel</li>
+</ul>
+<h4>AC.L2-3.1.13: Employ cryptographic mechanisms to protect the confidentiality of remote access sessions.</h4>
+<p><strong>Status:</strong> MET · value 5 point(s)</p>
+<p>Implementation: governed by policy POL-AC §3.1.13; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.1.13[a]</code> cryptographic mechanisms to protect the confidentiality of remote access sessions are identified.<br />
+<em>automated · firewall:</em> VPN cipher TLS1.3 AES-256-GCM</li>
+<li>✓ <code>3.1.13[b]</code> cryptographic mechanisms to protect the confidentiality of remote access sessions are implemented.<br />
+<em>automated · firewall:</em> FIPS mode enforced</li>
+</ul>
+<h4>AC.L2-3.1.14: Route remote access via managed access control points.</h4>
+<p><strong>Status:</strong> MET · value 1 point(s)</p>
+<p>Implementation: governed by policy POL-AC §3.1.14; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.1.14[a]</code> managed access control points are identified and implemented.<br />
+<em>automated · firewall:</em> VPN requires MFA (Entra SAML)</li>
+<li>✓ <code>3.1.14[b]</code> remote access is routed through managed network access control points.<br />
+<em>policy · POL-AC:</em> Access Control policy, approved 2026-03-02 by Dana Whitlock</li>
+</ul>
+<h4>AC.L2-3.1.15: Authorize remote execution of privileged commands and remote access to security-relevant information.</h4>
+<p><strong>Status:</strong> MET · value 1 point(s)</p>
+<p>Implementation: governed by policy POL-AC §3.1.15; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.1.15[a]</code> privileged commands authorized for remote execution are identified.<br />
+<em>policy · POL-AC:</em> Access Control policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.1.15[b]</code> security-relevant information authorized to be accessed remotely is identified.<br />
+<em>policy · POL-AC:</em> Access Control policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.1.15[c]</code> the execution of the identified privileged commands via remote access is authorized.<br />
+<em>policy · POL-AC:</em> Access Control policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.1.15[d]</code> access to the identified security-relevant information via remote access is authorized.<br />
+<em>policy · POL-AC:</em> Access Control policy, approved 2026-03-02 by Dana Whitlock</li>
+</ul>
+<h4>AC.L2-3.1.16: Authorize wireless access prior to allowing such connections</h4>
+<p><strong>Status:</strong> MET · value 5 point(s)</p>
+<p>Implementation: governed by policy POL-AC §3.1.16; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.1.16[a]</code> wireless access points are identified.<br />
+<em>policy · POL-AC:</em> Access Control policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.1.16[b]</code> wireless access is authorized prior to allowing such connections.<br />
+<em>policy · POL-AC:</em> Access Control policy, approved 2026-03-02 by Dana Whitlock</li>
+</ul>
+<h4>AC.L2-3.1.17: Protect wireless access using authentication and encryption</h4>
+<p><strong>Status:</strong> MET · value 5 point(s)</p>
+<p>Implementation: governed by policy POL-AC §3.1.17; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.1.17[a]</code> wireless access to the system is protected using encryption.<br />
+<em>policy · POL-AC:</em> Access Control policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.1.17[b]</code> wireless access to the system is protected using authentication.<br />
+<em>policy · POL-AC:</em> Access Control policy, approved 2026-03-02 by Dana Whitlock</li>
+</ul>
+<h4>AC.L2-3.1.18: Control connection of mobile devices.</h4>
+<p><strong>Status:</strong> MET · value 5 point(s)</p>
+<p>Implementation: governed by policy POL-AC §3.1.18; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.1.18[a]</code> mobile devices that process, store, or transmit CUI are identified.<br />
+<em>automated · intune-devices:</em> 14 laptops identified as mobile devices handling CUI</li>
+<li>✓ <code>3.1.18[b]</code> the connection of mobile devices is authorized.<br />
+<em>automated · intune-devices:</em> only Intune-enrolled devices may connect (conditional access CA04)</li>
+<li>✓ <code>3.1.18[c]</code> mobile device connections are monitored and logged.<br />
+<em>policy · POL-AC:</em> Access Control policy, approved 2026-03-02 by Dana Whitlock</li>
+</ul>
+<h4>AC.L2-3.1.19: Encrypt CUI on mobile devices and mobile computing platforms.[23]</h4>
+<p><strong>Status:</strong> MET · value 3 point(s)</p>
+<p>Implementation: governed by policy POL-AC §3.1.19; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.1.19[a]</code> mobile devices and mobile computing platforms that process, store, or transmit CUI are identified.<br />
+<em>automated · intune-devices:</em> 14 laptops identified</li>
+<li>✓ <code>3.1.19[b]</code> encryption is employed to protect CUI on identified mobile devices and mobile computing platforms.<br />
+<em>automated · intune-devices:</em> BitLocker on every laptop</li>
+</ul>
+<h4>AC.L2-3.1.20: Verify and control/limit connections to and use of external systems.</h4>
+<p><strong>Status:</strong> MET · value 1 point(s)</p>
+<p>Implementation: governed by policy POL-AC §3.1.20; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.1.20[a]</code> connections to external systems are identified.<br />
+<em>policy · POL-AC:</em> Access Control policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.1.20[b]</code> use of external systems is identified.<br />
+<em>policy · POL-AC:</em> Access Control policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.1.20[c]</code> connections to external systems are verified.<br />
+<em>policy · POL-AC:</em> Access Control policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.1.20[d]</code> use of external systems is verified.<br />
+<em>policy · POL-AC:</em> Access Control policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.1.20[e]</code> connections to external systems are controlled/limited.<br />
+<em>policy · POL-AC:</em> Access Control policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.1.20[f]</code> use of external systems is controlled/limited.<br />
+<em>policy · POL-AC:</em> Access Control policy, approved 2026-03-02 by Dana Whitlock</li>
+</ul>
+<h4>AC.L2-3.1.21: Limit use of portable storage devices on external systems.</h4>
+<p><strong>Status:</strong> NOT MET · value 1 point(s) · <strong>1 deducted</strong></p>
+<p>Implementation: governed by policy POL-AC §3.1.21; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.1.21[a]</code> use of organizational portable storage devices containing CUI on external systems is identified and documented.<br />
+<em>policy · POL-AC:</em> Access Control policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✗ <code>3.1.21[b]</code> limits on the use of organizational portable storage devices containing CUI on external systems are defined.<br />
+<em>policy · POL-AC:</em> known gap: USB write-blocking has an exception for CMM report export; no written limit for use on customer systems</li>
+<li>✓ <code>3.1.21[c]</code> use of organizational portable storage devices containing CUI on external systems is limited as defined.<br />
+<em>policy · POL-AC:</em> Access Control policy, approved 2026-03-02 by Dana Whitlock</li>
+</ul>
+<h4>AC.L2-3.1.22: Control CUI posted or processed on publicly accessible systems.</h4>
+<p><strong>Status:</strong> MET · value 1 point(s)</p>
+<p>Implementation: governed by policy POL-AC §3.1.22; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.1.22[a]</code> individuals authorized to post or process information on publicly accessible systems are identified.<br />
+<em>policy · POL-AC:</em> Access Control policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.1.22[b]</code> procedures to ensure CUI is not posted or processed on publicly accessible systems are identified.<br />
+<em>policy · POL-AC:</em> Access Control policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.1.22[c]</code> a review process in in place prior to posting of any content to publicly accessible systems.<br />
+<em>policy · POL-AC:</em> Access Control policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.1.22[d]</code> content on publicly accessible information systems is reviewed to ensure that it does not include CUI.<br />
+<em>policy · POL-AC:</em> Access Control policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.1.22[e]</code> mechanisms are in place to remove and address improper posting of CUI.<br />
+<em>policy · POL-AC:</em> Access Control policy, approved 2026-03-02 by Dana Whitlock</li>
+</ul>
+<h3>Awareness and Training</h3>
+<h4>AT.L2-3.2.1: Ensure that managers, systems administrators, and users of organizational systems are made aware of the security risks associated with their activities and of the applicable policies, standards, and procedures related to the security of those systems.</h4>
+<p><strong>Status:</strong> MET · value 5 point(s)</p>
+<p>Implementation: governed by policy POL-AT §3.2.1; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.2.1[a]</code> security risks associated with organizational activities involving CUI are identified.<br />
+<em>policy · POL-AT:</em> Awareness and Training policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.2.1[b]</code> policies, standards, and procedures related to the security of the system are identified.<br />
+<em>policy · POL-AT:</em> Awareness and Training policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.2.1[c]</code> managers, systems administrators, and users of the system are made aware of the security risks associated with their activities.<br />
+<em>automated · training:</em> all 22 active staff current on awareness training</li>
+<li>✓ <code>3.2.1[d]</code> managers, systems administrators, and users of the system are made aware of the applicable policies, standards, and procedures related to the security of the system.<br />
+<em>automated · training:</em> all 22 active staff current on awareness training</li>
+</ul>
+<h4>AT.L2-3.2.2: Ensure that personnel are trained to carry out their assigned information security-related duties and responsibilities.</h4>
+<p><strong>Status:</strong> MET · value 5 point(s)</p>
+<p>Implementation: governed by policy POL-AT §3.2.2; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.2.2[a]</code> information security-related duties, roles, and responsibilities are defined.<br />
+<em>policy · POL-AT:</em> Awareness and Training policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.2.2[b]</code> information security-related duties, roles, and responsibilities are assigned to designated personnel.<br />
+<em>automated · training:</em> system administrator holds current role-based training</li>
+<li>✓ <code>3.2.2[c]</code> personnel are adequately trained to carry out their assigned information security-related duties, roles, and responsibilities.<br />
+<em>automated · training:</em> system administrator holds current role-based training</li>
+</ul>
+<h4>AT.L2-3.2.3: Provide security awareness training on recognizing and reporting potential indicators of insider threat.</h4>
+<p><strong>Status:</strong> MET · value 1 point(s)</p>
+<p>Implementation: governed by policy POL-AT §3.2.3; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.2.3[a]</code> potential indicators associated with insider threats are identified.<br />
+<em>policy · POL-AT:</em> Awareness and Training policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.2.3[b]</code> security awareness training on recognizing and reporting potential indicators of insider threat is provided to managers and employees.<br />
+<em>automated · training:</em> insider-threat training current for all staff</li>
+</ul>
+<h3>Audit and Accountability</h3>
+<h4>AU.L2-3.3.1: Create and retain system audit logs and records to the extent needed to enable the monitoring, analysis, investigation, and reporting of unlawful or unauthorized system activity</h4>
+<p><strong>Status:</strong> MET · value 5 point(s)</p>
+<p>Implementation: governed by policy POL-AU §3.3.1; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.3.1[a]</code> audit logs needed (i.e., event types to be logged) to enable the monitoring, analysis, investigation, and reporting of unlawful or unauthorized system activity are specified.<br />
+<em>automated · audit:</em> unified audit log on, 365-day retention</li>
+<li>✓ <code>3.3.1[b]</code> the content of audit records needed to support monitoring, analysis, investigation, and reporting of unlawful or unauthorized system activity is defined.<br />
+<em>automated · audit:</em> unified audit log on, 365-day retention</li>
+<li>✓ <code>3.3.1[c]</code> audit records are created (generated).<br />
+<em>automated · audit:</em> unified audit log on, 365-day retention</li>
+<li>✓ <code>3.3.1[d]</code> audit records, once created, contain the defined content.<br />
+<em>automated · audit:</em> unified audit log on, 365-day retention</li>
+<li>✓ <code>3.3.1[e]</code> retention requirements for audit records are defined.<br />
+<em>automated · audit:</em> unified audit log on, 365-day retention</li>
+<li>✓ <code>3.3.1[f]</code> audit records are retained as defined.<br />
+<em>automated · audit:</em> unified audit log on, 365-day retention</li>
+</ul>
+<h4>AU.L2-3.3.2: Ensure that the actions of individual system users can be uniquely traced to those users, so they can be held accountable for their actions.</h4>
+<p><strong>Status:</strong> MET · value 3 point(s)</p>
+<p>Implementation: governed by policy POL-AU §3.3.2; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.3.2[a]</code> the content of the audit records needed to support the ability to uniquely trace users to their actions is defined.<br />
+<em>policy · POL-AU:</em> Audit and Accountability policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.3.2[b]</code> audit records, once created, contain the defined content.<br />
+<em>policy · POL-AU:</em> Audit and Accountability policy, approved 2026-03-02 by Dana Whitlock</li>
+</ul>
+<h4>AU.L2-3.3.3: Review and update logged events.</h4>
+<p><strong>Status:</strong> MET · value 1 point(s)</p>
+<p>Implementation: governed by policy POL-AU §3.3.3; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.3.3[a]</code> a process for determining when to review logged events is defined.<br />
+<em>policy · POL-AU:</em> Audit and Accountability policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.3.3[b]</code> event types being logged are reviewed in accordance with the defined review process.<br />
+<em>policy · POL-AU:</em> Audit and Accountability policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.3.3[c]</code> event types being logged are updated based on the review.<br />
+<em>policy · POL-AU:</em> Audit and Accountability policy, approved 2026-03-02 by Dana Whitlock</li>
+</ul>
+<h4>AU.L2-3.3.4: Alert in the event of an audit logging process failure.</h4>
+<p><strong>Status:</strong> MET · value 1 point(s)</p>
+<p>Implementation: governed by policy POL-AU §3.3.4; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.3.4[a]</code> personnel or roles to be alerted in the event of an audit logging process failure are identified.<br />
+<em>automated · audit:</em> alert fires if audit logging stops</li>
+<li>✓ <code>3.3.4[b]</code> types of audit logging process failures for which alert will be generated are defined.<br />
+<em>automated · audit:</em> alert fires if audit logging stops</li>
+<li>✓ <code>3.3.4[c]</code> identified personnel or roles are alerted in the event of an audit logging process failure.<br />
+<em>automated · audit:</em> alert fires if audit logging stops</li>
+</ul>
+<h4>AU.L2-3.3.5: Correlate audit record review, analysis, and reporting processes for investigation and response to indications of unlawful, unauthorized, suspicious, or unusual activity.</h4>
+<p><strong>Status:</strong> MET · value 5 point(s)</p>
+<p>Implementation: governed by policy POL-AU §3.3.5; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.3.5[a]</code> audit record review, analysis, and reporting processes for investigation and response to indications of unlawful, unauthorized, suspicious, or unusual activity are defined.<br />
+<em>automated · audit:</em> correlated in Microsoft Sentinel</li>
+<li>✓ <code>3.3.5[b]</code> defined audit record review, analysis, and reporting processes are correlated.<br />
+<em>automated · audit:</em> correlated in Microsoft Sentinel</li>
+</ul>
+<h4>AU.L2-3.3.6: Provide audit record reduction and report generation to support on-demand analysis and reporting.</h4>
+<p><strong>Status:</strong> MET · value 1 point(s)</p>
+<p>Implementation: governed by policy POL-AU §3.3.6; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.3.6[a]</code> an audit record reduction capability that supports on-demand analysis is provided.<br />
+<em>policy · POL-AU:</em> Audit and Accountability policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.3.6[b]</code> a report generation capability that supports on-demand reporting is provided.<br />
+<em>policy · POL-AU:</em> Audit and Accountability policy, approved 2026-03-02 by Dana Whitlock</li>
+</ul>
+<h4>AU.L2-3.3.7: Provide a system capability that compares and synchronizes internal system clocks with an authoritative source to generate time stamps for audit records</h4>
+<p><strong>Status:</strong> MET · value 1 point(s)</p>
+<p>Implementation: governed by policy POL-AU §3.3.7; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.3.7[a]</code> internal system clocks are used to generate time stamps for audit records.<br />
+<em>automated · audit:</em> time.windows.com (Windows Time, domain hierarchy)</li>
+<li>✓ <code>3.3.7[b]</code> an authoritative source with which to compare and synchronize internal system clocks is specified.<br />
+<em>automated · audit:</em> time.windows.com (Windows Time, domain hierarchy)</li>
+<li>✓ <code>3.3.7[c]</code> internal system clocks used to generate time stamps for audit records are compared to and synchronized with the specified authoritative time source.<br />
+<em>automated · audit:</em> time.windows.com (Windows Time, domain hierarchy)</li>
+</ul>
+<h4>AU.L2-3.3.8: Protect audit information and audit logging tools from unauthorized access, modification, and deletion.</h4>
+<p><strong>Status:</strong> MET · value 1 point(s)</p>
+<p>Implementation: governed by policy POL-AU §3.3.8; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.3.8[a]</code> audit information is protected from unauthorized access.<br />
+<em>automated · audit:</em> audit records immutable</li>
+<li>✓ <code>3.3.8[b]</code> audit information is protected from unauthorized modification.<br />
+<em>automated · audit:</em> audit records immutable</li>
+<li>✓ <code>3.3.8[c]</code> audit information is protected from unauthorized deletion.<br />
+<em>automated · audit:</em> audit records immutable</li>
+<li>✓ <code>3.3.8[d]</code> audit logging tools are protected from unauthorized access.<br />
+<em>automated · audit:</em> audit records immutable</li>
+<li>✓ <code>3.3.8[e]</code> audit logging tools are protected from unauthorized modification.<br />
+<em>automated · audit:</em> audit records immutable</li>
+<li>✓ <code>3.3.8[f]</code> audit logging tools are protected from unauthorized deletion.<br />
+<em>automated · audit:</em> audit records immutable</li>
+</ul>
+<h4>AU.L2-3.3.9: Limit management of audit logging functionality to a subset of privileged users.</h4>
+<p><strong>Status:</strong> MET · value 1 point(s)</p>
+<p>Implementation: governed by policy POL-AU §3.3.9; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.3.9[a]</code> a subset of privileged users granted access to manage audit logging functionality is defined.<br />
+<em>automated · audit:</em> audit management limited to adm-praman</li>
+<li>✓ <code>3.3.9[b]</code> management of audit logging functionality is limited to the defined subset of privileged users.<br />
+<em>automated · audit:</em> audit management limited to adm-praman</li>
+</ul>
+<h3>Configuration Management</h3>
+<h4>CM.L2-3.4.1: Establish and maintain baseline configurations and inventories of organizational systems (including hardware, software, firmware, and documentation) throughout the respective system development life cycles.</h4>
+<p><strong>Status:</strong> MET · value 5 point(s)</p>
+<p>Implementation: governed by policy POL-CM §3.4.1; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.4.1[a]</code> a baseline configuration is established.<br />
+<em>policy · POL-CM:</em> Configuration Management policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.4.1[b]</code> the baseline configuration includes hardware, software, firmware, and documentation.<br />
+<em>policy · POL-CM:</em> Configuration Management policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.4.1[c]</code> the baseline configuration is maintained (reviewed and updated) throughout the system development life cycle.<br />
+<em>policy · POL-CM:</em> Configuration Management policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.4.1[d]</code> a system inventory is established.<br />
+<em>automated · intune-devices:</em> inventory of 21 assets maintained</li>
+<li>✓ <code>3.4.1[e]</code> the system inventory includes hardware, software, firmware, and documentation.<br />
+<em>automated · intune-devices:</em> all 16 managed devices are in the asset inventory</li>
+<li>✓ <code>3.4.1[f]</code> the inventory is maintained (reviewed and updated) throughout the system development life cycle.<br />
+<em>automated · intune-devices:</em> all 16 managed devices are in the asset inventory</li>
+</ul>
+<h4>CM.L2-3.4.2: Establish and enforce security configuration settings for information technology products employed in organizational systems.</h4>
+<p><strong>Status:</strong> MET · value 5 point(s)</p>
+<p>Implementation: governed by policy POL-CM §3.4.2; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.4.2[a]</code> security configuration settings for information technology products employed in the system are established and included in the baseline configuration.<br />
+<em>policy · POL-CM:</em> Configuration Management policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.4.2[b]</code> security configuration settings for information technology products employed in the system are enforced.<br />
+<em>automated · intune-devices:</em> firewall, BitLocker and 15-minute lock enforced by Intune baseline</li>
+</ul>
+<h4>CM.L2-3.4.3: Track, review, approve or disapprove, and log changes to organizational systems.</h4>
+<p><strong>Status:</strong> MET · value 1 point(s)</p>
+<p>Implementation: governed by policy POL-CM §3.4.3; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.4.3[a]</code> changes to the system are tracked.<br />
+<em>policy · POL-CM:</em> Configuration Management policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.4.3[b]</code> changes to the system are reviewed.<br />
+<em>policy · POL-CM:</em> Configuration Management policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.4.3[c]</code> changes to the system are approved or disapproved.<br />
+<em>policy · POL-CM:</em> Configuration Management policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.4.3[d]</code> changes to the system are logged.<br />
+<em>policy · POL-CM:</em> Configuration Management policy, approved 2026-03-02 by Dana Whitlock</li>
+</ul>
+<h4>CM.L2-3.4.4: Analyze the security impact of changes prior to implementation.</h4>
+<p><strong>Status:</strong> MET · value 1 point(s)</p>
+<p>Implementation: governed by policy POL-CM §3.4.4; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.4.4[a]</code> the security impact of changes to each organizational system is analyzed prior to implementation.<br />
+<em>policy · POL-CM:</em> Configuration Management policy, approved 2026-03-02 by Dana Whitlock</li>
+</ul>
+<h4>CM.L2-3.4.5: Define, document, approve, and enforce physical and logical access restrictions associated with changes to organizational systems.</h4>
+<p><strong>Status:</strong> MET · value 5 point(s)</p>
+<p>Implementation: governed by policy POL-CM §3.4.5; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.4.5[a]</code> physical access restrictions associated with changes to the system are defined.<br />
+<em>policy · POL-CM:</em> Configuration Management policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.4.5[b]</code> physical access restrictions associated with changes to the system are documented.<br />
+<em>policy · POL-CM:</em> Configuration Management policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.4.5[c]</code> physical access restrictions associated with changes to the system are approved.<br />
+<em>policy · POL-CM:</em> Configuration Management policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.4.5[d]</code> physical access restrictions associated with changes to the system are enforced.<br />
+<em>policy · POL-CM:</em> Configuration Management policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.4.5[e]</code> logical access restrictions associated with changes to the system are defined.<br />
+<em>policy · POL-CM:</em> Configuration Management policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.4.5[f]</code> logical access restrictions associated with changes to the system are documented.<br />
+<em>policy · POL-CM:</em> Configuration Management policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.4.5[g]</code> logical access restrictions associated with changes to the system are approved.<br />
+<em>policy · POL-CM:</em> Configuration Management policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.4.5[h]</code> logical access restrictions associated with changes to the system are enforced.<br />
+<em>policy · POL-CM:</em> Configuration Management policy, approved 2026-03-02 by Dana Whitlock</li>
+</ul>
+<h4>CM.L2-3.4.6: Employ the principle of least functionality by configuring organizational systems to provide only essential capabilities.</h4>
+<p><strong>Status:</strong> MET · value 5 point(s)</p>
+<p>Implementation: governed by policy POL-CM §3.4.6; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.4.6[a]</code> essential system capabilities are defined based on the principle of least functionality.<br />
+<em>policy · POL-CM:</em> Configuration Management policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.4.6[b]</code> the system is configured to provide only the defined essential capabilities.<br />
+<em>policy · POL-CM:</em> Configuration Management policy, approved 2026-03-02 by Dana Whitlock</li>
+</ul>
+<h4>CM.L2-3.4.7: Restrict, disable, or prevent the use of nonessential programs, functions, ports, protocols, and services.</h4>
+<p><strong>Status:</strong> MET · value 5 point(s)</p>
+<p>Implementation: governed by policy POL-CM §3.4.7; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.4.7[a]</code> essential programs are defined.<br />
+<em>policy · POL-CM:</em> Configuration Management policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.4.7[b]</code> the use of nonessential programs is defined.<br />
+<em>policy · POL-CM:</em> Configuration Management policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.4.7[c]</code> the use of nonessential programs is restricted, disabled, or prevented as defined.<br />
+<em>policy · POL-CM:</em> Configuration Management policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.4.7[d]</code> essential functions are defined.<br />
+<em>policy · POL-CM:</em> Configuration Management policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.4.7[e]</code> the use of nonessential functions is defined.<br />
+<em>policy · POL-CM:</em> Configuration Management policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.4.7[f]</code> the use of nonessential functions is restricted, disabled, or prevented as defined.<br />
+<em>policy · POL-CM:</em> Configuration Management policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.4.7[g]</code> essential ports are defined.<br />
+<em>automated · firewall:</em> permitted ports listed per rule</li>
+<li>✓ <code>3.4.7[h]</code> the use of nonessential ports is defined.<br />
+<em>automated · firewall:</em> everything not listed is denied</li>
+<li>✓ <code>3.4.7[i]</code> the use of nonessential ports is restricted, disabled, or prevented as defined.<br />
+<em>automated · firewall:</em> every accept rule names its services</li>
+<li>✓ <code>3.4.7[j]</code> essential protocols are defined.<br />
+<em>policy · POL-CM:</em> Configuration Management policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.4.7[k]</code> the use of nonessential protocols is defined.<br />
+<em>policy · POL-CM:</em> Configuration Management policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.4.7[l]</code> the use of nonessential protocols is restricted, disabled, or prevented as defined.<br />
+<em>policy · POL-CM:</em> Configuration Management policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.4.7[m]</code> essential services are defined.<br />
+<em>policy · POL-CM:</em> Configuration Management policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.4.7[n]</code> the use of nonessential services is defined.<br />
+<em>policy · POL-CM:</em> Configuration Management policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.4.7[o]</code> the use of nonessential services is restricted, disabled, or prevented as defined.<br />
+<em>policy · POL-CM:</em> Configuration Management policy, approved 2026-03-02 by Dana Whitlock</li>
+</ul>
+<h4>CM.L2-3.4.8: Apply deny-by-exception (blacklisting) policy to prevent the use of unauthorized software or deny-all, permit-by-exception (whitelisting) policy to allow the execution of authorized software.</h4>
+<p><strong>Status:</strong> MET · value 5 point(s)</p>
+<p>Implementation: governed by policy POL-CM §3.4.8; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.4.8[a]</code> a policy specifying whether whitelisting or blacklisting is to be implemented is specified.<br />
+<em>policy · POL-CM:</em> Configuration Management policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.4.8[b]</code> the software allowed to execute under whitelisting or denied use under blacklisting is specified.<br />
+<em>policy · POL-CM:</em> Configuration Management policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.4.8[c]</code> whitelisting to allow the execution of authorized software or blacklisting to prevent the use of unauthorized software is implemented as specified.<br />
+<em>policy · POL-CM:</em> Configuration Management policy, approved 2026-03-02 by Dana Whitlock</li>
+</ul>
+<h4>CM.L2-3.4.9: Control and monitor user-installed software.</h4>
+<p><strong>Status:</strong> NOT MET · value 1 point(s) · <strong>1 deducted</strong></p>
+<p>Implementation: governed by policy POL-CM §3.4.9; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.4.9[a]</code> a policy for controlling the installation of software by users is established.<br />
+<em>policy · POL-CM:</em> Configuration Management policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✗ <code>3.4.9[b]</code> installation of software by users is controlled based on the established policy.<br />
+<em>automated · entra-policies:</em> user installs only audited (policy: audit_only)</li>
+<li>✓ <code>3.4.9[c]</code> installation of software by users is monitored.<br />
+<em>policy · POL-CM:</em> Configuration Management policy, approved 2026-03-02 by Dana Whitlock</li>
+</ul>
+<h3>Identification and Authentication</h3>
+<h4>IA.L2-3.5.1: Identify system users, processes acting on behalf of users, and devices.</h4>
+<p><strong>Status:</strong> MET · value 5 point(s)</p>
+<p>Implementation: governed by policy POL-IA §3.5.1; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.5.1[a]</code> system users are identified.<br />
+<em>automated · entra-identity:</em> all 23 enabled people map to active HR records</li>
+<li>✓ <code>3.5.1[b]</code> processes acting on behalf of users are identified.<br />
+<em>automated · entra-identity:</em> 1 service account(s), each with a named owner</li>
+<li>✓ <code>3.5.1[c]</code> devices accessing the system are identified.<br />
+<em>automated · intune-devices:</em> all 16 managed devices are in the asset inventory</li>
+</ul>
+<h4>IA.L2-3.5.2: Authenticate (or verify) the identities of users, processes, or devices, as a prerequisite to allowing access to organizational systems.</h4>
+<p><strong>Status:</strong> MET · value 5 point(s)</p>
+<p>Implementation: governed by policy POL-IA §3.5.2; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.5.2[a]</code> the identity of each user is authenticated or verified as a prerequisite to system access.<br />
+<em>automated · entra-identity:</em> every enabled account requires authentication</li>
+<li>✓ <code>3.5.2[b]</code> the identity of each process acting on behalf of a user is authenticated or verified as a prerequisite to system access.<br />
+<em>automated · entra-identity:</em> service accounts hold no admin roles and use certificates</li>
+<li>✓ <code>3.5.2[c]</code> the identity of each device accessing or connecting to the system is authenticated or verified as a prerequisite to system access.<br />
+<em>policy · POL-IA:</em> Identification and Authentication policy, approved 2026-03-02 by Dana Whitlock</li>
+</ul>
+<h4>IA.L2-3.5.3: Use multifactor authentication for local and network access to privileged accounts and for network access to non-privileged accounts.[24] [25].</h4>
+<p><strong>Status:</strong> MET · value 5 point(s)</p>
+<p>Implementation: governed by policy POL-IA §3.5.3; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.5.3[a]</code> privileged accounts are identified.<br />
+<em>automated · entra-identity:</em> privileged accounts identified: adm-praman@severnridge.us</li>
+<li>✓ <code>3.5.3[b]</code> multifactor authentication is implemented for local access to privileged accounts.<br />
+<em>automated · entra-identity:</em> privileged accounts use phishing-resistant or app MFA</li>
+<li>✓ <code>3.5.3[c]</code> multifactor authentication is implemented for network access to privileged accounts.<br />
+<em>automated · entra-identity:</em> privileged accounts use phishing-resistant or app MFA</li>
+<li>✓ <code>3.5.3[d]</code> multifactor authentication is implemented for network access to non-privileged accounts.<br />
+<em>automated · entra-identity:</em> all 22 non-privileged people have MFA registered</li>
+</ul>
+<h4>IA.L2-3.5.4: Employ replay-resistant authentication mechanisms for network access to privileged and non-privileged accounts.</h4>
+<p><strong>Status:</strong> MET · value 1 point(s)</p>
+<p>Implementation: governed by policy POL-IA §3.5.4; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.5.4[a]</code> replay-resistant authentication mechanisms are implemented for all network account access to privileged and non-privileged accounts.<br />
+<em>automated · entra-policies:</em> legacy (replayable) authentication blocked</li>
+</ul>
+<h4>IA.L2-3.5.5: Prevent reuse of identifiers for a defined period.</h4>
+<p><strong>Status:</strong> MET · value 1 point(s)</p>
+<p>Implementation: governed by policy POL-IA §3.5.5; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.5.5[a]</code> a period within which identifiers cannot be reused is defined.<br />
+<em>policy · POL-IA:</em> Identification and Authentication policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.5.5[b]</code> reuse of identifiers is prevented within the defined period.<br />
+<em>policy · POL-IA:</em> Identification and Authentication policy, approved 2026-03-02 by Dana Whitlock</li>
+</ul>
+<h4>IA.L2-3.5.6: Disable identifiers after a defined period of inactivity.</h4>
+<p><strong>Status:</strong> MET · value 1 point(s)</p>
+<p>Implementation: governed by policy POL-IA §3.5.6; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.5.6[a]</code> a period of inactivity after which an identifier is disabled is defined.<br />
+<em>policy · POL-IA:</em> Identification and Authentication policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.5.6[b]</code> identifiers are disabled after the defined period of inactivity.<br />
+<em>automated · entra-identity:</em> no enabled account idle more than 45 days</li>
+</ul>
+<h4>IA.L2-3.5.7: Enforce a minimum password complexity and change of characters when new passwords are created.</h4>
+<p><strong>Status:</strong> MET · value 1 point(s)</p>
+<p>Implementation: governed by policy POL-IA §3.5.7; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.5.7[a]</code> password complexity requirements are defined.<br />
+<em>automated · entra-policies:</em> minimum length 14 with banned-password list</li>
+<li>✓ <code>3.5.7[b]</code> password change of character requirements are defined.<br />
+<em>policy · POL-IA:</em> Identification and Authentication policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.5.7[c]</code> minimum password complexity requirements as defined are enforced when new passwords are created.<br />
+<em>policy · POL-IA:</em> Identification and Authentication policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.5.7[d]</code> minimum password change of character requirements as defined are enforced when new passwords are created.<br />
+<em>policy · POL-IA:</em> Identification and Authentication policy, approved 2026-03-02 by Dana Whitlock</li>
+</ul>
+<h4>IA.L2-3.5.8: Prohibit password reuse for a specified number of generations.</h4>
+<p><strong>Status:</strong> MET · value 1 point(s)</p>
+<p>Implementation: governed by policy POL-IA §3.5.8; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.5.8[a]</code> the number of generations during which a password cannot be reused is specified.<br />
+<em>policy · POL-IA:</em> Identification and Authentication policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.5.8[b]</code> reuse of passwords is prohibited during the specified number of generations.<br />
+<em>automated · entra-policies:</em> reuse blocked for 24 generations</li>
+</ul>
+<h4>IA.L2-3.5.9: Allow temporary password use for system logons with an immediate change to a permanent password.</h4>
+<p><strong>Status:</strong> MET · value 1 point(s)</p>
+<p>Implementation: governed by policy POL-IA §3.5.9; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.5.9[a]</code> an immediate change to a permanent password is required when a temporary password is used for system logon.<br />
+<em>automated · entra-policies:</em> temporary passwords must be changed at first sign-in</li>
+</ul>
+<h4>IA.L2-3.5.10: Store and transmit only cryptographically-protected passwords.</h4>
+<p><strong>Status:</strong> MET · value 5 point(s)</p>
+<p>Implementation: governed by policy POL-IA §3.5.10; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.5.10[a]</code> passwords are cryptographically protected in storage.<br />
+<em>policy · POL-IA:</em> Identification and Authentication policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.5.10[b]</code> passwords are cryptographically protected in transit.<br />
+<em>policy · POL-IA:</em> Identification and Authentication policy, approved 2026-03-02 by Dana Whitlock</li>
+</ul>
+<h4>IA.L2-3.5.11: Obscure feedback of authentication information</h4>
+<p><strong>Status:</strong> MET · value 1 point(s)</p>
+<p>Implementation: governed by policy POL-IA §3.5.11; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.5.11[a]</code> authentication information is obscured during the authentication process.<br />
+<em>policy · POL-IA:</em> Identification and Authentication policy, approved 2026-03-02 by Dana Whitlock</li>
+</ul>
+<h3>Incident Response</h3>
+<h4>IR.L2-3.6.1: Establish an operational incident-handling capability for organizational systems that includes preparation, detection, analysis, containment, recovery, and user response activities.</h4>
+<p><strong>Status:</strong> MET · value 5 point(s)</p>
+<p>Implementation: governed by policy POL-IR §3.6.1; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.6.1[a]</code> an operational incident-handling capability is established.<br />
+<em>policy · POL-IR:</em> Incident Response policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.6.1[b]</code> the operational incident-handling capability includes preparation.<br />
+<em>policy · POL-IR:</em> Incident Response policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.6.1[c]</code> the operational incident-handling capability includes detection.<br />
+<em>policy · POL-IR:</em> Incident Response policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.6.1[d]</code> the operational incident-handling capability includes analysis.<br />
+<em>policy · POL-IR:</em> Incident Response policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.6.1[e]</code> the operational incident-handling capability includes containment.<br />
+<em>policy · POL-IR:</em> Incident Response policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.6.1[f]</code> the operational incident-handling capability includes recovery.<br />
+<em>policy · POL-IR:</em> Incident Response policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.6.1[g]</code> the operational incident-handling capability includes user response activities.<br />
+<em>policy · POL-IR:</em> Incident Response policy, approved 2026-03-02 by Dana Whitlock</li>
+</ul>
+<h4>IR.L2-3.6.2: Track, document, and report incidents to designated officials and/or authorities both internal and external to the organization.</h4>
+<p><strong>Status:</strong> MET · value 5 point(s)</p>
+<p>Implementation: governed by policy POL-IR §3.6.2; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.6.2[a]</code> incidents are tracked.<br />
+<em>policy · POL-IR:</em> Incident Response policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.6.2[b]</code> incidents are documented.<br />
+<em>policy · POL-IR:</em> Incident Response policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.6.2[c]</code> authorities to whom incidents are to be reported are identified.<br />
+<em>policy · POL-IR:</em> Incident Response policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.6.2[d]</code> organizational officials to whom incidents are to be reported are identified.<br />
+<em>policy · POL-IR:</em> Incident Response policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.6.2[e]</code> identified authorities are notified of incidents.<br />
+<em>policy · POL-IR:</em> Incident Response policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.6.2[f]</code> identified organizational officials are notified of incidents.<br />
+<em>policy · POL-IR:</em> Incident Response policy, approved 2026-03-02 by Dana Whitlock</li>
+</ul>
+<h4>IR.L2-3.6.3: Test the organizational incident response capability.</h4>
+<p><strong>Status:</strong> MET · value 1 point(s)</p>
+<p>Implementation: governed by policy POL-IR §3.6.3; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.6.3[a]</code> the incident response capability is tested.<br />
+<em>record · R-IR-TABLETOP:</em> Incident response tabletop: ransomware on a CAM workstation (2025-09-30, 318 days old)</li>
+</ul>
+<h3>Maintenance</h3>
+<h4>MA.L2-3.7.1: Perform maintenance on organizational systems.[26].</h4>
+<p><strong>Status:</strong> MET · value 3 point(s)</p>
+<p>Implementation: governed by policy POL-MA §3.7.1; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.7.1[a]</code> system maintenance is performed.<br />
+<em>policy · POL-MA:</em> Maintenance policy, approved 2026-03-02 by Dana Whitlock</li>
+</ul>
+<h4>MA.L2-3.7.2: Provide controls on the tools, techniques, mechanisms, and personnel used to conduct system maintenance.</h4>
+<p><strong>Status:</strong> MET · value 5 point(s)</p>
+<p>Implementation: governed by policy POL-MA §3.7.2; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.7.2[a]</code> tools used to conduct system maintenance are controlled.<br />
+<em>policy · POL-MA:</em> Maintenance policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.7.2[b]</code> techniques used to conduct system maintenance are controlled.<br />
+<em>policy · POL-MA:</em> Maintenance policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.7.2[c]</code> mechanisms used to conduct system maintenance are controlled.<br />
+<em>policy · POL-MA:</em> Maintenance policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.7.2[d]</code> personnel used to conduct system maintenance are controlled.<br />
+<em>policy · POL-MA:</em> Maintenance policy, approved 2026-03-02 by Dana Whitlock</li>
+</ul>
+<h4>MA.L2-3.7.3: Ensure equipment removed for off-site maintenance is sanitized of any CUI.</h4>
+<p><strong>Status:</strong> MET · value 1 point(s)</p>
+<p>Implementation: governed by policy POL-MA §3.7.3; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.7.3[a]</code> equipment to be removed from organizational spaces for off-site maintenance is sanitized of any CUI.<br />
+<em>policy · POL-MA:</em> Maintenance policy, approved 2026-03-02 by Dana Whitlock</li>
+</ul>
+<h4>MA.L2-3.7.4: Check media containing diagnostic and test programs for malicious code before the media are used in organizational systems.</h4>
+<p><strong>Status:</strong> MET · value 3 point(s)</p>
+<p>Implementation: governed by policy POL-MA §3.7.4; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.7.4[a]</code> media containing diagnostic and test programs are checked for malicious code before being used in organizational systems that process, store, or transmit CUI.<br />
+<em>policy · POL-MA:</em> Maintenance policy, approved 2026-03-02 by Dana Whitlock</li>
+</ul>
+<h4>MA.L2-3.7.5: Require multifactor authentication to establish nonlocal maintenance sessions via external network connections and terminate such connections when nonlocal maintenance is complete.</h4>
+<p><strong>Status:</strong> MET · value 5 point(s)</p>
+<p>Implementation: governed by policy POL-MA §3.7.5; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.7.5[a]</code> multifactor authentication is required to establish nonlocal maintenance sessions via external network connections.<br />
+<em>policy · POL-MA:</em> Maintenance policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.7.5[b]</code> nonlocal maintenance sessions established via external network connections are terminated when nonlocal maintenance is complete.<br />
+<em>policy · POL-MA:</em> Maintenance policy, approved 2026-03-02 by Dana Whitlock</li>
+</ul>
+<h4>MA.L2-3.7.6: Supervise the maintenance activities of maintenance personnel without required access authorization.</h4>
+<p><strong>Status:</strong> MET · value 1 point(s)</p>
+<p>Implementation: governed by policy POL-MA §3.7.6; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.7.6[a]</code> maintenance personnel without required access authorization are supervised during maintenance activities.<br />
+<em>policy · POL-MA:</em> Maintenance policy, approved 2026-03-02 by Dana Whitlock</li>
+</ul>
+<h3>Media Protection</h3>
+<h4>MP.L2-3.8.1: Protect (i.e., physically control and securely store) system media containing CUI, both paper and digital.</h4>
+<p><strong>Status:</strong> MET · value 3 point(s)</p>
+<p>Implementation: governed by policy POL-MP §3.8.1; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.8.1[a]</code> paper media containing CUI is physically controlled.<br />
+<em>policy · POL-MP:</em> Media Protection policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.8.1[b]</code> digital media containing CUI is physically controlled.<br />
+<em>policy · POL-MP:</em> Media Protection policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.8.1[c]</code> paper media containing CUI is securely stored.<br />
+<em>policy · POL-MP:</em> Media Protection policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.8.1[d]</code> digital media containing CUI is securely stored.<br />
+<em>policy · POL-MP:</em> Media Protection policy, approved 2026-03-02 by Dana Whitlock</li>
+</ul>
+<h4>MP.L2-3.8.2: Limit access to CUI on system media to authorized users</h4>
+<p><strong>Status:</strong> MET · value 3 point(s)</p>
+<p>Implementation: governed by policy POL-MP §3.8.2; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.8.2[a]</code> access to CUI on system media is limited to authorized users.<br />
+<em>policy · POL-MP:</em> Media Protection policy, approved 2026-03-02 by Dana Whitlock</li>
+</ul>
+<h4>MP.L2-3.8.3: Sanitize or destroy system media containing CUI before disposal or release for reuse.</h4>
+<p><strong>Status:</strong> MET · value 5 point(s)</p>
+<p>Implementation: governed by policy POL-MP §3.8.3; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.8.3[a]</code> system media containing CUI is sanitized or destroyed before disposal.<br />
+<em>record · R-MP-SANITIZE:</em> Media sanitization certificates for retired drives (2026-04-22, 114 days old)</li>
+<li>✓ <code>3.8.3[b]</code> system media containing CUI is sanitized before it is released for reuse.<br />
+<em>record · R-MP-SANITIZE:</em> Media sanitization certificates for retired drives (2026-04-22, 114 days old)</li>
+</ul>
+<h4>MP.L2-3.8.4: Mark media with necessary CUI markings and distribution limitations.[27]</h4>
+<p><strong>Status:</strong> MET · value 1 point(s)</p>
+<p>Implementation: governed by policy POL-MP §3.8.4; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.8.4[a]</code> media containing CUI is marked with applicable CUI markings.<br />
+<em>policy · POL-MP:</em> Media Protection policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.8.4[b]</code> media containing CUI is marked with distribution limitations.<br />
+<em>policy · POL-MP:</em> Media Protection policy, approved 2026-03-02 by Dana Whitlock</li>
+</ul>
+<h4>MP.L2-3.8.5: Control access to media containing CUI and maintain accountability for media during transport outside of controlled areas.</h4>
+<p><strong>Status:</strong> MET · value 1 point(s)</p>
+<p>Implementation: governed by policy POL-MP §3.8.5; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.8.5[a]</code> access to media containing CUI is controlled.<br />
+<em>policy · POL-MP:</em> Media Protection policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.8.5[b]</code> accountability for media containing CUI is maintained during transport outside of controlled areas.<br />
+<em>policy · POL-MP:</em> Media Protection policy, approved 2026-03-02 by Dana Whitlock</li>
+</ul>
+<h4>MP.L2-3.8.6: Implement cryptographic mechanisms to protect the confidentiality of CUI stored on digital media during transport unless otherwise protected by alternative physical safeguards.</h4>
+<p><strong>Status:</strong> MET · value 1 point(s)</p>
+<p>Implementation: governed by policy POL-MP §3.8.6; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.8.6[a]</code> the confidentiality of CUI stored on digital media is protected during transport using cryptographic mechanisms or alternative physical safeguards.<br />
+<em>policy · POL-MP:</em> Media Protection policy, approved 2026-03-02 by Dana Whitlock</li>
+</ul>
+<h4>MP.L2-3.8.7: Control the use of removable media on system components.</h4>
+<p><strong>Status:</strong> MET · value 5 point(s)</p>
+<p>Implementation: governed by policy POL-MP §3.8.7; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.8.7[a]</code> the use of removable media on system components containing CUI is controlled.<br />
+<em>automated · entra-policies:</em> removable storage write-blocked</li>
+</ul>
+<h4>MP.L2-3.8.8: Prohibit the use of portable storage devices when such devices have no identifiable owner.</h4>
+<p><strong>Status:</strong> MET · value 3 point(s)</p>
+<p>Implementation: governed by policy POL-MP §3.8.8; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.8.8[a]</code> the use of portable storage devices is prohibited when such devices have no identifiable owner.<br />
+<em>policy · POL-MP:</em> Media Protection policy, approved 2026-03-02 by Dana Whitlock</li>
+</ul>
+<h4>MP.L2-3.8.9: Protect the confidentiality of backup CUI at storage locations.</h4>
+<p><strong>Status:</strong> NOT MET · value 1 point(s) · <strong>1 deducted</strong></p>
+<p>Implementation: governed by policy POL-MP §3.8.9; practice verified as below.</p>
+<ul>
+<li>✗ <code>3.8.9[a]</code> the confidentiality of backup CUI is protected at storage locations.<br />
+<em>policy · POL-MP:</em> known gap: Off-site backup drive not encrypted</li>
+</ul>
+<h3>Personnel Security</h3>
+<h4>PS.L2-3.9.1: Screen individuals prior to authorizing access to organizational systems containing CUI.</h4>
+<p><strong>Status:</strong> MET · value 3 point(s)</p>
+<p>Implementation: governed by policy POL-PS §3.9.1; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.9.1[a]</code> individuals are screened prior to authorizing access to organizational systems.<br />
+<em>record · R-PS-SCREEN:</em> Pre-access screening register (background checks), reviewed quarterly (2026-07-01, 44 days old)</li>
+</ul>
+<h4>PS.L2-3.9.2: Ensure that organizational systems containing CUI are protected during and after personnel actions such as terminations and transfers</h4>
+<p><strong>Status:</strong> MET · value 5 point(s)</p>
+<p>Implementation: governed by policy POL-PS §3.9.2; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.9.2[a]</code> a policy and/or process for terminating system access authorization and any credentials coincident with personnel actions is established.<br />
+<em>policy · POL-PS:</em> Personnel Security policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.9.2[b]</code> system access and credentials are terminated consistent with personnel actions such as termination or transfer.<br />
+<em>automated · entra-identity:</em> no enabled accounts for departed staff</li>
+<li>✓ <code>3.9.2[c]</code> the system is protected during and after personnel transfer actions.<br />
+<em>policy · POL-PS:</em> Personnel Security policy, approved 2026-03-02 by Dana Whitlock</li>
+</ul>
+<h3>Physical Protection</h3>
+<h4>PE.L2-3.10.1: Limit physical access to organizational systems, equipment, and the respective operating environments to authorized individuals.</h4>
+<p><strong>Status:</strong> MET · value 5 point(s)</p>
+<p>Implementation: governed by policy POL-PE §3.10.1; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.10.1[a]</code> authorized individuals allowed physical access are identified.<br />
+<em>record · R-PE-WALK:</em> Facility walkthrough: locked server closet, camera coverage, badge readers, alarm panel (2026-07-20, 25 days old)</li>
+<li>✓ <code>3.10.1[b]</code> physical access to organizational systems is limited to authorized individuals.<br />
+<em>record · R-PE-WALK:</em> Facility walkthrough: locked server closet, camera coverage, badge readers, alarm panel (2026-07-20, 25 days old)</li>
+<li>✓ <code>3.10.1[c]</code> physical access to equipment is limited to authorized individuals.<br />
+<em>record · R-PE-WALK:</em> Facility walkthrough: locked server closet, camera coverage, badge readers, alarm panel (2026-07-20, 25 days old)</li>
+<li>✓ <code>3.10.1[d]</code> physical access to operating environments is limited to authorized individuals.<br />
+<em>record · R-PE-WALK:</em> Facility walkthrough: locked server closet, camera coverage, badge readers, alarm panel (2026-07-20, 25 days old)</li>
+</ul>
+<h4>PE.L2-3.10.2: Protect and monitor the physical facility and support infrastructure for organizational systems.</h4>
+<p><strong>Status:</strong> MET · value 5 point(s)</p>
+<p>Implementation: governed by policy POL-PE §3.10.2; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.10.2[a]</code> the physical facility where that system resides is protected.<br />
+<em>record · R-PE-WALK:</em> Facility walkthrough: locked server closet, camera coverage, badge readers, alarm panel (2026-07-20, 25 days old)</li>
+<li>✓ <code>3.10.2[b]</code> the support infrastructure for that system is protected.<br />
+<em>record · R-PE-WALK:</em> Facility walkthrough: locked server closet, camera coverage, badge readers, alarm panel (2026-07-20, 25 days old)</li>
+<li>✓ <code>3.10.2[c]</code> the physical facility where that system resides is monitored.<br />
+<em>record · R-PE-WALK:</em> Facility walkthrough: locked server closet, camera coverage, badge readers, alarm panel (2026-07-20, 25 days old)</li>
+<li>✓ <code>3.10.2[d]</code> the support infrastructure for that system is monitored.<br />
+<em>record · R-PE-WALK:</em> Facility walkthrough: locked server closet, camera coverage, badge readers, alarm panel (2026-07-20, 25 days old)</li>
+</ul>
+<h4>PE.L2-3.10.3: Escort visitors and monitor visitor activity.</h4>
+<p><strong>Status:</strong> MET · value 1 point(s)</p>
+<p>Implementation: governed by policy POL-PE §3.10.3; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.10.3[a]</code> visitors are escorted.<br />
+<em>record · visitor-log:</em> 6 visits, every one with a named escort</li>
+<li>✓ <code>3.10.3[b]</code> visitor activity is monitored.<br />
+<em>record · visitor-log:</em> visits logged with purpose and badge return</li>
+</ul>
+<h4>PE.L2-3.10.4: Maintain audit logs of physical access.</h4>
+<p><strong>Status:</strong> MET · value 1 point(s)</p>
+<p>Implementation: governed by policy POL-PE §3.10.4; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.10.4[a]</code> audit logs of physical access are maintained.<br />
+<em>record · visitor-log:</em> visitor log current to 2026-08-12; badge log current</li>
+</ul>
+<h4>PE.L2-3.10.5: Control and manage physical access devices.</h4>
+<p><strong>Status:</strong> MET · value 1 point(s)</p>
+<p>Implementation: governed by policy POL-PE §3.10.5; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.10.5[a]</code> physical access devices are identified.<br />
+<em>record · R-PE-WALK:</em> Facility walkthrough: locked server closet, camera coverage, badge readers, alarm panel (2026-07-20, 25 days old)</li>
+<li>✓ <code>3.10.5[b]</code> physical access devices are controlled.<br />
+<em>record · R-PE-WALK:</em> Facility walkthrough: locked server closet, camera coverage, badge readers, alarm panel (2026-07-20, 25 days old)</li>
+<li>✓ <code>3.10.5[c]</code> physical access devices are managed.<br />
+<em>record · R-PE-WALK:</em> Facility walkthrough: locked server closet, camera coverage, badge readers, alarm panel (2026-07-20, 25 days old)</li>
+</ul>
+<h4>PE.L2-3.10.6: Enforce safeguarding measures for CUI at alternate work sites.</h4>
+<p><strong>Status:</strong> MET · value 1 point(s)</p>
+<p>Implementation: governed by policy POL-PE §3.10.6; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.10.6[a]</code> safeguarding measures for CUI are defined for alternate work sites.<br />
+<em>policy · POL-PE:</em> Physical Protection policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.10.6[b]</code> safeguarding measures for CUI are enforced for alternate work sites.<br />
+<em>policy · POL-PE:</em> Physical Protection policy, approved 2026-03-02 by Dana Whitlock</li>
+</ul>
+<h3>Risk Assessment</h3>
+<h4>RA.L2-3.11.1: Periodically assess the risk to organizational operations (including mission, functions, image, or reputation), organizational assets, and individuals, resulting from the operation of organizational systems and the associated processing, storage, or transmission of CUI</h4>
+<p><strong>Status:</strong> MET · value 3 point(s)</p>
+<p>Implementation: governed by policy POL-RA §3.11.1; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.11.1[a]</code> the frequency to assess risk to organizational operations, organizational assets, and individuals is defined.<br />
+<em>record · R-RA-RISK:</em> Annual risk assessment, signed (2026-05-01, 105 days old)</li>
+<li>✓ <code>3.11.1[b]</code> risk to organizational operations, organizational assets, and individuals resulting from the operation of an organizational system that processes, stores, or transmits CUI is assessed with the defined frequency.<br />
+<em>record · R-RA-RISK:</em> Annual risk assessment, signed (2026-05-01, 105 days old)</li>
+</ul>
+<h4>RA.L2-3.11.2: Scan for vulnerabilities in organizational systems and applications periodically and when new vulnerabilities affecting those systems and applications are identified.</h4>
+<p><strong>Status:</strong> MET · value 5 point(s)</p>
+<p>Implementation: governed by policy POL-RA §3.11.2; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.11.2[a]</code> the frequency to scan for vulnerabilities in an organizational system and its applications that process, store, or transmit CUI is defined.<br />
+<em>automated · defender-vulns:</em> scan every 7 days</li>
+<li>✓ <code>3.11.2[b]</code> vulnerability scans are performed in an organizational system that processes, stores, or transmits CUI with the defined frequency.<br />
+<em>automated · defender-vulns:</em> last full scan 3 days ago (every 7 days)</li>
+<li>✓ <code>3.11.2[c]</code> vulnerability scans are performed in an application that contains CUI with the defined frequency.<br />
+<em>automated · defender-vulns:</em> last full scan 3 days ago (every 7 days)</li>
+<li>✓ <code>3.11.2[d]</code> vulnerability scans are performed in an organizational system that processes, stores, or transmits CUI when new vulnerabilities are identified.<br />
+<em>automated · defender-vulns:</em> last full scan 3 days ago (every 7 days)</li>
+<li>✓ <code>3.11.2[e]</code> vulnerability scans are performed in an application that contains CUI when new vulnerabilities are identified.<br />
+<em>automated · defender-vulns:</em> last full scan 3 days ago (every 7 days)</li>
+</ul>
+<h4>RA.L2-3.11.3: Remediate vulnerabilities in accordance with risk assessments.</h4>
+<p><strong>Status:</strong> MET · value 1 point(s)</p>
+<p>Implementation: governed by policy POL-RA §3.11.3; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.11.3[a]</code> vulnerabilities are identified.<br />
+<em>automated · defender-vulns:</em> 2 findings tracked</li>
+<li>✓ <code>3.11.3[b]</code> vulnerabilities are remediated in accordance with risk assessments.<br />
+<em>automated · defender-vulns:</em> 2 open finding(s), none past the remediation deadline</li>
+</ul>
+<h3>Security Assessment</h3>
+<h4>CA.L2-3.12.1: Periodically assess the security controls in organizational systems to determine if the controls are effective in their application.</h4>
+<p><strong>Status:</strong> MET · value 5 point(s)</p>
+<p>Implementation: governed by policy POL-CA §3.12.1; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.12.1[a]</code> the frequency of security control assessments is defined.<br />
+<em>record · R-CA-SELF:</em> Annual self-assessment of all 110 requirements, signed (2026-06-15, 60 days old)</li>
+<li>✓ <code>3.12.1[b]</code> security controls are assessed with the defined frequency to determine if the controls are effective in their application.<br />
+<em>record · R-CA-SELF:</em> Annual self-assessment of all 110 requirements, signed (2026-06-15, 60 days old)</li>
+</ul>
+<h4>CA.L2-3.12.2: Develop and implement plans of action designed to correct deficiencies and reduce or eliminate vulnerabilities in organizational systems.</h4>
+<p><strong>Status:</strong> MET · value 3 point(s)</p>
+<p>Implementation: governed by policy POL-CA §3.12.2; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.12.2[a]</code> deficiencies and vulnerabilities to be addressed by the plan of action are identified.<br />
+<em>policy · POL-CA:</em> Security Assessment policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.12.2[b]</code> a plan of action is developed to correct identified deficiencies and reduce or eliminate identified vulnerabilities.<br />
+<em>policy · POL-CA:</em> Security Assessment policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.12.2[c]</code> the plan of action is implemented to correct identified deficiencies and reduce or eliminate identified vulnerabilities.<br />
+<em>policy · POL-CA:</em> Security Assessment policy, approved 2026-03-02 by Dana Whitlock</li>
+</ul>
+<h4>CA.L2-3.12.3: Monitor security controls on an ongoing basis to ensure the continued effectiveness of the controls.</h4>
+<p><strong>Status:</strong> MET · value 5 point(s)</p>
+<p>Implementation: governed by policy POL-CA §3.12.3; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.12.3[a]</code> security controls are monitored on an ongoing basis to ensure the continued effectiveness of those controls.<br />
+<em>policy · POL-CA:</em> Security Assessment policy, approved 2026-03-02 by Dana Whitlock</li>
+</ul>
+<h4>CA.L2-3.12.4: Develop, document, and periodically update system security plans that describe system boundaries, system environments of operation, how security requirements are implemented, and the relationships with or connections to other systems.[28]</h4>
+<p><strong>Status:</strong> MET · value 1 point(s)</p>
+<p>Implementation: governed by policy POL-CA §3.12.4; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.12.4[a]</code> a system security plan is developed.<br />
+<em>generated · ssp:</em> SSP generated from this bundle</li>
+<li>✓ <code>3.12.4[b]</code> the system boundary is described and documented in the system security plan.<br />
+<em>generated · ssp:</em> SSP generated from this bundle</li>
+<li>✓ <code>3.12.4[c]</code> the system environment of operation is described and documented in the system security plan.<br />
+<em>generated · ssp:</em> SSP generated from this bundle</li>
+<li>✓ <code>3.12.4[d]</code> the security requirements identified and approved by the designated authority as non-applicable are identified.<br />
+<em>generated · ssp:</em> SSP generated from this bundle</li>
+<li>✓ <code>3.12.4[e]</code> the method of security requirement implementation is described and documented in the system security plan.<br />
+<em>generated · ssp:</em> SSP generated from this bundle</li>
+<li>✓ <code>3.12.4[f]</code> the relationship with or connection to other systems is described and documented in the system security plan.<br />
+<em>generated · ssp:</em> SSP generated from this bundle</li>
+<li>✓ <code>3.12.4[g]</code> the frequency to update the system security plan is defined.<br />
+<em>generated · ssp:</em> SSP generated from this bundle</li>
+<li>✓ <code>3.12.4[h]</code> system security plan is updated with the defined frequency.<br />
+<em>generated · ssp:</em> SSP generated from this bundle</li>
+</ul>
+<h3>System and Communications Protection</h3>
+<h4>SC.L2-3.13.1: Monitor, control, and protect communications (i.e., information transmitted or received by organizational systems) at the external boundaries and key internal boundaries of organizational systems.</h4>
+<p><strong>Status:</strong> MET · value 5 point(s)</p>
+<p>Implementation: governed by policy POL-SC §3.13.1; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.13.1[a]</code> the external system boundary is defined.<br />
+<em>automated · firewall:</em> external boundary: fw-01</li>
+<li>✓ <code>3.13.1[b]</code> key internal system boundaries are defined.<br />
+<em>automated · firewall:</em> internal zones: enclave, lan, shopfloor, dmz-proxy</li>
+<li>✓ <code>3.13.1[c]</code> communications are monitored at the external system boundary.<br />
+<em>automated · firewall:</em> all accept rules logged to Microsoft Sentinel</li>
+<li>✓ <code>3.13.1[d]</code> communications are monitored at key internal boundaries.<br />
+<em>automated · firewall:</em> all accept rules logged to Microsoft Sentinel</li>
+<li>✓ <code>3.13.1[e]</code> communications are controlled at the external system boundary.<br />
+<em>automated · firewall:</em> no internal host reachable from the internet except through the VPN</li>
+<li>✓ <code>3.13.1[f]</code> communications are controlled at key internal boundaries.<br />
+<em>automated · firewall:</em> no internal host reachable from the internet except through the VPN</li>
+<li>✓ <code>3.13.1[g]</code> communications are protected at the external system boundary.<br />
+<em>automated · firewall:</em> VPN in FIPS mode (TLS1.3 AES-256-GCM)</li>
+<li>✓ <code>3.13.1[h]</code> communications are protected at key internal boundaries.<br />
+<em>automated · firewall:</em> VPN in FIPS mode (TLS1.3 AES-256-GCM)</li>
+</ul>
+<h4>SC.L2-3.13.2: Employ architectural designs, software development techniques, and systems engineering principles that promote effective information security within organizational systems.</h4>
+<p><strong>Status:</strong> MET · value 5 point(s)</p>
+<p>Implementation: governed by policy POL-SC §3.13.2; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.13.2[a]</code> architectural designs that promote effective information security are identified.<br />
+<em>policy · POL-SC:</em> System and Communications Protection policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.13.2[b]</code> software development techniques that promote effective information security are identified.<br />
+<em>policy · POL-SC:</em> System and Communications Protection policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.13.2[c]</code> systems engineering principles that promote effective information security are identified.<br />
+<em>policy · POL-SC:</em> System and Communications Protection policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.13.2[d]</code> identified architectural designs that promote effective information security are employed.<br />
+<em>policy · POL-SC:</em> System and Communications Protection policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.13.2[e]</code> identified software development techniques that promote effective information security are employed.<br />
+<em>policy · POL-SC:</em> System and Communications Protection policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.13.2[f]</code> identified systems engineering principles that promote effective information security are employed.<br />
+<em>policy · POL-SC:</em> System and Communications Protection policy, approved 2026-03-02 by Dana Whitlock</li>
+</ul>
+<h4>SC.L2-3.13.3: Separate user functionality from system management functionality.</h4>
+<p><strong>Status:</strong> MET · value 1 point(s)</p>
+<p>Implementation: governed by policy POL-SC §3.13.3; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.13.3[a]</code> user functionality is identified.<br />
+<em>policy · POL-SC:</em> System and Communications Protection policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.13.3[b]</code> system management functionality is identified.<br />
+<em>policy · POL-SC:</em> System and Communications Protection policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.13.3[c]</code> user functionality is separated from system management functionality.<br />
+<em>policy · POL-SC:</em> System and Communications Protection policy, approved 2026-03-02 by Dana Whitlock</li>
+</ul>
+<h4>SC.L2-3.13.4: Prevent unauthorized and unintended information transfer via shared system resources.</h4>
+<p><strong>Status:</strong> MET · value 1 point(s)</p>
+<p>Implementation: governed by policy POL-SC §3.13.4; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.13.4[a]</code> unauthorized and unintended information transfer via shared system resources is prevented.<br />
+<em>policy · POL-SC:</em> System and Communications Protection policy, approved 2026-03-02 by Dana Whitlock</li>
+</ul>
+<h4>SC.L2-3.13.5: Implement subnetworks for publicly accessible system components that are physically or logically separated from internal networks.</h4>
+<p><strong>Status:</strong> MET · value 5 point(s)</p>
+<p>Implementation: governed by policy POL-SC §3.13.5; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.13.5[a]</code> publicly accessible system components are identified.<br />
+<em>automated · firewall:</em> public component: dmz-proxy</li>
+<li>✓ <code>3.13.5[b]</code> subnetworks for publicly accessible system components are physically or logically separated from internal networks.<br />
+<em>automated · firewall:</em> public services only in the DMZ subnet</li>
+</ul>
+<h4>SC.L2-3.13.6: Deny network communications traffic by default and allow network communications traffic by exception (i.e., deny all, permit by exception).</h4>
+<p><strong>Status:</strong> MET · value 5 point(s)</p>
+<p>Implementation: governed by policy POL-SC §3.13.6; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.13.6[a]</code> network communications traffic is denied by default.<br />
+<em>automated · firewall:</em> implicit deny-all</li>
+<li>✓ <code>3.13.6[b]</code> network communications traffic is allowed by exception.<br />
+<em>automated · firewall:</em> every accept rule names its services</li>
+</ul>
+<h4>SC.L2-3.13.7: Prevent remote devices from simultaneously establishing non-remote connections with organizational systems and communicating via some other connection to resources in external networks (i.e., split tunneling).</h4>
+<p><strong>Status:</strong> MET · value 1 point(s)</p>
+<p>Implementation: governed by policy POL-SC §3.13.7; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.13.7[a]</code> remote devices are prevented from simultaneously establishing non-remote connections with the system and communicating via some other connection to resources in external networks (i.e., split tunneling).<br />
+<em>automated · firewall:</em> split tunneling disabled</li>
+</ul>
+<h4>SC.L2-3.13.8: Implement cryptographic mechanisms to prevent unauthorized disclosure of CUI during transmission unless otherwise protected by alternative physical safeguards.</h4>
+<p><strong>Status:</strong> MET · value 3 point(s)</p>
+<p>Implementation: governed by policy POL-SC §3.13.8; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.13.8[a]</code> cryptographic mechanisms intended to prevent unauthorized disclosure of CUI are identified.<br />
+<em>automated · firewall:</em> TLS 1.3 for CUI in transit</li>
+<li>✓ <code>3.13.8[b]</code> alternative physical safeguards intended to prevent unauthorized disclosure of CUI are identified.<br />
+<em>policy · POL-SC:</em> System and Communications Protection policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.13.8[c]</code> either cryptographic mechanisms or alternative physical safeguards are implemented to prevent unauthorized disclosure of CUI during transmission.<br />
+<em>automated · firewall:</em> VPN in FIPS mode (TLS1.3 AES-256-GCM)</li>
+</ul>
+<h4>SC.L2-3.13.9: Terminate network connections associated with communications sessions at the end of the sessions or after a defined period of inactivity.</h4>
+<p><strong>Status:</strong> MET · value 1 point(s)</p>
+<p>Implementation: governed by policy POL-SC §3.13.9; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.13.9[a]</code> a period of inactivity to terminate network connections associated with communications sessions is defined.<br />
+<em>automated · firewall:</em> VPN idle timeout 30 min</li>
+<li>✓ <code>3.13.9[b]</code> network connections associated with communications sessions are terminated at the end of the sessions.<br />
+<em>automated · firewall:</em> sessions closed at logoff</li>
+<li>✓ <code>3.13.9[c]</code> network connections associated with communications sessions are terminated after the defined period of inactivity.<br />
+<em>automated · firewall:</em> idle sessions dropped</li>
+</ul>
+<h4>SC.L2-3.13.10: Establish and manage cryptographic keys for cryptography employed in organizational systems.</h4>
+<p><strong>Status:</strong> MET · value 1 point(s)</p>
+<p>Implementation: governed by policy POL-SC §3.13.10; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.13.10[a]</code> cryptographic keys are established whenever cryptography is employed.<br />
+<em>policy · POL-SC:</em> System and Communications Protection policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.13.10[b]</code> cryptographic keys are managed whenever cryptography is employed.<br />
+<em>policy · POL-SC:</em> System and Communications Protection policy, approved 2026-03-02 by Dana Whitlock</li>
+</ul>
+<h4>SC.L2-3.13.11: Employ FIPS-validated cryptography when used to protect the confidentiality of CUI.</h4>
+<p><strong>Status:</strong> MET · value 5 point(s)</p>
+<p>Implementation: governed by policy POL-SC §3.13.11; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.13.11[a]</code> FIPS-validated cryptography is employed to protect the confidentiality of CUI.<br />
+<em>automated · intune-devices:</em> BitLocker with FIPS algorithm policy on every device; VPN in FIPS mode</li>
+</ul>
+<h4>SC.L2-3.13.12: Prohibit remote activation of collaborative computing devices and provide indication of devices in use to users present at the device.[29].</h4>
+<p><strong>Status:</strong> MET · value 1 point(s)</p>
+<p>Implementation: governed by policy POL-SC §3.13.12; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.13.12[a]</code> collaborative computing devices are identified.<br />
+<em>policy · POL-SC:</em> System and Communications Protection policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.13.12[b]</code> collaborative computing devices provide indication to users of devices in use.<br />
+<em>policy · POL-SC:</em> System and Communications Protection policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.13.12[c]</code> remote activation of collaborative computing devices is prohibited.<br />
+<em>policy · POL-SC:</em> System and Communications Protection policy, approved 2026-03-02 by Dana Whitlock</li>
+</ul>
+<h4>SC.L2-3.13.13: Control and monitor the use of mobile code.</h4>
+<p><strong>Status:</strong> NOT MET · value 1 point(s) · <strong>1 deducted</strong></p>
+<p>Implementation: governed by policy POL-SC §3.13.13; practice verified as below.</p>
+<ul>
+<li>✗ <code>3.13.13[a]</code> use of mobile code is controlled.<br />
+<em>policy · POL-SC:</em> known gap: No browser policy controlling mobile code (macros, scripts) yet</li>
+<li>✓ <code>3.13.13[b]</code> use of mobile code is monitored.<br />
+<em>policy · POL-SC:</em> System and Communications Protection policy, approved 2026-03-02 by Dana Whitlock</li>
+</ul>
+<h4>SC.L2-3.13.14: Control and monitor the use of Voice over Internet Protocol (VoIP) technologies.</h4>
+<p><strong>Status:</strong> MET · value 1 point(s)</p>
+<p>Implementation: governed by policy POL-SC §3.13.14; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.13.14[a]</code> use of Voice over Internet Protocol (VoIP) technologies is controlled.<br />
+<em>policy · POL-SC:</em> System and Communications Protection policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.13.14[b]</code> use of Voice over Internet Protocol (VoIP) technologies is monitored.<br />
+<em>policy · POL-SC:</em> System and Communications Protection policy, approved 2026-03-02 by Dana Whitlock</li>
+</ul>
+<h4>SC.L2-3.13.15: Protect the authenticity of communications sessions.</h4>
+<p><strong>Status:</strong> MET · value 5 point(s)</p>
+<p>Implementation: governed by policy POL-SC §3.13.15; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.13.15[a]</code> the authenticity of communications sessions is protected.<br />
+<em>policy · POL-SC:</em> System and Communications Protection policy, approved 2026-03-02 by Dana Whitlock</li>
+</ul>
+<h4>SC.L2-3.13.16: Protect the confidentiality of CUI at rest.</h4>
+<p><strong>Status:</strong> MET · value 1 point(s)</p>
+<p>Implementation: governed by policy POL-SC §3.13.16; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.13.16[a]</code> the confidentiality of CUI at rest is protected.<br />
+<em>automated · intune-devices:</em> BitLocker on every laptop</li>
+</ul>
+<h3>System and Information Integrity</h3>
+<h4>SI.L2-3.14.1: Identify, report, and correct system flaws in a timely manner.</h4>
+<p><strong>Status:</strong> MET · value 5 point(s)</p>
+<p>Implementation: governed by policy POL-SI §3.14.1; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.14.1[a]</code> the time within which to identify system flaws is specified.<br />
+<em>automated · defender-vulns:</em> 2 open finding(s), none past the remediation deadline</li>
+<li>✓ <code>3.14.1[b]</code> system flaws are identified within the specified time frame.<br />
+<em>automated · defender-vulns:</em> 2 open finding(s), none past the remediation deadline</li>
+<li>✓ <code>3.14.1[c]</code> the time within which to report system flaws is specified.<br />
+<em>automated · defender-vulns:</em> 2 open finding(s), none past the remediation deadline</li>
+<li>✓ <code>3.14.1[d]</code> system flaws are reported within the specified time frame.<br />
+<em>automated · defender-vulns:</em> 2 open finding(s), none past the remediation deadline</li>
+<li>✓ <code>3.14.1[e]</code> the time within which to correct system flaws is specified.<br />
+<em>automated · defender-vulns:</em> 2 open finding(s), none past the remediation deadline</li>
+<li>✓ <code>3.14.1[f]</code> system flaws are corrected within the specified time frame.<br />
+<em>automated · defender-vulns:</em> 2 open finding(s), none past the remediation deadline</li>
+</ul>
+<h4>SI.L2-3.14.2: Provide protection from malicious code at designated locations within organizational systems.</h4>
+<p><strong>Status:</strong> MET · value 5 point(s)</p>
+<p>Implementation: governed by policy POL-SI §3.14.2; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.14.2[a]</code> designated locations for malicious code protection are identified.<br />
+<em>automated · intune-devices:</em> Defender real-time protection on all 16 devices</li>
+<li>✓ <code>3.14.2[b]</code> protection from malicious code at designated locations is provided.<br />
+<em>automated · intune-devices:</em> Defender real-time protection on all 16 devices</li>
+</ul>
+<h4>SI.L2-3.14.3: Monitor system security alerts and advisories and take action in response.</h4>
+<p><strong>Status:</strong> MET · value 5 point(s)</p>
+<p>Implementation: governed by policy POL-SI §3.14.3; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.14.3[a]</code> response actions to system security alerts and advisories are identified.<br />
+<em>policy · POL-SI:</em> System and Information Integrity policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.14.3[b]</code> system security alerts and advisories are monitored.<br />
+<em>policy · POL-SI:</em> System and Information Integrity policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.14.3[c]</code> actions in response to system security alerts and advisories are taken.<br />
+<em>policy · POL-SI:</em> System and Information Integrity policy, approved 2026-03-02 by Dana Whitlock</li>
+</ul>
+<h4>SI.L2-3.14.4: Update malicious code protection mechanisms when new releases are available.</h4>
+<p><strong>Status:</strong> MET · value 5 point(s)</p>
+<p>Implementation: governed by policy POL-SI §3.14.4; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.14.4[a]</code> malicious code protection mechanisms are updated when new releases are available.<br />
+<em>automated · intune-devices:</em> malware signatures under 7 days old on every device</li>
+</ul>
+<h4>SI.L2-3.14.5: Perform periodic scans of organizational systems and real-time scans of files from external sources as files are downloaded, opened, or executed.</h4>
+<p><strong>Status:</strong> MET · value 3 point(s)</p>
+<p>Implementation: governed by policy POL-SI §3.14.5; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.14.5[a]</code> the frequency for malicious code scans is defined.<br />
+<em>automated · defender-vulns:</em> last full scan 3 days ago (every 7 days)</li>
+<li>✓ <code>3.14.5[b]</code> malicious code scans are performed with the defined frequency.<br />
+<em>automated · defender-vulns:</em> last full scan 3 days ago (every 7 days)</li>
+<li>✓ <code>3.14.5[c]</code> real-time malicious code scans of files from external sources as files are downloaded, opened, or executed are performed.<br />
+<em>automated · defender-vulns:</em> last full scan 3 days ago (every 7 days)</li>
+</ul>
+<h4>SI.L2-3.14.6: Monitor organizational systems, including inbound and outbound communications traffic, to detect attacks and indicators of potential attacks.</h4>
+<p><strong>Status:</strong> MET · value 5 point(s)</p>
+<p>Implementation: governed by policy POL-SI §3.14.6; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.14.6[a]</code> the system is monitored to detect attacks and indicators of potential attacks.<br />
+<em>policy · POL-SI:</em> System and Information Integrity policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.14.6[b]</code> inbound communications traffic is monitored to detect attacks and indicators of potential attacks.<br />
+<em>policy · POL-SI:</em> System and Information Integrity policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.14.6[c]</code> outbound communications traffic is monitored to detect attacks and indicators of potential attacks.<br />
+<em>policy · POL-SI:</em> System and Information Integrity policy, approved 2026-03-02 by Dana Whitlock</li>
+</ul>
+<h4>SI.L2-3.14.7: Identify unauthorized use of organizational systems.</h4>
+<p><strong>Status:</strong> MET · value 3 point(s)</p>
+<p>Implementation: governed by policy POL-SI §3.14.7; practice verified as below.</p>
+<ul>
+<li>✓ <code>3.14.7[a]</code> authorized use of the system is defined.<br />
+<em>policy · POL-SI:</em> System and Information Integrity policy, approved 2026-03-02 by Dana Whitlock</li>
+<li>✓ <code>3.14.7[b]</code> unauthorized use of the system is identified.<br />
+<em>policy · POL-SI:</em> System and Information Integrity policy, approved 2026-03-02 by Dana Whitlock</li>
+</ul>
+<h2>Evidence manifest</h2>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Kind</th>
+<th>Dated</th>
+<th>sha256</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gaps.yaml</td>
+<td>plan</td>
+<td>2026-08-14</td>
+<td><code>e1e4cc75be0b</code></td>
+</tr>
+<tr>
+<td>policies/AC.md</td>
+<td>policy</td>
+<td>2026-03-02</td>
+<td><code>6f4a3ef4b3b0</code></td>
+</tr>
+<tr>
+<td>policies/AT.md</td>
+<td>policy</td>
+<td>2026-03-02</td>
+<td><code>a7d727856531</code></td>
+</tr>
+<tr>
+<td>policies/AU.md</td>
+<td>policy</td>
+<td>2026-03-02</td>
+<td><code>550b07ec7fdf</code></td>
+</tr>
+<tr>
+<td>policies/CA.md</td>
+<td>policy</td>
+<td>2026-03-02</td>
+<td><code>f4b6a50bb71a</code></td>
+</tr>
+<tr>
+<td>policies/CM.md</td>
+<td>policy</td>
+<td>2026-03-02</td>
+<td><code>368c4daf34b7</code></td>
+</tr>
+<tr>
+<td>policies/IA.md</td>
+<td>policy</td>
+<td>2026-03-02</td>
+<td><code>4c624f4e23c9</code></td>
+</tr>
+<tr>
+<td>policies/IR.md</td>
+<td>policy</td>
+<td>2026-03-02</td>
+<td><code>a4fdf84ccf2d</code></td>
+</tr>
+<tr>
+<td>policies/MA.md</td>
+<td>policy</td>
+<td>2026-03-02</td>
+<td><code>814471a85569</code></td>
+</tr>
+<tr>
+<td>policies/MP.md</td>
+<td>policy</td>
+<td>2026-03-02</td>
+<td><code>fd37de33ad6d</code></td>
+</tr>
+<tr>
+<td>policies/PE.md</td>
+<td>policy</td>
+<td>2026-03-02</td>
+<td><code>b0eb4e4b7772</code></td>
+</tr>
+<tr>
+<td>policies/PS.md</td>
+<td>policy</td>
+<td>2026-03-02</td>
+<td><code>5505ff201d65</code></td>
+</tr>
+<tr>
+<td>policies/RA.md</td>
+<td>policy</td>
+<td>2026-03-02</td>
+<td><code>0220be839567</code></td>
+</tr>
+<tr>
+<td>policies/SC.md</td>
+<td>policy</td>
+<td>2026-03-02</td>
+<td><code>1c8bf81054f0</code></td>
+</tr>
+<tr>
+<td>policies/SI.md</td>
+<td>policy</td>
+<td>2026-03-02</td>
+<td><code>dd61876ae06f</code></td>
+</tr>
+<tr>
+<td>records/R-CA-SELF.md</td>
+<td>record</td>
+<td>2026-06-15</td>
+<td><code>f0c8a719fb39</code></td>
+</tr>
+<tr>
+<td>records/R-IR-TABLETOP.md</td>
+<td>record</td>
+<td>2025-09-30</td>
+<td><code>3850d72dff02</code></td>
+</tr>
+<tr>
+<td>records/R-MP-SANITIZE.md</td>
+<td>record</td>
+<td>2026-04-22</td>
+<td><code>fc57dc118d39</code></td>
+</tr>
+<tr>
+<td>records/R-PE-WALK.md</td>
+<td>record</td>
+<td>2026-07-20</td>
+<td><code>65bae76961b7</code></td>
+</tr>
+<tr>
+<td>records/R-PS-SCREEN.md</td>
+<td>record</td>
+<td>2026-07-01</td>
+<td><code>f685b32a4dad</code></td>
+</tr>
+<tr>
+<td>records/R-RA-RISK.md</td>
+<td>record</td>
+<td>2026-05-01</td>
+<td><code>8abab8636a94</code></td>
+</tr>
+<tr>
+<td>snapshots/2026-08-14/asset_inventory.csv</td>
+<td>automated</td>
+<td>2026-08-14</td>
+<td><code>6a96749ddd5c</code></td>
+</tr>
+<tr>
+<td>snapshots/2026-08-14/audit_config.json</td>
+<td>automated</td>
+<td>2026-08-14</td>
+<td><code>7f9a0048bf48</code></td>
+</tr>
+<tr>
+<td>snapshots/2026-08-14/badge_access.csv</td>
+<td>record</td>
+<td>2026-08-14</td>
+<td><code>f53063571696</code></td>
+</tr>
+<tr>
+<td>snapshots/2026-08-14/defender_vulns.json</td>
+<td>automated</td>
+<td>2026-08-14</td>
+<td><code>ff2fc94e69ee</code></td>
+</tr>
+<tr>
+<td>snapshots/2026-08-14/entra_policies.json</td>
+<td>automated</td>
+<td>2026-08-14</td>
+<td><code>d1f276a40929</code></td>
+</tr>
+<tr>
+<td>snapshots/2026-08-14/entra_users.json</td>
+<td>automated</td>
+<td>2026-08-14</td>
+<td><code>bb4c5b3f5da7</code></td>
+</tr>
+<tr>
+<td>snapshots/2026-08-14/firewall.json</td>
+<td>automated</td>
+<td>2026-08-14</td>
+<td><code>47667398d176</code></td>
+</tr>
+<tr>
+<td>snapshots/2026-08-14/hr_roster.csv</td>
+<td>automated</td>
+<td>2026-08-14</td>
+<td><code>920a670acb23</code></td>
+</tr>
+<tr>
+<td>snapshots/2026-08-14/intune_devices.json</td>
+<td>automated</td>
+<td>2026-08-14</td>
+<td><code>bfe49a74ff86</code></td>
+</tr>
+<tr>
+<td>snapshots/2026-08-14/training.csv</td>
+<td>automated</td>
+<td>2026-08-14</td>
+<td><code>088c92f0cc9b</code></td>
+</tr>
+<tr>
+<td>snapshots/2026-08-14/visitor_log.csv</td>
+<td>record</td>
+<td>2026-08-14</td>
+<td><code>bc2f73b12f17</code></td>
+</tr>
+</tbody>
+</table></main></body></html>

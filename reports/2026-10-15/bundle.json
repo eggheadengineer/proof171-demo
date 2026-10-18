@@ -1,0 +1,5611 @@
+{
+ "format": "proof171-bundle/0.1",
+ "snapshot": "2026-10-15",
+ "generated_for": "Severn Ridge Precision LLC (fictional)",
+ "catalog_sha256": "7df9c5b5bca79103a31886e2c7395156c743d74c6c14c5fba1a02fa29f8c1c79",
+ "score": 82,
+ "max_score": 110,
+ "status": "Not eligible",
+ "summary": {
+  "requirements_met": 100,
+  "requirements_not_met": 10,
+  "objectives_met": 305,
+  "objectives": 320,
+  "by_source": {
+   "automated": {
+    "MET": 108,
+    "NOT MET": 12
+   },
+   "policy": {
+    "MET": 169,
+    "NOT MET": 1
+   },
+   "record": {
+    "MET": 20,
+    "NOT MET": 2
+   },
+   "generated": {
+    "MET": 8,
+    "NOT MET": 0
+   }
+  },
+  "automated_objectives": 120
+ },
+ "deductions": [
+  {
+   "id": "AC.L2-3.1.12",
+   "points": 5,
+   "poam_eligible": false
+  },
+  {
+   "id": "AC.L2-3.1.14",
+   "points": 1,
+   "poam_eligible": true
+  },
+  {
+   "id": "AC.L2-3.1.21",
+   "points": 1,
+   "poam_eligible": true
+  },
+  {
+   "id": "AT.L2-3.2.1",
+   "points": 5,
+   "poam_eligible": false
+  },
+  {
+   "id": "AT.L2-3.2.3",
+   "points": 1,
+   "poam_eligible": true
+  },
+  {
+   "id": "IA.L2-3.5.3",
+   "points": 3,
+   "poam_eligible": false
+  },
+  {
+   "id": "IR.L2-3.6.3",
+   "points": 1,
+   "poam_eligible": true
+  },
+  {
+   "id": "PE.L2-3.10.4",
+   "points": 1,
+   "poam_eligible": false
+  },
+  {
+   "id": "SC.L2-3.13.1",
+   "points": 5,
+   "poam_eligible": false
+  },
+  {
+   "id": "SI.L2-3.14.4",
+   "points": 5,
+   "poam_eligible": false
+  }
+ ],
+ "requirements": [
+  {
+   "id": "AC.L2-3.1.1",
+   "number": "3.1.1",
+   "family": "Access Control",
+   "abbr": "AC",
+   "text": "Limit system access to authorized users, processes acting on behalf of authorized users, and devices (including other systems).",
+   "points": 5,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "automated",
+   "objectives": [
+    {
+     "id": "3.1.1[a]",
+     "text": "authorized users are identified.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "entra-identity",
+     "reason": "all 24 enabled people map to active HR records",
+     "evidence": [
+      "snapshots/2026-10-15/entra_users.json",
+      "snapshots/2026-10-15/hr_roster.csv"
+     ]
+    },
+    {
+     "id": "3.1.1[b]",
+     "text": "processes acting on behalf of authorized users are identified.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "entra-identity",
+     "reason": "1 service account(s), each with a named owner",
+     "evidence": [
+      "snapshots/2026-10-15/entra_users.json",
+      "snapshots/2026-10-15/hr_roster.csv"
+     ]
+    },
+    {
+     "id": "3.1.1[c]",
+     "text": "devices (including other systems) authorized to connect to the system are identified.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "intune-devices",
+     "reason": "all 16 managed devices are in the asset inventory",
+     "evidence": [
+      "snapshots/2026-10-15/intune_devices.json",
+      "snapshots/2026-10-15/asset_inventory.csv"
+     ]
+    },
+    {
+     "id": "3.1.1[d]",
+     "text": "system access is limited to authorized users.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "entra-identity",
+     "reason": "no enabled accounts for departed staff",
+     "evidence": [
+      "snapshots/2026-10-15/entra_users.json",
+      "snapshots/2026-10-15/hr_roster.csv"
+     ]
+    },
+    {
+     "id": "3.1.1[e]",
+     "text": "system access is limited to processes acting on behalf of authorized users.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "entra-identity",
+     "reason": "service accounts hold no admin roles and use certificates",
+     "evidence": [
+      "snapshots/2026-10-15/entra_users.json",
+      "snapshots/2026-10-15/hr_roster.csv"
+     ]
+    },
+    {
+     "id": "3.1.1[f]",
+     "text": "system access is limited to authorized devices (including other systems).",
+     "status": "MET",
+     "source": "automated",
+     "collector": "intune-devices",
+     "reason": "all 16 managed devices are in the asset inventory",
+     "evidence": [
+      "snapshots/2026-10-15/intune_devices.json",
+      "snapshots/2026-10-15/asset_inventory.csv"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "AC.L2-3.1.2",
+   "number": "3.1.2",
+   "family": "Access Control",
+   "abbr": "AC",
+   "text": "Limit system access to the types of transactions and functions that authorized users are permitted to execute.",
+   "points": 5,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "policy",
+   "objectives": [
+    {
+     "id": "3.1.2[a]",
+     "text": "the types of transactions and functions that authorized users are permitted to execute are defined",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-AC",
+     "reason": "Access Control policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/AC.md"
+     ]
+    },
+    {
+     "id": "3.1.2[b]",
+     "text": "system access is limited to the defined types of transactions and functions for authorized users.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-AC",
+     "reason": "Access Control policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/AC.md"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "AC.L2-3.1.3",
+   "number": "3.1.3",
+   "family": "Access Control",
+   "abbr": "AC",
+   "text": "Control the flow of CUI in accordance with approved authorizations.",
+   "points": 1,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "policy",
+   "objectives": [
+    {
+     "id": "3.1.3[a]",
+     "text": "information flow control policies are defined.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-AC",
+     "reason": "Access Control policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/AC.md"
+     ]
+    },
+    {
+     "id": "3.1.3[b]",
+     "text": "methods and enforcement mechanisms for controlling the flow of CUI are defined.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-AC",
+     "reason": "Access Control policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/AC.md"
+     ]
+    },
+    {
+     "id": "3.1.3[c]",
+     "text": "designated sources and destinations (e.g., networks, individuals, and devices) for CUI within systems and between interconnected systems are identified.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-AC",
+     "reason": "Access Control policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/AC.md"
+     ]
+    },
+    {
+     "id": "3.1.3[d]",
+     "text": "authorizations for controlling the flow of CUI are defined.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-AC",
+     "reason": "Access Control policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/AC.md"
+     ]
+    },
+    {
+     "id": "3.1.3[e]",
+     "text": "approved authorizations for controlling the flow of CUI are enforced.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-AC",
+     "reason": "Access Control policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/AC.md"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "AC.L2-3.1.4",
+   "number": "3.1.4",
+   "family": "Access Control",
+   "abbr": "AC",
+   "text": "Separate the duties of individuals to reduce the risk of malevolent activity without collusion.",
+   "points": 1,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "policy",
+   "objectives": [
+    {
+     "id": "3.1.4[a]",
+     "text": "the duties of individuals requiring separation to reduce the risk of malevolent activity are defined.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-AC",
+     "reason": "Access Control policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/AC.md"
+     ]
+    },
+    {
+     "id": "3.1.4[b]",
+     "text": "organization-defined duties of individuals requiring separation are separated.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-AC",
+     "reason": "Access Control policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/AC.md"
+     ]
+    },
+    {
+     "id": "3.1.4[c]",
+     "text": "separate accounts for individuals whose duties and accesses must be separated to reduce the risk of malevolent activity or collusion are established",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-AC",
+     "reason": "Access Control policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/AC.md"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "AC.L2-3.1.5",
+   "number": "3.1.5",
+   "family": "Access Control",
+   "abbr": "AC",
+   "text": "Employ the principle of least privilege, including for specific security functions and privileged accounts.",
+   "points": 3,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "automated",
+   "objectives": [
+    {
+     "id": "3.1.5[a]",
+     "text": "privileged accounts are identified.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "entra-identity",
+     "reason": "1 privileged account(s) identified",
+     "evidence": [
+      "snapshots/2026-10-15/entra_users.json",
+      "snapshots/2026-10-15/hr_roster.csv"
+     ]
+    },
+    {
+     "id": "3.1.5[b]",
+     "text": "access to privileged accounts is authorized in accordance with the principle of least privilege.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "entra-identity",
+     "reason": "1 privileged account(s), within the approved limit of 2",
+     "evidence": [
+      "snapshots/2026-10-15/entra_users.json",
+      "snapshots/2026-10-15/hr_roster.csv"
+     ]
+    },
+    {
+     "id": "3.1.5[c]",
+     "text": "security functions are identified.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-AC",
+     "reason": "Access Control policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/AC.md"
+     ]
+    },
+    {
+     "id": "3.1.5[d]",
+     "text": "access to security functions is authorized in accordance with the principle of least privilege.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-AC",
+     "reason": "Access Control policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/AC.md"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "AC.L2-3.1.6",
+   "number": "3.1.6",
+   "family": "Access Control",
+   "abbr": "AC",
+   "text": "Use non-privileged accounts or roles when accessing nonsecurity functions",
+   "points": 1,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "automated",
+   "objectives": [
+    {
+     "id": "3.1.6[a]",
+     "text": "nonsecurity functions are identified.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-AC",
+     "reason": "Access Control policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/AC.md"
+     ]
+    },
+    {
+     "id": "3.1.6[b]",
+     "text": "users are required to use non-privileged accounts or roles when accessing nonsecurity functions.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "entra-identity",
+     "reason": "admin roles held only by separate adm- accounts",
+     "evidence": [
+      "snapshots/2026-10-15/entra_users.json",
+      "snapshots/2026-10-15/hr_roster.csv"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "AC.L2-3.1.7",
+   "number": "3.1.7",
+   "family": "Access Control",
+   "abbr": "AC",
+   "text": "Prevent non-privileged users from executing privileged functions and capture the execution of such functions in audit logs.",
+   "points": 1,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "automated",
+   "objectives": [
+    {
+     "id": "3.1.7[a]",
+     "text": "privileged functions are defined.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-AC",
+     "reason": "Access Control policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/AC.md"
+     ]
+    },
+    {
+     "id": "3.1.7[b]",
+     "text": "non-privileged users are defined.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "entra-identity",
+     "reason": "23 non-privileged accounts defined",
+     "evidence": [
+      "snapshots/2026-10-15/entra_users.json",
+      "snapshots/2026-10-15/hr_roster.csv"
+     ]
+    },
+    {
+     "id": "3.1.7[c]",
+     "text": "non-privileged users are prevented from executing privileged functions.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-AC",
+     "reason": "Access Control policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/AC.md"
+     ]
+    },
+    {
+     "id": "3.1.7[d]",
+     "text": "the execution of privileged functions is captured in audit logs.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "audit",
+     "reason": "unified audit log on, 365-day retention",
+     "evidence": [
+      "snapshots/2026-10-15/audit_config.json"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "AC.L2-3.1.8",
+   "number": "3.1.8",
+   "family": "Access Control",
+   "abbr": "AC",
+   "text": "Limit unsuccessful logon attempts.",
+   "points": 1,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "automated",
+   "objectives": [
+    {
+     "id": "3.1.8[a]",
+     "text": "the means of limiting unsuccessful logon attempts is defined.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "entra-policies",
+     "reason": "lockout after 5 failed attempts for 30 min",
+     "evidence": [
+      "snapshots/2026-10-15/entra_policies.json"
+     ]
+    },
+    {
+     "id": "3.1.8[b]",
+     "text": "the defined means of limiting unsuccessful logon attempts is implemented.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "entra-policies",
+     "reason": "lockout enforced tenant-wide",
+     "evidence": [
+      "snapshots/2026-10-15/entra_policies.json"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "AC.L2-3.1.9",
+   "number": "3.1.9",
+   "family": "Access Control",
+   "abbr": "AC",
+   "text": "Provide privacy and security notices consistent with applicable CUI rules.",
+   "points": 1,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "automated",
+   "objectives": [
+    {
+     "id": "3.1.9[a]",
+     "text": "privacy and security notices required by CUI-specified rules are identified, consistent, and associated with the specific CUI category",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-AC",
+     "reason": "Access Control policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/AC.md"
+     ]
+    },
+    {
+     "id": "3.1.9[b]",
+     "text": "privacy and security notices are displayed.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "entra-policies",
+     "reason": "CUI logon banner displayed",
+     "evidence": [
+      "snapshots/2026-10-15/entra_policies.json"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "AC.L2-3.1.10",
+   "number": "3.1.10",
+   "family": "Access Control",
+   "abbr": "AC",
+   "text": "Use session lock with pattern-hiding displays to prevent access and viewing of data after a period of inactivity",
+   "points": 1,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "automated",
+   "objectives": [
+    {
+     "id": "3.1.10[a]",
+     "text": "the period of inactivity after which the system initiates a session lock is defined.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "entra-policies",
+     "reason": "session lock after 15 minutes",
+     "evidence": [
+      "snapshots/2026-10-15/entra_policies.json"
+     ]
+    },
+    {
+     "id": "3.1.10[b]",
+     "text": "access to the system and viewing of data is prevented by initiating a session lock after the defined period of inactivity.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "intune-devices",
+     "reason": "15-minute screen lock enforced on every device",
+     "evidence": [
+      "snapshots/2026-10-15/intune_devices.json",
+      "snapshots/2026-10-15/asset_inventory.csv"
+     ]
+    },
+    {
+     "id": "3.1.10[c]",
+     "text": "previously visible information is concealed via a pattern-hiding display after the defined period of inactivity.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "intune-devices",
+     "reason": "pattern-hiding lock screen enforced",
+     "evidence": [
+      "snapshots/2026-10-15/intune_devices.json",
+      "snapshots/2026-10-15/asset_inventory.csv"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "AC.L2-3.1.11",
+   "number": "3.1.11",
+   "family": "Access Control",
+   "abbr": "AC",
+   "text": "Terminate (automatically) a user session after a defined condition.",
+   "points": 1,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "automated",
+   "objectives": [
+    {
+     "id": "3.1.11[a]",
+     "text": "conditions requiring a user session to terminate are defined.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "entra-policies",
+     "reason": "sessions end on sign-in frequency and sign-out",
+     "evidence": [
+      "snapshots/2026-10-15/entra_policies.json"
+     ]
+    },
+    {
+     "id": "3.1.11[b]",
+     "text": "a user session is automatically terminated after any of the defined conditions occur.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "entra-policies",
+     "reason": "sign-in frequency policy enabled",
+     "evidence": [
+      "snapshots/2026-10-15/entra_policies.json"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "AC.L2-3.1.12",
+   "number": "3.1.12",
+   "family": "Access Control",
+   "abbr": "AC",
+   "text": "Monitor and control remote access sessions.",
+   "points": 5,
+   "deducted": 5,
+   "status": "NOT MET",
+   "poam_eligible": false,
+   "evidence_kind": "automated",
+   "objectives": [
+    {
+     "id": "3.1.12[a]",
+     "text": "remote access sessions are permitted.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "firewall",
+     "reason": "remote access permitted via ssl-vpn",
+     "evidence": [
+      "snapshots/2026-10-15/firewall.json"
+     ]
+    },
+    {
+     "id": "3.1.12[b]",
+     "text": "the types of permitted remote access are identified.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "firewall",
+     "reason": "remote access permitted via ssl-vpn",
+     "evidence": [
+      "snapshots/2026-10-15/firewall.json"
+     ]
+    },
+    {
+     "id": "3.1.12[c]",
+     "text": "remote access sessions are controlled.",
+     "status": "NOT MET",
+     "source": "automated",
+     "collector": "firewall",
+     "reason": "remote access outside the VPN: rule 9 \"TEMP vendor RDP - remove after visit\" (RDP from anywhere to 10.20.0.15)",
+     "evidence": [
+      "snapshots/2026-10-15/firewall.json"
+     ]
+    },
+    {
+     "id": "3.1.12[d]",
+     "text": "remote access sessions are monitored.",
+     "status": "NOT MET",
+     "source": "automated",
+     "collector": "firewall",
+     "reason": "accept rules not logged: rule 9",
+     "evidence": [
+      "snapshots/2026-10-15/firewall.json"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "AC.L2-3.1.13",
+   "number": "3.1.13",
+   "family": "Access Control",
+   "abbr": "AC",
+   "text": "Employ cryptographic mechanisms to protect the confidentiality of remote access sessions.",
+   "points": 5,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "automated",
+   "objectives": [
+    {
+     "id": "3.1.13[a]",
+     "text": "cryptographic mechanisms to protect the confidentiality of remote access sessions are identified.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "firewall",
+     "reason": "VPN cipher TLS1.3 AES-256-GCM",
+     "evidence": [
+      "snapshots/2026-10-15/firewall.json"
+     ]
+    },
+    {
+     "id": "3.1.13[b]",
+     "text": "cryptographic mechanisms to protect the confidentiality of remote access sessions are implemented.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "firewall",
+     "reason": "FIPS mode enforced",
+     "evidence": [
+      "snapshots/2026-10-15/firewall.json"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "AC.L2-3.1.14",
+   "number": "3.1.14",
+   "family": "Access Control",
+   "abbr": "AC",
+   "text": "Route remote access via managed access control points.",
+   "points": 1,
+   "deducted": 1,
+   "status": "NOT MET",
+   "poam_eligible": true,
+   "evidence_kind": "automated",
+   "objectives": [
+    {
+     "id": "3.1.14[a]",
+     "text": "managed access control points are identified and implemented.",
+     "status": "NOT MET",
+     "source": "automated",
+     "collector": "firewall",
+     "reason": "remote access outside the VPN: rule 9 \"TEMP vendor RDP - remove after visit\" (RDP from anywhere to 10.20.0.15)",
+     "evidence": [
+      "snapshots/2026-10-15/firewall.json"
+     ]
+    },
+    {
+     "id": "3.1.14[b]",
+     "text": "remote access is routed through managed network access control points.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-AC",
+     "reason": "Access Control policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/AC.md"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "AC.L2-3.1.15",
+   "number": "3.1.15",
+   "family": "Access Control",
+   "abbr": "AC",
+   "text": "Authorize remote execution of privileged commands and remote access to security-relevant information.",
+   "points": 1,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "policy",
+   "objectives": [
+    {
+     "id": "3.1.15[a]",
+     "text": "privileged commands authorized for remote execution are identified.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-AC",
+     "reason": "Access Control policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/AC.md"
+     ]
+    },
+    {
+     "id": "3.1.15[b]",
+     "text": "security-relevant information authorized to be accessed remotely is identified.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-AC",
+     "reason": "Access Control policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/AC.md"
+     ]
+    },
+    {
+     "id": "3.1.15[c]",
+     "text": "the execution of the identified privileged commands via remote access is authorized.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-AC",
+     "reason": "Access Control policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/AC.md"
+     ]
+    },
+    {
+     "id": "3.1.15[d]",
+     "text": "access to the identified security-relevant information via remote access is authorized.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-AC",
+     "reason": "Access Control policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/AC.md"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "AC.L2-3.1.16",
+   "number": "3.1.16",
+   "family": "Access Control",
+   "abbr": "AC",
+   "text": "Authorize wireless access prior to allowing such connections",
+   "points": 5,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "policy",
+   "objectives": [
+    {
+     "id": "3.1.16[a]",
+     "text": "wireless access points are identified.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-AC",
+     "reason": "Access Control policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/AC.md"
+     ]
+    },
+    {
+     "id": "3.1.16[b]",
+     "text": "wireless access is authorized prior to allowing such connections.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-AC",
+     "reason": "Access Control policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/AC.md"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "AC.L2-3.1.17",
+   "number": "3.1.17",
+   "family": "Access Control",
+   "abbr": "AC",
+   "text": "Protect wireless access using authentication and encryption",
+   "points": 5,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "policy",
+   "objectives": [
+    {
+     "id": "3.1.17[a]",
+     "text": "wireless access to the system is protected using encryption.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-AC",
+     "reason": "Access Control policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/AC.md"
+     ]
+    },
+    {
+     "id": "3.1.17[b]",
+     "text": "wireless access to the system is protected using authentication.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-AC",
+     "reason": "Access Control policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/AC.md"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "AC.L2-3.1.18",
+   "number": "3.1.18",
+   "family": "Access Control",
+   "abbr": "AC",
+   "text": "Control connection of mobile devices.",
+   "points": 5,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "automated",
+   "objectives": [
+    {
+     "id": "3.1.18[a]",
+     "text": "mobile devices that process, store, or transmit CUI are identified.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "intune-devices",
+     "reason": "14 laptops identified as mobile devices handling CUI",
+     "evidence": [
+      "snapshots/2026-10-15/intune_devices.json",
+      "snapshots/2026-10-15/asset_inventory.csv"
+     ]
+    },
+    {
+     "id": "3.1.18[b]",
+     "text": "the connection of mobile devices is authorized.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "intune-devices",
+     "reason": "only Intune-enrolled devices may connect (conditional access CA04)",
+     "evidence": [
+      "snapshots/2026-10-15/intune_devices.json",
+      "snapshots/2026-10-15/asset_inventory.csv"
+     ]
+    },
+    {
+     "id": "3.1.18[c]",
+     "text": "mobile device connections are monitored and logged.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-AC",
+     "reason": "Access Control policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/AC.md"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "AC.L2-3.1.19",
+   "number": "3.1.19",
+   "family": "Access Control",
+   "abbr": "AC",
+   "text": "Encrypt CUI on mobile devices and mobile computing platforms.[23]",
+   "points": 3,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "automated",
+   "objectives": [
+    {
+     "id": "3.1.19[a]",
+     "text": "mobile devices and mobile computing platforms that process, store, or transmit CUI are identified.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "intune-devices",
+     "reason": "14 laptops identified",
+     "evidence": [
+      "snapshots/2026-10-15/intune_devices.json",
+      "snapshots/2026-10-15/asset_inventory.csv"
+     ]
+    },
+    {
+     "id": "3.1.19[b]",
+     "text": "encryption is employed to protect CUI on identified mobile devices and mobile computing platforms.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "intune-devices",
+     "reason": "BitLocker on every laptop",
+     "evidence": [
+      "snapshots/2026-10-15/intune_devices.json",
+      "snapshots/2026-10-15/asset_inventory.csv"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "AC.L2-3.1.20",
+   "number": "3.1.20",
+   "family": "Access Control",
+   "abbr": "AC",
+   "text": "Verify and control/limit connections to and use of external systems.",
+   "points": 1,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "policy",
+   "objectives": [
+    {
+     "id": "3.1.20[a]",
+     "text": "connections to external systems are identified.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-AC",
+     "reason": "Access Control policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/AC.md"
+     ]
+    },
+    {
+     "id": "3.1.20[b]",
+     "text": "use of external systems is identified.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-AC",
+     "reason": "Access Control policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/AC.md"
+     ]
+    },
+    {
+     "id": "3.1.20[c]",
+     "text": "connections to external systems are verified.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-AC",
+     "reason": "Access Control policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/AC.md"
+     ]
+    },
+    {
+     "id": "3.1.20[d]",
+     "text": "use of external systems is verified.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-AC",
+     "reason": "Access Control policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/AC.md"
+     ]
+    },
+    {
+     "id": "3.1.20[e]",
+     "text": "connections to external systems are controlled/limited.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-AC",
+     "reason": "Access Control policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/AC.md"
+     ]
+    },
+    {
+     "id": "3.1.20[f]",
+     "text": "use of external systems is controlled/limited.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-AC",
+     "reason": "Access Control policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/AC.md"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "AC.L2-3.1.21",
+   "number": "3.1.21",
+   "family": "Access Control",
+   "abbr": "AC",
+   "text": "Limit use of portable storage devices on external systems.",
+   "points": 1,
+   "deducted": 1,
+   "status": "NOT MET",
+   "poam_eligible": true,
+   "evidence_kind": "policy",
+   "objectives": [
+    {
+     "id": "3.1.21[a]",
+     "text": "use of organizational portable storage devices containing CUI on external systems is identified and documented.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-AC",
+     "reason": "Access Control policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/AC.md"
+     ]
+    },
+    {
+     "id": "3.1.21[b]",
+     "text": "limits on the use of organizational portable storage devices containing CUI on external systems are defined.",
+     "status": "NOT MET",
+     "source": "policy",
+     "collector": "POL-AC",
+     "reason": "known gap: USB write-blocking has an exception for CMM report export; no written limit for use on customer systems",
+     "evidence": [
+      "policies/AC.md"
+     ]
+    },
+    {
+     "id": "3.1.21[c]",
+     "text": "use of organizational portable storage devices containing CUI on external systems is limited as defined.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-AC",
+     "reason": "Access Control policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/AC.md"
+     ]
+    }
+   ],
+   "gap": {
+    "objective": "3.1.21[b]",
+    "gap": "USB write-blocking has an exception for CMM report export; no written limit for use on customer systems",
+    "opened": "2026-06-01",
+    "closed": null
+   }
+  },
+  {
+   "id": "AC.L2-3.1.22",
+   "number": "3.1.22",
+   "family": "Access Control",
+   "abbr": "AC",
+   "text": "Control CUI posted or processed on publicly accessible systems.",
+   "points": 1,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "policy",
+   "objectives": [
+    {
+     "id": "3.1.22[a]",
+     "text": "individuals authorized to post or process information on publicly accessible systems are identified.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-AC",
+     "reason": "Access Control policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/AC.md"
+     ]
+    },
+    {
+     "id": "3.1.22[b]",
+     "text": "procedures to ensure CUI is not posted or processed on publicly accessible systems are identified.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-AC",
+     "reason": "Access Control policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/AC.md"
+     ]
+    },
+    {
+     "id": "3.1.22[c]",
+     "text": "a review process in in place prior to posting of any content to publicly accessible systems.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-AC",
+     "reason": "Access Control policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/AC.md"
+     ]
+    },
+    {
+     "id": "3.1.22[d]",
+     "text": "content on publicly accessible information systems is reviewed to ensure that it does not include CUI.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-AC",
+     "reason": "Access Control policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/AC.md"
+     ]
+    },
+    {
+     "id": "3.1.22[e]",
+     "text": "mechanisms are in place to remove and address improper posting of CUI.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-AC",
+     "reason": "Access Control policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/AC.md"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "AT.L2-3.2.1",
+   "number": "3.2.1",
+   "family": "Awareness and Training",
+   "abbr": "AT",
+   "text": "Ensure that managers, systems administrators, and users of organizational systems are made aware of the security risks associated with their activities and of the applicable policies, standards, and procedures related to the security of those systems.",
+   "points": 5,
+   "deducted": 5,
+   "status": "NOT MET",
+   "poam_eligible": false,
+   "evidence_kind": "automated",
+   "objectives": [
+    {
+     "id": "3.2.1[a]",
+     "text": "security risks associated with organizational activities involving CUI are identified.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-AT",
+     "reason": "Awareness and Training policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/AT.md"
+     ]
+    },
+    {
+     "id": "3.2.1[b]",
+     "text": "policies, standards, and procedures related to the security of the system are identified.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-AT",
+     "reason": "Awareness and Training policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/AT.md"
+     ]
+    },
+    {
+     "id": "3.2.1[c]",
+     "text": "managers, systems administrators, and users of the system are made aware of the security risks associated with their activities.",
+     "status": "NOT MET",
+     "source": "automated",
+     "collector": "training",
+     "reason": "awareness training lapsed: tbrandt (expired 2026-10-06)",
+     "evidence": [
+      "snapshots/2026-10-15/training.csv",
+      "snapshots/2026-10-15/hr_roster.csv",
+      "snapshots/2026-10-15/entra_users.json"
+     ]
+    },
+    {
+     "id": "3.2.1[d]",
+     "text": "managers, systems administrators, and users of the system are made aware of the applicable policies, standards, and procedures related to the security of the system.",
+     "status": "NOT MET",
+     "source": "automated",
+     "collector": "training",
+     "reason": "awareness training lapsed: tbrandt (expired 2026-10-06)",
+     "evidence": [
+      "snapshots/2026-10-15/training.csv",
+      "snapshots/2026-10-15/hr_roster.csv",
+      "snapshots/2026-10-15/entra_users.json"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "AT.L2-3.2.2",
+   "number": "3.2.2",
+   "family": "Awareness and Training",
+   "abbr": "AT",
+   "text": "Ensure that personnel are trained to carry out their assigned information security-related duties and responsibilities.",
+   "points": 5,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "automated",
+   "objectives": [
+    {
+     "id": "3.2.2[a]",
+     "text": "information security-related duties, roles, and responsibilities are defined.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-AT",
+     "reason": "Awareness and Training policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/AT.md"
+     ]
+    },
+    {
+     "id": "3.2.2[b]",
+     "text": "information security-related duties, roles, and responsibilities are assigned to designated personnel.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "training",
+     "reason": "system administrator holds current role-based training",
+     "evidence": [
+      "snapshots/2026-10-15/training.csv",
+      "snapshots/2026-10-15/hr_roster.csv",
+      "snapshots/2026-10-15/entra_users.json"
+     ]
+    },
+    {
+     "id": "3.2.2[c]",
+     "text": "personnel are adequately trained to carry out their assigned information security-related duties, roles, and responsibilities.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "training",
+     "reason": "system administrator holds current role-based training",
+     "evidence": [
+      "snapshots/2026-10-15/training.csv",
+      "snapshots/2026-10-15/hr_roster.csv",
+      "snapshots/2026-10-15/entra_users.json"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "AT.L2-3.2.3",
+   "number": "3.2.3",
+   "family": "Awareness and Training",
+   "abbr": "AT",
+   "text": "Provide security awareness training on recognizing and reporting potential indicators of insider threat.",
+   "points": 1,
+   "deducted": 1,
+   "status": "NOT MET",
+   "poam_eligible": true,
+   "evidence_kind": "automated",
+   "objectives": [
+    {
+     "id": "3.2.3[a]",
+     "text": "potential indicators associated with insider threats are identified.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-AT",
+     "reason": "Awareness and Training policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/AT.md"
+     ]
+    },
+    {
+     "id": "3.2.3[b]",
+     "text": "security awareness training on recognizing and reporting potential indicators of insider threat is provided to managers and employees.",
+     "status": "NOT MET",
+     "source": "automated",
+     "collector": "training",
+     "reason": "insider-threat training lapsed: tbrandt (expired 2026-10-06)",
+     "evidence": [
+      "snapshots/2026-10-15/training.csv",
+      "snapshots/2026-10-15/hr_roster.csv",
+      "snapshots/2026-10-15/entra_users.json"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "AU.L2-3.3.1",
+   "number": "3.3.1",
+   "family": "Audit and Accountability",
+   "abbr": "AU",
+   "text": "Create and retain system audit logs and records to the extent needed to enable the monitoring, analysis, investigation, and reporting of unlawful or unauthorized system activity",
+   "points": 5,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "automated",
+   "objectives": [
+    {
+     "id": "3.3.1[a]",
+     "text": "audit logs needed (i.e., event types to be logged) to enable the monitoring, analysis, investigation, and reporting of unlawful or unauthorized system activity are specified.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "audit",
+     "reason": "unified audit log on, 365-day retention",
+     "evidence": [
+      "snapshots/2026-10-15/audit_config.json"
+     ]
+    },
+    {
+     "id": "3.3.1[b]",
+     "text": "the content of audit records needed to support monitoring, analysis, investigation, and reporting of unlawful or unauthorized system activity is defined.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "audit",
+     "reason": "unified audit log on, 365-day retention",
+     "evidence": [
+      "snapshots/2026-10-15/audit_config.json"
+     ]
+    },
+    {
+     "id": "3.3.1[c]",
+     "text": "audit records are created (generated).",
+     "status": "MET",
+     "source": "automated",
+     "collector": "audit",
+     "reason": "unified audit log on, 365-day retention",
+     "evidence": [
+      "snapshots/2026-10-15/audit_config.json"
+     ]
+    },
+    {
+     "id": "3.3.1[d]",
+     "text": "audit records, once created, contain the defined content.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "audit",
+     "reason": "unified audit log on, 365-day retention",
+     "evidence": [
+      "snapshots/2026-10-15/audit_config.json"
+     ]
+    },
+    {
+     "id": "3.3.1[e]",
+     "text": "retention requirements for audit records are defined.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "audit",
+     "reason": "unified audit log on, 365-day retention",
+     "evidence": [
+      "snapshots/2026-10-15/audit_config.json"
+     ]
+    },
+    {
+     "id": "3.3.1[f]",
+     "text": "audit records are retained as defined.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "audit",
+     "reason": "unified audit log on, 365-day retention",
+     "evidence": [
+      "snapshots/2026-10-15/audit_config.json"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "AU.L2-3.3.2",
+   "number": "3.3.2",
+   "family": "Audit and Accountability",
+   "abbr": "AU",
+   "text": "Ensure that the actions of individual system users can be uniquely traced to those users, so they can be held accountable for their actions.",
+   "points": 3,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "policy",
+   "objectives": [
+    {
+     "id": "3.3.2[a]",
+     "text": "the content of the audit records needed to support the ability to uniquely trace users to their actions is defined.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-AU",
+     "reason": "Audit and Accountability policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/AU.md"
+     ]
+    },
+    {
+     "id": "3.3.2[b]",
+     "text": "audit records, once created, contain the defined content.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-AU",
+     "reason": "Audit and Accountability policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/AU.md"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "AU.L2-3.3.3",
+   "number": "3.3.3",
+   "family": "Audit and Accountability",
+   "abbr": "AU",
+   "text": "Review and update logged events.",
+   "points": 1,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "policy",
+   "objectives": [
+    {
+     "id": "3.3.3[a]",
+     "text": "a process for determining when to review logged events is defined.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-AU",
+     "reason": "Audit and Accountability policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/AU.md"
+     ]
+    },
+    {
+     "id": "3.3.3[b]",
+     "text": "event types being logged are reviewed in accordance with the defined review process.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-AU",
+     "reason": "Audit and Accountability policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/AU.md"
+     ]
+    },
+    {
+     "id": "3.3.3[c]",
+     "text": "event types being logged are updated based on the review.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-AU",
+     "reason": "Audit and Accountability policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/AU.md"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "AU.L2-3.3.4",
+   "number": "3.3.4",
+   "family": "Audit and Accountability",
+   "abbr": "AU",
+   "text": "Alert in the event of an audit logging process failure.",
+   "points": 1,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "automated",
+   "objectives": [
+    {
+     "id": "3.3.4[a]",
+     "text": "personnel or roles to be alerted in the event of an audit logging process failure are identified.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "audit",
+     "reason": "alert fires if audit logging stops",
+     "evidence": [
+      "snapshots/2026-10-15/audit_config.json"
+     ]
+    },
+    {
+     "id": "3.3.4[b]",
+     "text": "types of audit logging process failures for which alert will be generated are defined.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "audit",
+     "reason": "alert fires if audit logging stops",
+     "evidence": [
+      "snapshots/2026-10-15/audit_config.json"
+     ]
+    },
+    {
+     "id": "3.3.4[c]",
+     "text": "identified personnel or roles are alerted in the event of an audit logging process failure.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "audit",
+     "reason": "alert fires if audit logging stops",
+     "evidence": [
+      "snapshots/2026-10-15/audit_config.json"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "AU.L2-3.3.5",
+   "number": "3.3.5",
+   "family": "Audit and Accountability",
+   "abbr": "AU",
+   "text": "Correlate audit record review, analysis, and reporting processes for investigation and response to indications of unlawful, unauthorized, suspicious, or unusual activity.",
+   "points": 5,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "automated",
+   "objectives": [
+    {
+     "id": "3.3.5[a]",
+     "text": "audit record review, analysis, and reporting processes for investigation and response to indications of unlawful, unauthorized, suspicious, or unusual activity are defined.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "audit",
+     "reason": "correlated in Microsoft Sentinel",
+     "evidence": [
+      "snapshots/2026-10-15/audit_config.json"
+     ]
+    },
+    {
+     "id": "3.3.5[b]",
+     "text": "defined audit record review, analysis, and reporting processes are correlated.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "audit",
+     "reason": "correlated in Microsoft Sentinel",
+     "evidence": [
+      "snapshots/2026-10-15/audit_config.json"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "AU.L2-3.3.6",
+   "number": "3.3.6",
+   "family": "Audit and Accountability",
+   "abbr": "AU",
+   "text": "Provide audit record reduction and report generation to support on-demand analysis and reporting.",
+   "points": 1,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "policy",
+   "objectives": [
+    {
+     "id": "3.3.6[a]",
+     "text": "an audit record reduction capability that supports on-demand analysis is provided.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-AU",
+     "reason": "Audit and Accountability policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/AU.md"
+     ]
+    },
+    {
+     "id": "3.3.6[b]",
+     "text": "a report generation capability that supports on-demand reporting is provided.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-AU",
+     "reason": "Audit and Accountability policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/AU.md"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "AU.L2-3.3.7",
+   "number": "3.3.7",
+   "family": "Audit and Accountability",
+   "abbr": "AU",
+   "text": "Provide a system capability that compares and synchronizes internal system clocks with an authoritative source to generate time stamps for audit records",
+   "points": 1,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "automated",
+   "objectives": [
+    {
+     "id": "3.3.7[a]",
+     "text": "internal system clocks are used to generate time stamps for audit records.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "audit",
+     "reason": "time.windows.com (Windows Time, domain hierarchy)",
+     "evidence": [
+      "snapshots/2026-10-15/audit_config.json"
+     ]
+    },
+    {
+     "id": "3.3.7[b]",
+     "text": "an authoritative source with which to compare and synchronize internal system clocks is specified.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "audit",
+     "reason": "time.windows.com (Windows Time, domain hierarchy)",
+     "evidence": [
+      "snapshots/2026-10-15/audit_config.json"
+     ]
+    },
+    {
+     "id": "3.3.7[c]",
+     "text": "internal system clocks used to generate time stamps for audit records are compared to and synchronized with the specified authoritative time source.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "audit",
+     "reason": "time.windows.com (Windows Time, domain hierarchy)",
+     "evidence": [
+      "snapshots/2026-10-15/audit_config.json"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "AU.L2-3.3.8",
+   "number": "3.3.8",
+   "family": "Audit and Accountability",
+   "abbr": "AU",
+   "text": "Protect audit information and audit logging tools from unauthorized access, modification, and deletion.",
+   "points": 1,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "automated",
+   "objectives": [
+    {
+     "id": "3.3.8[a]",
+     "text": "audit information is protected from unauthorized access.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "audit",
+     "reason": "audit records immutable",
+     "evidence": [
+      "snapshots/2026-10-15/audit_config.json"
+     ]
+    },
+    {
+     "id": "3.3.8[b]",
+     "text": "audit information is protected from unauthorized modification.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "audit",
+     "reason": "audit records immutable",
+     "evidence": [
+      "snapshots/2026-10-15/audit_config.json"
+     ]
+    },
+    {
+     "id": "3.3.8[c]",
+     "text": "audit information is protected from unauthorized deletion.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "audit",
+     "reason": "audit records immutable",
+     "evidence": [
+      "snapshots/2026-10-15/audit_config.json"
+     ]
+    },
+    {
+     "id": "3.3.8[d]",
+     "text": "audit logging tools are protected from unauthorized access.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "audit",
+     "reason": "audit records immutable",
+     "evidence": [
+      "snapshots/2026-10-15/audit_config.json"
+     ]
+    },
+    {
+     "id": "3.3.8[e]",
+     "text": "audit logging tools are protected from unauthorized modification.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "audit",
+     "reason": "audit records immutable",
+     "evidence": [
+      "snapshots/2026-10-15/audit_config.json"
+     ]
+    },
+    {
+     "id": "3.3.8[f]",
+     "text": "audit logging tools are protected from unauthorized deletion.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "audit",
+     "reason": "audit records immutable",
+     "evidence": [
+      "snapshots/2026-10-15/audit_config.json"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "AU.L2-3.3.9",
+   "number": "3.3.9",
+   "family": "Audit and Accountability",
+   "abbr": "AU",
+   "text": "Limit management of audit logging functionality to a subset of privileged users.",
+   "points": 1,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "automated",
+   "objectives": [
+    {
+     "id": "3.3.9[a]",
+     "text": "a subset of privileged users granted access to manage audit logging functionality is defined.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "audit",
+     "reason": "audit management limited to adm-praman",
+     "evidence": [
+      "snapshots/2026-10-15/audit_config.json"
+     ]
+    },
+    {
+     "id": "3.3.9[b]",
+     "text": "management of audit logging functionality is limited to the defined subset of privileged users.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "audit",
+     "reason": "audit management limited to adm-praman",
+     "evidence": [
+      "snapshots/2026-10-15/audit_config.json"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "CM.L2-3.4.1",
+   "number": "3.4.1",
+   "family": "Configuration Management",
+   "abbr": "CM",
+   "text": "Establish and maintain baseline configurations and inventories of organizational systems (including hardware, software, firmware, and documentation) throughout the respective system development life cycles.",
+   "points": 5,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "automated",
+   "objectives": [
+    {
+     "id": "3.4.1[a]",
+     "text": "a baseline configuration is established.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-CM",
+     "reason": "Configuration Management policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/CM.md"
+     ]
+    },
+    {
+     "id": "3.4.1[b]",
+     "text": "the baseline configuration includes hardware, software, firmware, and documentation.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-CM",
+     "reason": "Configuration Management policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/CM.md"
+     ]
+    },
+    {
+     "id": "3.4.1[c]",
+     "text": "the baseline configuration is maintained (reviewed and updated) throughout the system development life cycle.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-CM",
+     "reason": "Configuration Management policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/CM.md"
+     ]
+    },
+    {
+     "id": "3.4.1[d]",
+     "text": "a system inventory is established.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "intune-devices",
+     "reason": "inventory of 21 assets maintained",
+     "evidence": [
+      "snapshots/2026-10-15/intune_devices.json",
+      "snapshots/2026-10-15/asset_inventory.csv"
+     ]
+    },
+    {
+     "id": "3.4.1[e]",
+     "text": "the system inventory includes hardware, software, firmware, and documentation.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "intune-devices",
+     "reason": "all 16 managed devices are in the asset inventory",
+     "evidence": [
+      "snapshots/2026-10-15/intune_devices.json",
+      "snapshots/2026-10-15/asset_inventory.csv"
+     ]
+    },
+    {
+     "id": "3.4.1[f]",
+     "text": "the inventory is maintained (reviewed and updated) throughout the system development life cycle.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "intune-devices",
+     "reason": "all 16 managed devices are in the asset inventory",
+     "evidence": [
+      "snapshots/2026-10-15/intune_devices.json",
+      "snapshots/2026-10-15/asset_inventory.csv"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "CM.L2-3.4.2",
+   "number": "3.4.2",
+   "family": "Configuration Management",
+   "abbr": "CM",
+   "text": "Establish and enforce security configuration settings for information technology products employed in organizational systems.",
+   "points": 5,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "automated",
+   "objectives": [
+    {
+     "id": "3.4.2[a]",
+     "text": "security configuration settings for information technology products employed in the system are established and included in the baseline configuration.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-CM",
+     "reason": "Configuration Management policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/CM.md"
+     ]
+    },
+    {
+     "id": "3.4.2[b]",
+     "text": "security configuration settings for information technology products employed in the system are enforced.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "intune-devices",
+     "reason": "firewall, BitLocker and 15-minute lock enforced by Intune baseline",
+     "evidence": [
+      "snapshots/2026-10-15/intune_devices.json",
+      "snapshots/2026-10-15/asset_inventory.csv"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "CM.L2-3.4.3",
+   "number": "3.4.3",
+   "family": "Configuration Management",
+   "abbr": "CM",
+   "text": "Track, review, approve or disapprove, and log changes to organizational systems.",
+   "points": 1,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "policy",
+   "objectives": [
+    {
+     "id": "3.4.3[a]",
+     "text": "changes to the system are tracked.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-CM",
+     "reason": "Configuration Management policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/CM.md"
+     ]
+    },
+    {
+     "id": "3.4.3[b]",
+     "text": "changes to the system are reviewed.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-CM",
+     "reason": "Configuration Management policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/CM.md"
+     ]
+    },
+    {
+     "id": "3.4.3[c]",
+     "text": "changes to the system are approved or disapproved.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-CM",
+     "reason": "Configuration Management policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/CM.md"
+     ]
+    },
+    {
+     "id": "3.4.3[d]",
+     "text": "changes to the system are logged.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-CM",
+     "reason": "Configuration Management policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/CM.md"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "CM.L2-3.4.4",
+   "number": "3.4.4",
+   "family": "Configuration Management",
+   "abbr": "CM",
+   "text": "Analyze the security impact of changes prior to implementation.",
+   "points": 1,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "policy",
+   "objectives": [
+    {
+     "id": "3.4.4[a]",
+     "text": "the security impact of changes to each organizational system is analyzed prior to implementation.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-CM",
+     "reason": "Configuration Management policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/CM.md"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "CM.L2-3.4.5",
+   "number": "3.4.5",
+   "family": "Configuration Management",
+   "abbr": "CM",
+   "text": "Define, document, approve, and enforce physical and logical access restrictions associated with changes to organizational systems.",
+   "points": 5,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "policy",
+   "objectives": [
+    {
+     "id": "3.4.5[a]",
+     "text": "physical access restrictions associated with changes to the system are defined.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-CM",
+     "reason": "Configuration Management policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/CM.md"
+     ]
+    },
+    {
+     "id": "3.4.5[b]",
+     "text": "physical access restrictions associated with changes to the system are documented.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-CM",
+     "reason": "Configuration Management policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/CM.md"
+     ]
+    },
+    {
+     "id": "3.4.5[c]",
+     "text": "physical access restrictions associated with changes to the system are approved.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-CM",
+     "reason": "Configuration Management policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/CM.md"
+     ]
+    },
+    {
+     "id": "3.4.5[d]",
+     "text": "physical access restrictions associated with changes to the system are enforced.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-CM",
+     "reason": "Configuration Management policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/CM.md"
+     ]
+    },
+    {
+     "id": "3.4.5[e]",
+     "text": "logical access restrictions associated with changes to the system are defined.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-CM",
+     "reason": "Configuration Management policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/CM.md"
+     ]
+    },
+    {
+     "id": "3.4.5[f]",
+     "text": "logical access restrictions associated with changes to the system are documented.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-CM",
+     "reason": "Configuration Management policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/CM.md"
+     ]
+    },
+    {
+     "id": "3.4.5[g]",
+     "text": "logical access restrictions associated with changes to the system are approved.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-CM",
+     "reason": "Configuration Management policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/CM.md"
+     ]
+    },
+    {
+     "id": "3.4.5[h]",
+     "text": "logical access restrictions associated with changes to the system are enforced.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-CM",
+     "reason": "Configuration Management policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/CM.md"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "CM.L2-3.4.6",
+   "number": "3.4.6",
+   "family": "Configuration Management",
+   "abbr": "CM",
+   "text": "Employ the principle of least functionality by configuring organizational systems to provide only essential capabilities.",
+   "points": 5,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "policy",
+   "objectives": [
+    {
+     "id": "3.4.6[a]",
+     "text": "essential system capabilities are defined based on the principle of least functionality.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-CM",
+     "reason": "Configuration Management policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/CM.md"
+     ]
+    },
+    {
+     "id": "3.4.6[b]",
+     "text": "the system is configured to provide only the defined essential capabilities.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-CM",
+     "reason": "Configuration Management policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/CM.md"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "CM.L2-3.4.7",
+   "number": "3.4.7",
+   "family": "Configuration Management",
+   "abbr": "CM",
+   "text": "Restrict, disable, or prevent the use of nonessential programs, functions, ports, protocols, and services.",
+   "points": 5,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "automated",
+   "objectives": [
+    {
+     "id": "3.4.7[a]",
+     "text": "essential programs are defined.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-CM",
+     "reason": "Configuration Management policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/CM.md"
+     ]
+    },
+    {
+     "id": "3.4.7[b]",
+     "text": "the use of nonessential programs is defined.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-CM",
+     "reason": "Configuration Management policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/CM.md"
+     ]
+    },
+    {
+     "id": "3.4.7[c]",
+     "text": "the use of nonessential programs is restricted, disabled, or prevented as defined.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-CM",
+     "reason": "Configuration Management policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/CM.md"
+     ]
+    },
+    {
+     "id": "3.4.7[d]",
+     "text": "essential functions are defined.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-CM",
+     "reason": "Configuration Management policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/CM.md"
+     ]
+    },
+    {
+     "id": "3.4.7[e]",
+     "text": "the use of nonessential functions is defined.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-CM",
+     "reason": "Configuration Management policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/CM.md"
+     ]
+    },
+    {
+     "id": "3.4.7[f]",
+     "text": "the use of nonessential functions is restricted, disabled, or prevented as defined.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-CM",
+     "reason": "Configuration Management policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/CM.md"
+     ]
+    },
+    {
+     "id": "3.4.7[g]",
+     "text": "essential ports are defined.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "firewall",
+     "reason": "permitted ports listed per rule",
+     "evidence": [
+      "snapshots/2026-10-15/firewall.json"
+     ]
+    },
+    {
+     "id": "3.4.7[h]",
+     "text": "the use of nonessential ports is defined.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "firewall",
+     "reason": "everything not listed is denied",
+     "evidence": [
+      "snapshots/2026-10-15/firewall.json"
+     ]
+    },
+    {
+     "id": "3.4.7[i]",
+     "text": "the use of nonessential ports is restricted, disabled, or prevented as defined.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "firewall",
+     "reason": "every accept rule names its services",
+     "evidence": [
+      "snapshots/2026-10-15/firewall.json"
+     ]
+    },
+    {
+     "id": "3.4.7[j]",
+     "text": "essential protocols are defined.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-CM",
+     "reason": "Configuration Management policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/CM.md"
+     ]
+    },
+    {
+     "id": "3.4.7[k]",
+     "text": "the use of nonessential protocols is defined.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-CM",
+     "reason": "Configuration Management policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/CM.md"
+     ]
+    },
+    {
+     "id": "3.4.7[l]",
+     "text": "the use of nonessential protocols is restricted, disabled, or prevented as defined.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-CM",
+     "reason": "Configuration Management policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/CM.md"
+     ]
+    },
+    {
+     "id": "3.4.7[m]",
+     "text": "essential services are defined.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-CM",
+     "reason": "Configuration Management policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/CM.md"
+     ]
+    },
+    {
+     "id": "3.4.7[n]",
+     "text": "the use of nonessential services is defined.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-CM",
+     "reason": "Configuration Management policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/CM.md"
+     ]
+    },
+    {
+     "id": "3.4.7[o]",
+     "text": "the use of nonessential services is restricted, disabled, or prevented as defined.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-CM",
+     "reason": "Configuration Management policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/CM.md"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "CM.L2-3.4.8",
+   "number": "3.4.8",
+   "family": "Configuration Management",
+   "abbr": "CM",
+   "text": "Apply deny-by-exception (blacklisting) policy to prevent the use of unauthorized software or deny-all, permit-by-exception (whitelisting) policy to allow the execution of authorized software.",
+   "points": 5,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "policy",
+   "objectives": [
+    {
+     "id": "3.4.8[a]",
+     "text": "a policy specifying whether whitelisting or blacklisting is to be implemented is specified.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-CM",
+     "reason": "Configuration Management policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/CM.md"
+     ]
+    },
+    {
+     "id": "3.4.8[b]",
+     "text": "the software allowed to execute under whitelisting or denied use under blacklisting is specified.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-CM",
+     "reason": "Configuration Management policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/CM.md"
+     ]
+    },
+    {
+     "id": "3.4.8[c]",
+     "text": "whitelisting to allow the execution of authorized software or blacklisting to prevent the use of unauthorized software is implemented as specified.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-CM",
+     "reason": "Configuration Management policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/CM.md"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "CM.L2-3.4.9",
+   "number": "3.4.9",
+   "family": "Configuration Management",
+   "abbr": "CM",
+   "text": "Control and monitor user-installed software.",
+   "points": 1,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "automated",
+   "objectives": [
+    {
+     "id": "3.4.9[a]",
+     "text": "a policy for controlling the installation of software by users is established.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-CM",
+     "reason": "Configuration Management policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/CM.md"
+     ]
+    },
+    {
+     "id": "3.4.9[b]",
+     "text": "installation of software by users is controlled based on the established policy.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "entra-policies",
+     "reason": "user software installs blocked by Intune",
+     "evidence": [
+      "snapshots/2026-10-15/entra_policies.json"
+     ]
+    },
+    {
+     "id": "3.4.9[c]",
+     "text": "installation of software by users is monitored.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-CM",
+     "reason": "Configuration Management policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/CM.md"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "IA.L2-3.5.1",
+   "number": "3.5.1",
+   "family": "Identification and Authentication",
+   "abbr": "IA",
+   "text": "Identify system users, processes acting on behalf of users, and devices.",
+   "points": 5,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "automated",
+   "objectives": [
+    {
+     "id": "3.5.1[a]",
+     "text": "system users are identified.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "entra-identity",
+     "reason": "all 24 enabled people map to active HR records",
+     "evidence": [
+      "snapshots/2026-10-15/entra_users.json",
+      "snapshots/2026-10-15/hr_roster.csv"
+     ]
+    },
+    {
+     "id": "3.5.1[b]",
+     "text": "processes acting on behalf of users are identified.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "entra-identity",
+     "reason": "1 service account(s), each with a named owner",
+     "evidence": [
+      "snapshots/2026-10-15/entra_users.json",
+      "snapshots/2026-10-15/hr_roster.csv"
+     ]
+    },
+    {
+     "id": "3.5.1[c]",
+     "text": "devices accessing the system are identified.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "intune-devices",
+     "reason": "all 16 managed devices are in the asset inventory",
+     "evidence": [
+      "snapshots/2026-10-15/intune_devices.json",
+      "snapshots/2026-10-15/asset_inventory.csv"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "IA.L2-3.5.2",
+   "number": "3.5.2",
+   "family": "Identification and Authentication",
+   "abbr": "IA",
+   "text": "Authenticate (or verify) the identities of users, processes, or devices, as a prerequisite to allowing access to organizational systems.",
+   "points": 5,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "automated",
+   "objectives": [
+    {
+     "id": "3.5.2[a]",
+     "text": "the identity of each user is authenticated or verified as a prerequisite to system access.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "entra-identity",
+     "reason": "every enabled account requires authentication",
+     "evidence": [
+      "snapshots/2026-10-15/entra_users.json",
+      "snapshots/2026-10-15/hr_roster.csv"
+     ]
+    },
+    {
+     "id": "3.5.2[b]",
+     "text": "the identity of each process acting on behalf of a user is authenticated or verified as a prerequisite to system access.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "entra-identity",
+     "reason": "service accounts hold no admin roles and use certificates",
+     "evidence": [
+      "snapshots/2026-10-15/entra_users.json",
+      "snapshots/2026-10-15/hr_roster.csv"
+     ]
+    },
+    {
+     "id": "3.5.2[c]",
+     "text": "the identity of each device accessing or connecting to the system is authenticated or verified as a prerequisite to system access.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-IA",
+     "reason": "Identification and Authentication policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/IA.md"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "IA.L2-3.5.3",
+   "number": "3.5.3",
+   "family": "Identification and Authentication",
+   "abbr": "IA",
+   "text": "Use multifactor authentication for local and network access to privileged accounts and for network access to non-privileged accounts.[24] [25].",
+   "points": 5,
+   "deducted": 3,
+   "status": "NOT MET",
+   "poam_eligible": false,
+   "evidence_kind": "automated",
+   "objectives": [
+    {
+     "id": "3.5.3[a]",
+     "text": "privileged accounts are identified.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "entra-identity",
+     "reason": "privileged accounts identified: adm-praman@severnridge.us",
+     "evidence": [
+      "snapshots/2026-10-15/entra_users.json",
+      "snapshots/2026-10-15/hr_roster.csv"
+     ]
+    },
+    {
+     "id": "3.5.3[b]",
+     "text": "multifactor authentication is implemented for local access to privileged accounts.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "entra-identity",
+     "reason": "privileged accounts use phishing-resistant or app MFA",
+     "evidence": [
+      "snapshots/2026-10-15/entra_users.json",
+      "snapshots/2026-10-15/hr_roster.csv"
+     ]
+    },
+    {
+     "id": "3.5.3[c]",
+     "text": "multifactor authentication is implemented for network access to privileged accounts.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "entra-identity",
+     "reason": "privileged accounts use phishing-resistant or app MFA",
+     "evidence": [
+      "snapshots/2026-10-15/entra_users.json",
+      "snapshots/2026-10-15/hr_roster.csv"
+     ]
+    },
+    {
+     "id": "3.5.3[d]",
+     "text": "multifactor authentication is implemented for network access to non-privileged accounts.",
+     "status": "NOT MET",
+     "source": "automated",
+     "collector": "entra-identity",
+     "reason": "no MFA registered: jalvarez@severnridge.us (remote: no)",
+     "evidence": [
+      "snapshots/2026-10-15/entra_users.json",
+      "snapshots/2026-10-15/hr_roster.csv"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "IA.L2-3.5.4",
+   "number": "3.5.4",
+   "family": "Identification and Authentication",
+   "abbr": "IA",
+   "text": "Employ replay-resistant authentication mechanisms for network access to privileged and non-privileged accounts.",
+   "points": 1,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "automated",
+   "objectives": [
+    {
+     "id": "3.5.4[a]",
+     "text": "replay-resistant authentication mechanisms are implemented for all network account access to privileged and non-privileged accounts.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "entra-policies",
+     "reason": "legacy (replayable) authentication blocked",
+     "evidence": [
+      "snapshots/2026-10-15/entra_policies.json"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "IA.L2-3.5.5",
+   "number": "3.5.5",
+   "family": "Identification and Authentication",
+   "abbr": "IA",
+   "text": "Prevent reuse of identifiers for a defined period.",
+   "points": 1,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "policy",
+   "objectives": [
+    {
+     "id": "3.5.5[a]",
+     "text": "a period within which identifiers cannot be reused is defined.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-IA",
+     "reason": "Identification and Authentication policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/IA.md"
+     ]
+    },
+    {
+     "id": "3.5.5[b]",
+     "text": "reuse of identifiers is prevented within the defined period.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-IA",
+     "reason": "Identification and Authentication policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/IA.md"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "IA.L2-3.5.6",
+   "number": "3.5.6",
+   "family": "Identification and Authentication",
+   "abbr": "IA",
+   "text": "Disable identifiers after a defined period of inactivity.",
+   "points": 1,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "automated",
+   "objectives": [
+    {
+     "id": "3.5.6[a]",
+     "text": "a period of inactivity after which an identifier is disabled is defined.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-IA",
+     "reason": "Identification and Authentication policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/IA.md"
+     ]
+    },
+    {
+     "id": "3.5.6[b]",
+     "text": "identifiers are disabled after the defined period of inactivity.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "entra-identity",
+     "reason": "no enabled account idle more than 45 days",
+     "evidence": [
+      "snapshots/2026-10-15/entra_users.json",
+      "snapshots/2026-10-15/hr_roster.csv"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "IA.L2-3.5.7",
+   "number": "3.5.7",
+   "family": "Identification and Authentication",
+   "abbr": "IA",
+   "text": "Enforce a minimum password complexity and change of characters when new passwords are created.",
+   "points": 1,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "automated",
+   "objectives": [
+    {
+     "id": "3.5.7[a]",
+     "text": "password complexity requirements are defined.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "entra-policies",
+     "reason": "minimum length 14 with banned-password list",
+     "evidence": [
+      "snapshots/2026-10-15/entra_policies.json"
+     ]
+    },
+    {
+     "id": "3.5.7[b]",
+     "text": "password change of character requirements are defined.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-IA",
+     "reason": "Identification and Authentication policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/IA.md"
+     ]
+    },
+    {
+     "id": "3.5.7[c]",
+     "text": "minimum password complexity requirements as defined are enforced when new passwords are created.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-IA",
+     "reason": "Identification and Authentication policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/IA.md"
+     ]
+    },
+    {
+     "id": "3.5.7[d]",
+     "text": "minimum password change of character requirements as defined are enforced when new passwords are created.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-IA",
+     "reason": "Identification and Authentication policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/IA.md"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "IA.L2-3.5.8",
+   "number": "3.5.8",
+   "family": "Identification and Authentication",
+   "abbr": "IA",
+   "text": "Prohibit password reuse for a specified number of generations.",
+   "points": 1,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "automated",
+   "objectives": [
+    {
+     "id": "3.5.8[a]",
+     "text": "the number of generations during which a password cannot be reused is specified.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-IA",
+     "reason": "Identification and Authentication policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/IA.md"
+     ]
+    },
+    {
+     "id": "3.5.8[b]",
+     "text": "reuse of passwords is prohibited during the specified number of generations.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "entra-policies",
+     "reason": "reuse blocked for 24 generations",
+     "evidence": [
+      "snapshots/2026-10-15/entra_policies.json"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "IA.L2-3.5.9",
+   "number": "3.5.9",
+   "family": "Identification and Authentication",
+   "abbr": "IA",
+   "text": "Allow temporary password use for system logons with an immediate change to a permanent password.",
+   "points": 1,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "automated",
+   "objectives": [
+    {
+     "id": "3.5.9[a]",
+     "text": "an immediate change to a permanent password is required when a temporary password is used for system logon.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "entra-policies",
+     "reason": "temporary passwords must be changed at first sign-in",
+     "evidence": [
+      "snapshots/2026-10-15/entra_policies.json"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "IA.L2-3.5.10",
+   "number": "3.5.10",
+   "family": "Identification and Authentication",
+   "abbr": "IA",
+   "text": "Store and transmit only cryptographically-protected passwords.",
+   "points": 5,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "policy",
+   "objectives": [
+    {
+     "id": "3.5.10[a]",
+     "text": "passwords are cryptographically protected in storage.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-IA",
+     "reason": "Identification and Authentication policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/IA.md"
+     ]
+    },
+    {
+     "id": "3.5.10[b]",
+     "text": "passwords are cryptographically protected in transit.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-IA",
+     "reason": "Identification and Authentication policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/IA.md"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "IA.L2-3.5.11",
+   "number": "3.5.11",
+   "family": "Identification and Authentication",
+   "abbr": "IA",
+   "text": "Obscure feedback of authentication information",
+   "points": 1,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "policy",
+   "objectives": [
+    {
+     "id": "3.5.11[a]",
+     "text": "authentication information is obscured during the authentication process.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-IA",
+     "reason": "Identification and Authentication policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/IA.md"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "IR.L2-3.6.1",
+   "number": "3.6.1",
+   "family": "Incident Response",
+   "abbr": "IR",
+   "text": "Establish an operational incident-handling capability for organizational systems that includes preparation, detection, analysis, containment, recovery, and user response activities.",
+   "points": 5,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "policy",
+   "objectives": [
+    {
+     "id": "3.6.1[a]",
+     "text": "an operational incident-handling capability is established.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-IR",
+     "reason": "Incident Response policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/IR.md"
+     ]
+    },
+    {
+     "id": "3.6.1[b]",
+     "text": "the operational incident-handling capability includes preparation.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-IR",
+     "reason": "Incident Response policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/IR.md"
+     ]
+    },
+    {
+     "id": "3.6.1[c]",
+     "text": "the operational incident-handling capability includes detection.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-IR",
+     "reason": "Incident Response policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/IR.md"
+     ]
+    },
+    {
+     "id": "3.6.1[d]",
+     "text": "the operational incident-handling capability includes analysis.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-IR",
+     "reason": "Incident Response policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/IR.md"
+     ]
+    },
+    {
+     "id": "3.6.1[e]",
+     "text": "the operational incident-handling capability includes containment.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-IR",
+     "reason": "Incident Response policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/IR.md"
+     ]
+    },
+    {
+     "id": "3.6.1[f]",
+     "text": "the operational incident-handling capability includes recovery.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-IR",
+     "reason": "Incident Response policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/IR.md"
+     ]
+    },
+    {
+     "id": "3.6.1[g]",
+     "text": "the operational incident-handling capability includes user response activities.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-IR",
+     "reason": "Incident Response policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/IR.md"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "IR.L2-3.6.2",
+   "number": "3.6.2",
+   "family": "Incident Response",
+   "abbr": "IR",
+   "text": "Track, document, and report incidents to designated officials and/or authorities both internal and external to the organization.",
+   "points": 5,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "policy",
+   "objectives": [
+    {
+     "id": "3.6.2[a]",
+     "text": "incidents are tracked.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-IR",
+     "reason": "Incident Response policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/IR.md"
+     ]
+    },
+    {
+     "id": "3.6.2[b]",
+     "text": "incidents are documented.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-IR",
+     "reason": "Incident Response policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/IR.md"
+     ]
+    },
+    {
+     "id": "3.6.2[c]",
+     "text": "authorities to whom incidents are to be reported are identified.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-IR",
+     "reason": "Incident Response policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/IR.md"
+     ]
+    },
+    {
+     "id": "3.6.2[d]",
+     "text": "organizational officials to whom incidents are to be reported are identified.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-IR",
+     "reason": "Incident Response policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/IR.md"
+     ]
+    },
+    {
+     "id": "3.6.2[e]",
+     "text": "identified authorities are notified of incidents.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-IR",
+     "reason": "Incident Response policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/IR.md"
+     ]
+    },
+    {
+     "id": "3.6.2[f]",
+     "text": "identified organizational officials are notified of incidents.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-IR",
+     "reason": "Incident Response policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/IR.md"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "IR.L2-3.6.3",
+   "number": "3.6.3",
+   "family": "Incident Response",
+   "abbr": "IR",
+   "text": "Test the organizational incident response capability.",
+   "points": 1,
+   "deducted": 1,
+   "status": "NOT MET",
+   "poam_eligible": true,
+   "evidence_kind": "record",
+   "objectives": [
+    {
+     "id": "3.6.3[a]",
+     "text": "the incident response capability is tested.",
+     "status": "NOT MET",
+     "source": "record",
+     "collector": "R-IR-TABLETOP",
+     "reason": "Incident response tabletop: ransomware on a CAM workstation: last done 2025-09-30, 380 days ago (limit 365)",
+     "evidence": [
+      "records/R-IR-TABLETOP.md"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "MA.L2-3.7.1",
+   "number": "3.7.1",
+   "family": "Maintenance",
+   "abbr": "MA",
+   "text": "Perform maintenance on organizational systems.[26].",
+   "points": 3,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "policy",
+   "objectives": [
+    {
+     "id": "3.7.1[a]",
+     "text": "system maintenance is performed.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-MA",
+     "reason": "Maintenance policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/MA.md"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "MA.L2-3.7.2",
+   "number": "3.7.2",
+   "family": "Maintenance",
+   "abbr": "MA",
+   "text": "Provide controls on the tools, techniques, mechanisms, and personnel used to conduct system maintenance.",
+   "points": 5,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "policy",
+   "objectives": [
+    {
+     "id": "3.7.2[a]",
+     "text": "tools used to conduct system maintenance are controlled.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-MA",
+     "reason": "Maintenance policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/MA.md"
+     ]
+    },
+    {
+     "id": "3.7.2[b]",
+     "text": "techniques used to conduct system maintenance are controlled.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-MA",
+     "reason": "Maintenance policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/MA.md"
+     ]
+    },
+    {
+     "id": "3.7.2[c]",
+     "text": "mechanisms used to conduct system maintenance are controlled.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-MA",
+     "reason": "Maintenance policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/MA.md"
+     ]
+    },
+    {
+     "id": "3.7.2[d]",
+     "text": "personnel used to conduct system maintenance are controlled.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-MA",
+     "reason": "Maintenance policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/MA.md"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "MA.L2-3.7.3",
+   "number": "3.7.3",
+   "family": "Maintenance",
+   "abbr": "MA",
+   "text": "Ensure equipment removed for off-site maintenance is sanitized of any CUI.",
+   "points": 1,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "policy",
+   "objectives": [
+    {
+     "id": "3.7.3[a]",
+     "text": "equipment to be removed from organizational spaces for off-site maintenance is sanitized of any CUI.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-MA",
+     "reason": "Maintenance policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/MA.md"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "MA.L2-3.7.4",
+   "number": "3.7.4",
+   "family": "Maintenance",
+   "abbr": "MA",
+   "text": "Check media containing diagnostic and test programs for malicious code before the media are used in organizational systems.",
+   "points": 3,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "policy",
+   "objectives": [
+    {
+     "id": "3.7.4[a]",
+     "text": "media containing diagnostic and test programs are checked for malicious code before being used in organizational systems that process, store, or transmit CUI.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-MA",
+     "reason": "Maintenance policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/MA.md"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "MA.L2-3.7.5",
+   "number": "3.7.5",
+   "family": "Maintenance",
+   "abbr": "MA",
+   "text": "Require multifactor authentication to establish nonlocal maintenance sessions via external network connections and terminate such connections when nonlocal maintenance is complete.",
+   "points": 5,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "policy",
+   "objectives": [
+    {
+     "id": "3.7.5[a]",
+     "text": "multifactor authentication is required to establish nonlocal maintenance sessions via external network connections.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-MA",
+     "reason": "Maintenance policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/MA.md"
+     ]
+    },
+    {
+     "id": "3.7.5[b]",
+     "text": "nonlocal maintenance sessions established via external network connections are terminated when nonlocal maintenance is complete.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-MA",
+     "reason": "Maintenance policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/MA.md"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "MA.L2-3.7.6",
+   "number": "3.7.6",
+   "family": "Maintenance",
+   "abbr": "MA",
+   "text": "Supervise the maintenance activities of maintenance personnel without required access authorization.",
+   "points": 1,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "policy",
+   "objectives": [
+    {
+     "id": "3.7.6[a]",
+     "text": "maintenance personnel without required access authorization are supervised during maintenance activities.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-MA",
+     "reason": "Maintenance policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/MA.md"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "MP.L2-3.8.1",
+   "number": "3.8.1",
+   "family": "Media Protection",
+   "abbr": "MP",
+   "text": "Protect (i.e., physically control and securely store) system media containing CUI, both paper and digital.",
+   "points": 3,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "policy",
+   "objectives": [
+    {
+     "id": "3.8.1[a]",
+     "text": "paper media containing CUI is physically controlled.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-MP",
+     "reason": "Media Protection policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/MP.md"
+     ]
+    },
+    {
+     "id": "3.8.1[b]",
+     "text": "digital media containing CUI is physically controlled.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-MP",
+     "reason": "Media Protection policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/MP.md"
+     ]
+    },
+    {
+     "id": "3.8.1[c]",
+     "text": "paper media containing CUI is securely stored.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-MP",
+     "reason": "Media Protection policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/MP.md"
+     ]
+    },
+    {
+     "id": "3.8.1[d]",
+     "text": "digital media containing CUI is securely stored.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-MP",
+     "reason": "Media Protection policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/MP.md"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "MP.L2-3.8.2",
+   "number": "3.8.2",
+   "family": "Media Protection",
+   "abbr": "MP",
+   "text": "Limit access to CUI on system media to authorized users",
+   "points": 3,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "policy",
+   "objectives": [
+    {
+     "id": "3.8.2[a]",
+     "text": "access to CUI on system media is limited to authorized users.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-MP",
+     "reason": "Media Protection policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/MP.md"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "MP.L2-3.8.3",
+   "number": "3.8.3",
+   "family": "Media Protection",
+   "abbr": "MP",
+   "text": "Sanitize or destroy system media containing CUI before disposal or release for reuse.",
+   "points": 5,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "record",
+   "objectives": [
+    {
+     "id": "3.8.3[a]",
+     "text": "system media containing CUI is sanitized or destroyed before disposal.",
+     "status": "MET",
+     "source": "record",
+     "collector": "R-MP-SANITIZE",
+     "reason": "Media sanitization certificates for retired drives (2026-04-22, 176 days old)",
+     "evidence": [
+      "records/R-MP-SANITIZE.md"
+     ]
+    },
+    {
+     "id": "3.8.3[b]",
+     "text": "system media containing CUI is sanitized before it is released for reuse.",
+     "status": "MET",
+     "source": "record",
+     "collector": "R-MP-SANITIZE",
+     "reason": "Media sanitization certificates for retired drives (2026-04-22, 176 days old)",
+     "evidence": [
+      "records/R-MP-SANITIZE.md"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "MP.L2-3.8.4",
+   "number": "3.8.4",
+   "family": "Media Protection",
+   "abbr": "MP",
+   "text": "Mark media with necessary CUI markings and distribution limitations.[27]",
+   "points": 1,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "policy",
+   "objectives": [
+    {
+     "id": "3.8.4[a]",
+     "text": "media containing CUI is marked with applicable CUI markings.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-MP",
+     "reason": "Media Protection policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/MP.md"
+     ]
+    },
+    {
+     "id": "3.8.4[b]",
+     "text": "media containing CUI is marked with distribution limitations.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-MP",
+     "reason": "Media Protection policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/MP.md"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "MP.L2-3.8.5",
+   "number": "3.8.5",
+   "family": "Media Protection",
+   "abbr": "MP",
+   "text": "Control access to media containing CUI and maintain accountability for media during transport outside of controlled areas.",
+   "points": 1,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "policy",
+   "objectives": [
+    {
+     "id": "3.8.5[a]",
+     "text": "access to media containing CUI is controlled.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-MP",
+     "reason": "Media Protection policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/MP.md"
+     ]
+    },
+    {
+     "id": "3.8.5[b]",
+     "text": "accountability for media containing CUI is maintained during transport outside of controlled areas.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-MP",
+     "reason": "Media Protection policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/MP.md"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "MP.L2-3.8.6",
+   "number": "3.8.6",
+   "family": "Media Protection",
+   "abbr": "MP",
+   "text": "Implement cryptographic mechanisms to protect the confidentiality of CUI stored on digital media during transport unless otherwise protected by alternative physical safeguards.",
+   "points": 1,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "policy",
+   "objectives": [
+    {
+     "id": "3.8.6[a]",
+     "text": "the confidentiality of CUI stored on digital media is protected during transport using cryptographic mechanisms or alternative physical safeguards.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-MP",
+     "reason": "Media Protection policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/MP.md"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "MP.L2-3.8.7",
+   "number": "3.8.7",
+   "family": "Media Protection",
+   "abbr": "MP",
+   "text": "Control the use of removable media on system components.",
+   "points": 5,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "automated",
+   "objectives": [
+    {
+     "id": "3.8.7[a]",
+     "text": "the use of removable media on system components containing CUI is controlled.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "entra-policies",
+     "reason": "removable storage write-blocked",
+     "evidence": [
+      "snapshots/2026-10-15/entra_policies.json"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "MP.L2-3.8.8",
+   "number": "3.8.8",
+   "family": "Media Protection",
+   "abbr": "MP",
+   "text": "Prohibit the use of portable storage devices when such devices have no identifiable owner.",
+   "points": 3,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "policy",
+   "objectives": [
+    {
+     "id": "3.8.8[a]",
+     "text": "the use of portable storage devices is prohibited when such devices have no identifiable owner.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-MP",
+     "reason": "Media Protection policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/MP.md"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "MP.L2-3.8.9",
+   "number": "3.8.9",
+   "family": "Media Protection",
+   "abbr": "MP",
+   "text": "Protect the confidentiality of backup CUI at storage locations.",
+   "points": 1,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "policy",
+   "objectives": [
+    {
+     "id": "3.8.9[a]",
+     "text": "the confidentiality of backup CUI is protected at storage locations.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-MP",
+     "reason": "Media Protection policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/MP.md"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "PS.L2-3.9.1",
+   "number": "3.9.1",
+   "family": "Personnel Security",
+   "abbr": "PS",
+   "text": "Screen individuals prior to authorizing access to organizational systems containing CUI.",
+   "points": 3,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "record",
+   "objectives": [
+    {
+     "id": "3.9.1[a]",
+     "text": "individuals are screened prior to authorizing access to organizational systems.",
+     "status": "MET",
+     "source": "record",
+     "collector": "R-PS-SCREEN",
+     "reason": "Pre-access screening register (background checks), reviewed quarterly (2026-07-01, 106 days old)",
+     "evidence": [
+      "records/R-PS-SCREEN.md"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "PS.L2-3.9.2",
+   "number": "3.9.2",
+   "family": "Personnel Security",
+   "abbr": "PS",
+   "text": "Ensure that organizational systems containing CUI are protected during and after personnel actions such as terminations and transfers",
+   "points": 5,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "automated",
+   "objectives": [
+    {
+     "id": "3.9.2[a]",
+     "text": "a policy and/or process for terminating system access authorization and any credentials coincident with personnel actions is established.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-PS",
+     "reason": "Personnel Security policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/PS.md"
+     ]
+    },
+    {
+     "id": "3.9.2[b]",
+     "text": "system access and credentials are terminated consistent with personnel actions such as termination or transfer.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "entra-identity",
+     "reason": "no enabled accounts for departed staff",
+     "evidence": [
+      "snapshots/2026-10-15/entra_users.json",
+      "snapshots/2026-10-15/hr_roster.csv"
+     ]
+    },
+    {
+     "id": "3.9.2[c]",
+     "text": "the system is protected during and after personnel transfer actions.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-PS",
+     "reason": "Personnel Security policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/PS.md"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "PE.L2-3.10.1",
+   "number": "3.10.1",
+   "family": "Physical Protection",
+   "abbr": "PE",
+   "text": "Limit physical access to organizational systems, equipment, and the respective operating environments to authorized individuals.",
+   "points": 5,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "record",
+   "objectives": [
+    {
+     "id": "3.10.1[a]",
+     "text": "authorized individuals allowed physical access are identified.",
+     "status": "MET",
+     "source": "record",
+     "collector": "R-PE-WALK",
+     "reason": "Facility walkthrough: locked server closet, camera coverage, badge readers, alarm panel (2026-07-20, 87 days old)",
+     "evidence": [
+      "records/R-PE-WALK.md"
+     ]
+    },
+    {
+     "id": "3.10.1[b]",
+     "text": "physical access to organizational systems is limited to authorized individuals.",
+     "status": "MET",
+     "source": "record",
+     "collector": "R-PE-WALK",
+     "reason": "Facility walkthrough: locked server closet, camera coverage, badge readers, alarm panel (2026-07-20, 87 days old)",
+     "evidence": [
+      "records/R-PE-WALK.md"
+     ]
+    },
+    {
+     "id": "3.10.1[c]",
+     "text": "physical access to equipment is limited to authorized individuals.",
+     "status": "MET",
+     "source": "record",
+     "collector": "R-PE-WALK",
+     "reason": "Facility walkthrough: locked server closet, camera coverage, badge readers, alarm panel (2026-07-20, 87 days old)",
+     "evidence": [
+      "records/R-PE-WALK.md"
+     ]
+    },
+    {
+     "id": "3.10.1[d]",
+     "text": "physical access to operating environments is limited to authorized individuals.",
+     "status": "MET",
+     "source": "record",
+     "collector": "R-PE-WALK",
+     "reason": "Facility walkthrough: locked server closet, camera coverage, badge readers, alarm panel (2026-07-20, 87 days old)",
+     "evidence": [
+      "records/R-PE-WALK.md"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "PE.L2-3.10.2",
+   "number": "3.10.2",
+   "family": "Physical Protection",
+   "abbr": "PE",
+   "text": "Protect and monitor the physical facility and support infrastructure for organizational systems.",
+   "points": 5,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "record",
+   "objectives": [
+    {
+     "id": "3.10.2[a]",
+     "text": "the physical facility where that system resides is protected.",
+     "status": "MET",
+     "source": "record",
+     "collector": "R-PE-WALK",
+     "reason": "Facility walkthrough: locked server closet, camera coverage, badge readers, alarm panel (2026-07-20, 87 days old)",
+     "evidence": [
+      "records/R-PE-WALK.md"
+     ]
+    },
+    {
+     "id": "3.10.2[b]",
+     "text": "the support infrastructure for that system is protected.",
+     "status": "MET",
+     "source": "record",
+     "collector": "R-PE-WALK",
+     "reason": "Facility walkthrough: locked server closet, camera coverage, badge readers, alarm panel (2026-07-20, 87 days old)",
+     "evidence": [
+      "records/R-PE-WALK.md"
+     ]
+    },
+    {
+     "id": "3.10.2[c]",
+     "text": "the physical facility where that system resides is monitored.",
+     "status": "MET",
+     "source": "record",
+     "collector": "R-PE-WALK",
+     "reason": "Facility walkthrough: locked server closet, camera coverage, badge readers, alarm panel (2026-07-20, 87 days old)",
+     "evidence": [
+      "records/R-PE-WALK.md"
+     ]
+    },
+    {
+     "id": "3.10.2[d]",
+     "text": "the support infrastructure for that system is monitored.",
+     "status": "MET",
+     "source": "record",
+     "collector": "R-PE-WALK",
+     "reason": "Facility walkthrough: locked server closet, camera coverage, badge readers, alarm panel (2026-07-20, 87 days old)",
+     "evidence": [
+      "records/R-PE-WALK.md"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "PE.L2-3.10.3",
+   "number": "3.10.3",
+   "family": "Physical Protection",
+   "abbr": "PE",
+   "text": "Escort visitors and monitor visitor activity.",
+   "points": 1,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "record",
+   "objectives": [
+    {
+     "id": "3.10.3[a]",
+     "text": "visitors are escorted.",
+     "status": "MET",
+     "source": "record",
+     "collector": "visitor-log",
+     "reason": "6 visits, every one with a named escort",
+     "evidence": [
+      "snapshots/2026-10-15/visitor_log.csv",
+      "snapshots/2026-10-15/badge_access.csv"
+     ]
+    },
+    {
+     "id": "3.10.3[b]",
+     "text": "visitor activity is monitored.",
+     "status": "MET",
+     "source": "record",
+     "collector": "visitor-log",
+     "reason": "visits logged with purpose and badge return",
+     "evidence": [
+      "snapshots/2026-10-15/visitor_log.csv",
+      "snapshots/2026-10-15/badge_access.csv"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "PE.L2-3.10.4",
+   "number": "3.10.4",
+   "family": "Physical Protection",
+   "abbr": "PE",
+   "text": "Maintain audit logs of physical access.",
+   "points": 1,
+   "deducted": 1,
+   "status": "NOT MET",
+   "poam_eligible": false,
+   "evidence_kind": "record",
+   "objectives": [
+    {
+     "id": "3.10.4[a]",
+     "text": "audit logs of physical access are maintained.",
+     "status": "NOT MET",
+     "source": "record",
+     "collector": "visitor-log",
+     "reason": "visitor log last uploaded page ends 2026-09-12 (33 days ago)",
+     "evidence": [
+      "snapshots/2026-10-15/visitor_log.csv",
+      "snapshots/2026-10-15/badge_access.csv"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "PE.L2-3.10.5",
+   "number": "3.10.5",
+   "family": "Physical Protection",
+   "abbr": "PE",
+   "text": "Control and manage physical access devices.",
+   "points": 1,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "record",
+   "objectives": [
+    {
+     "id": "3.10.5[a]",
+     "text": "physical access devices are identified.",
+     "status": "MET",
+     "source": "record",
+     "collector": "R-PE-WALK",
+     "reason": "Facility walkthrough: locked server closet, camera coverage, badge readers, alarm panel (2026-07-20, 87 days old)",
+     "evidence": [
+      "records/R-PE-WALK.md"
+     ]
+    },
+    {
+     "id": "3.10.5[b]",
+     "text": "physical access devices are controlled.",
+     "status": "MET",
+     "source": "record",
+     "collector": "R-PE-WALK",
+     "reason": "Facility walkthrough: locked server closet, camera coverage, badge readers, alarm panel (2026-07-20, 87 days old)",
+     "evidence": [
+      "records/R-PE-WALK.md"
+     ]
+    },
+    {
+     "id": "3.10.5[c]",
+     "text": "physical access devices are managed.",
+     "status": "MET",
+     "source": "record",
+     "collector": "R-PE-WALK",
+     "reason": "Facility walkthrough: locked server closet, camera coverage, badge readers, alarm panel (2026-07-20, 87 days old)",
+     "evidence": [
+      "records/R-PE-WALK.md"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "PE.L2-3.10.6",
+   "number": "3.10.6",
+   "family": "Physical Protection",
+   "abbr": "PE",
+   "text": "Enforce safeguarding measures for CUI at alternate work sites.",
+   "points": 1,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "policy",
+   "objectives": [
+    {
+     "id": "3.10.6[a]",
+     "text": "safeguarding measures for CUI are defined for alternate work sites.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-PE",
+     "reason": "Physical Protection policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/PE.md"
+     ]
+    },
+    {
+     "id": "3.10.6[b]",
+     "text": "safeguarding measures for CUI are enforced for alternate work sites.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-PE",
+     "reason": "Physical Protection policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/PE.md"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "RA.L2-3.11.1",
+   "number": "3.11.1",
+   "family": "Risk Assessment",
+   "abbr": "RA",
+   "text": "Periodically assess the risk to organizational operations (including mission, functions, image, or reputation), organizational assets, and individuals, resulting from the operation of organizational systems and the associated processing, storage, or transmission of CUI",
+   "points": 3,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "record",
+   "objectives": [
+    {
+     "id": "3.11.1[a]",
+     "text": "the frequency to assess risk to organizational operations, organizational assets, and individuals is defined.",
+     "status": "MET",
+     "source": "record",
+     "collector": "R-RA-RISK",
+     "reason": "Annual risk assessment, signed (2026-05-01, 167 days old)",
+     "evidence": [
+      "records/R-RA-RISK.md"
+     ]
+    },
+    {
+     "id": "3.11.1[b]",
+     "text": "risk to organizational operations, organizational assets, and individuals resulting from the operation of an organizational system that processes, stores, or transmits CUI is assessed with the defined frequency.",
+     "status": "MET",
+     "source": "record",
+     "collector": "R-RA-RISK",
+     "reason": "Annual risk assessment, signed (2026-05-01, 167 days old)",
+     "evidence": [
+      "records/R-RA-RISK.md"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "RA.L2-3.11.2",
+   "number": "3.11.2",
+   "family": "Risk Assessment",
+   "abbr": "RA",
+   "text": "Scan for vulnerabilities in organizational systems and applications periodically and when new vulnerabilities affecting those systems and applications are identified.",
+   "points": 5,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "automated",
+   "objectives": [
+    {
+     "id": "3.11.2[a]",
+     "text": "the frequency to scan for vulnerabilities in an organizational system and its applications that process, store, or transmit CUI is defined.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "defender-vulns",
+     "reason": "scan every 7 days",
+     "evidence": [
+      "snapshots/2026-10-15/defender_vulns.json"
+     ]
+    },
+    {
+     "id": "3.11.2[b]",
+     "text": "vulnerability scans are performed in an organizational system that processes, stores, or transmits CUI with the defined frequency.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "defender-vulns",
+     "reason": "last full scan 3 days ago (every 7 days)",
+     "evidence": [
+      "snapshots/2026-10-15/defender_vulns.json"
+     ]
+    },
+    {
+     "id": "3.11.2[c]",
+     "text": "vulnerability scans are performed in an application that contains CUI with the defined frequency.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "defender-vulns",
+     "reason": "last full scan 3 days ago (every 7 days)",
+     "evidence": [
+      "snapshots/2026-10-15/defender_vulns.json"
+     ]
+    },
+    {
+     "id": "3.11.2[d]",
+     "text": "vulnerability scans are performed in an organizational system that processes, stores, or transmits CUI when new vulnerabilities are identified.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "defender-vulns",
+     "reason": "last full scan 3 days ago (every 7 days)",
+     "evidence": [
+      "snapshots/2026-10-15/defender_vulns.json"
+     ]
+    },
+    {
+     "id": "3.11.2[e]",
+     "text": "vulnerability scans are performed in an application that contains CUI when new vulnerabilities are identified.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "defender-vulns",
+     "reason": "last full scan 3 days ago (every 7 days)",
+     "evidence": [
+      "snapshots/2026-10-15/defender_vulns.json"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "RA.L2-3.11.3",
+   "number": "3.11.3",
+   "family": "Risk Assessment",
+   "abbr": "RA",
+   "text": "Remediate vulnerabilities in accordance with risk assessments.",
+   "points": 1,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "automated",
+   "objectives": [
+    {
+     "id": "3.11.3[a]",
+     "text": "vulnerabilities are identified.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "defender-vulns",
+     "reason": "2 findings tracked",
+     "evidence": [
+      "snapshots/2026-10-15/defender_vulns.json"
+     ]
+    },
+    {
+     "id": "3.11.3[b]",
+     "text": "vulnerabilities are remediated in accordance with risk assessments.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "defender-vulns",
+     "reason": "2 open finding(s), none past the remediation deadline",
+     "evidence": [
+      "snapshots/2026-10-15/defender_vulns.json"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "CA.L2-3.12.1",
+   "number": "3.12.1",
+   "family": "Security Assessment",
+   "abbr": "CA",
+   "text": "Periodically assess the security controls in organizational systems to determine if the controls are effective in their application.",
+   "points": 5,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "record",
+   "objectives": [
+    {
+     "id": "3.12.1[a]",
+     "text": "the frequency of security control assessments is defined.",
+     "status": "MET",
+     "source": "record",
+     "collector": "R-CA-SELF",
+     "reason": "Annual self-assessment of all 110 requirements, signed (2026-06-15, 122 days old)",
+     "evidence": [
+      "records/R-CA-SELF.md"
+     ]
+    },
+    {
+     "id": "3.12.1[b]",
+     "text": "security controls are assessed with the defined frequency to determine if the controls are effective in their application.",
+     "status": "MET",
+     "source": "record",
+     "collector": "R-CA-SELF",
+     "reason": "Annual self-assessment of all 110 requirements, signed (2026-06-15, 122 days old)",
+     "evidence": [
+      "records/R-CA-SELF.md"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "CA.L2-3.12.2",
+   "number": "3.12.2",
+   "family": "Security Assessment",
+   "abbr": "CA",
+   "text": "Develop and implement plans of action designed to correct deficiencies and reduce or eliminate vulnerabilities in organizational systems.",
+   "points": 3,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "policy",
+   "objectives": [
+    {
+     "id": "3.12.2[a]",
+     "text": "deficiencies and vulnerabilities to be addressed by the plan of action are identified.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-CA",
+     "reason": "Security Assessment policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/CA.md"
+     ]
+    },
+    {
+     "id": "3.12.2[b]",
+     "text": "a plan of action is developed to correct identified deficiencies and reduce or eliminate identified vulnerabilities.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-CA",
+     "reason": "Security Assessment policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/CA.md"
+     ]
+    },
+    {
+     "id": "3.12.2[c]",
+     "text": "the plan of action is implemented to correct identified deficiencies and reduce or eliminate identified vulnerabilities.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-CA",
+     "reason": "Security Assessment policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/CA.md"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "CA.L2-3.12.3",
+   "number": "3.12.3",
+   "family": "Security Assessment",
+   "abbr": "CA",
+   "text": "Monitor security controls on an ongoing basis to ensure the continued effectiveness of the controls.",
+   "points": 5,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "policy",
+   "objectives": [
+    {
+     "id": "3.12.3[a]",
+     "text": "security controls are monitored on an ongoing basis to ensure the continued effectiveness of those controls.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-CA",
+     "reason": "Security Assessment policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/CA.md"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "CA.L2-3.12.4",
+   "number": "3.12.4",
+   "family": "Security Assessment",
+   "abbr": "CA",
+   "text": "Develop, document, and periodically update system security plans that describe system boundaries, system environments of operation, how security requirements are implemented, and the relationships with or connections to other systems.[28]",
+   "points": 1,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "generated",
+   "objectives": [
+    {
+     "id": "3.12.4[a]",
+     "text": "a system security plan is developed.",
+     "status": "MET",
+     "source": "generated",
+     "collector": "ssp",
+     "reason": "SSP generated from this bundle",
+     "evidence": []
+    },
+    {
+     "id": "3.12.4[b]",
+     "text": "the system boundary is described and documented in the system security plan.",
+     "status": "MET",
+     "source": "generated",
+     "collector": "ssp",
+     "reason": "SSP generated from this bundle",
+     "evidence": []
+    },
+    {
+     "id": "3.12.4[c]",
+     "text": "the system environment of operation is described and documented in the system security plan.",
+     "status": "MET",
+     "source": "generated",
+     "collector": "ssp",
+     "reason": "SSP generated from this bundle",
+     "evidence": []
+    },
+    {
+     "id": "3.12.4[d]",
+     "text": "the security requirements identified and approved by the designated authority as non-applicable are identified.",
+     "status": "MET",
+     "source": "generated",
+     "collector": "ssp",
+     "reason": "SSP generated from this bundle",
+     "evidence": []
+    },
+    {
+     "id": "3.12.4[e]",
+     "text": "the method of security requirement implementation is described and documented in the system security plan.",
+     "status": "MET",
+     "source": "generated",
+     "collector": "ssp",
+     "reason": "SSP generated from this bundle",
+     "evidence": []
+    },
+    {
+     "id": "3.12.4[f]",
+     "text": "the relationship with or connection to other systems is described and documented in the system security plan.",
+     "status": "MET",
+     "source": "generated",
+     "collector": "ssp",
+     "reason": "SSP generated from this bundle",
+     "evidence": []
+    },
+    {
+     "id": "3.12.4[g]",
+     "text": "the frequency to update the system security plan is defined.",
+     "status": "MET",
+     "source": "generated",
+     "collector": "ssp",
+     "reason": "SSP generated from this bundle",
+     "evidence": []
+    },
+    {
+     "id": "3.12.4[h]",
+     "text": "system security plan is updated with the defined frequency.",
+     "status": "MET",
+     "source": "generated",
+     "collector": "ssp",
+     "reason": "SSP generated from this bundle",
+     "evidence": []
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "SC.L2-3.13.1",
+   "number": "3.13.1",
+   "family": "System and Communications Protection",
+   "abbr": "SC",
+   "text": "Monitor, control, and protect communications (i.e., information transmitted or received by organizational systems) at the external boundaries and key internal boundaries of organizational systems.",
+   "points": 5,
+   "deducted": 5,
+   "status": "NOT MET",
+   "poam_eligible": false,
+   "evidence_kind": "automated",
+   "objectives": [
+    {
+     "id": "3.13.1[a]",
+     "text": "the external system boundary is defined.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "firewall",
+     "reason": "external boundary: fw-01",
+     "evidence": [
+      "snapshots/2026-10-15/firewall.json"
+     ]
+    },
+    {
+     "id": "3.13.1[b]",
+     "text": "key internal system boundaries are defined.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "firewall",
+     "reason": "internal zones: enclave, lan, shopfloor, dmz-proxy",
+     "evidence": [
+      "snapshots/2026-10-15/firewall.json"
+     ]
+    },
+    {
+     "id": "3.13.1[c]",
+     "text": "communications are monitored at the external system boundary.",
+     "status": "NOT MET",
+     "source": "automated",
+     "collector": "firewall",
+     "reason": "accept rules not logged: rule 9",
+     "evidence": [
+      "snapshots/2026-10-15/firewall.json"
+     ]
+    },
+    {
+     "id": "3.13.1[d]",
+     "text": "communications are monitored at key internal boundaries.",
+     "status": "NOT MET",
+     "source": "automated",
+     "collector": "firewall",
+     "reason": "accept rules not logged: rule 9",
+     "evidence": [
+      "snapshots/2026-10-15/firewall.json"
+     ]
+    },
+    {
+     "id": "3.13.1[e]",
+     "text": "communications are controlled at the external system boundary.",
+     "status": "NOT MET",
+     "source": "automated",
+     "collector": "firewall",
+     "reason": "internet-exposed internal host: rule 9 \"TEMP vendor RDP - remove after visit\" (RDP from anywhere to 10.20.0.15)",
+     "evidence": [
+      "snapshots/2026-10-15/firewall.json"
+     ]
+    },
+    {
+     "id": "3.13.1[f]",
+     "text": "communications are controlled at key internal boundaries.",
+     "status": "NOT MET",
+     "source": "automated",
+     "collector": "firewall",
+     "reason": "internet-exposed internal host: rule 9 \"TEMP vendor RDP - remove after visit\" (RDP from anywhere to 10.20.0.15)",
+     "evidence": [
+      "snapshots/2026-10-15/firewall.json"
+     ]
+    },
+    {
+     "id": "3.13.1[g]",
+     "text": "communications are protected at the external system boundary.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "firewall",
+     "reason": "VPN in FIPS mode (TLS1.3 AES-256-GCM)",
+     "evidence": [
+      "snapshots/2026-10-15/firewall.json"
+     ]
+    },
+    {
+     "id": "3.13.1[h]",
+     "text": "communications are protected at key internal boundaries.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "firewall",
+     "reason": "VPN in FIPS mode (TLS1.3 AES-256-GCM)",
+     "evidence": [
+      "snapshots/2026-10-15/firewall.json"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "SC.L2-3.13.2",
+   "number": "3.13.2",
+   "family": "System and Communications Protection",
+   "abbr": "SC",
+   "text": "Employ architectural designs, software development techniques, and systems engineering principles that promote effective information security within organizational systems.",
+   "points": 5,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "policy",
+   "objectives": [
+    {
+     "id": "3.13.2[a]",
+     "text": "architectural designs that promote effective information security are identified.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-SC",
+     "reason": "System and Communications Protection policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/SC.md"
+     ]
+    },
+    {
+     "id": "3.13.2[b]",
+     "text": "software development techniques that promote effective information security are identified.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-SC",
+     "reason": "System and Communications Protection policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/SC.md"
+     ]
+    },
+    {
+     "id": "3.13.2[c]",
+     "text": "systems engineering principles that promote effective information security are identified.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-SC",
+     "reason": "System and Communications Protection policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/SC.md"
+     ]
+    },
+    {
+     "id": "3.13.2[d]",
+     "text": "identified architectural designs that promote effective information security are employed.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-SC",
+     "reason": "System and Communications Protection policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/SC.md"
+     ]
+    },
+    {
+     "id": "3.13.2[e]",
+     "text": "identified software development techniques that promote effective information security are employed.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-SC",
+     "reason": "System and Communications Protection policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/SC.md"
+     ]
+    },
+    {
+     "id": "3.13.2[f]",
+     "text": "identified systems engineering principles that promote effective information security are employed.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-SC",
+     "reason": "System and Communications Protection policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/SC.md"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "SC.L2-3.13.3",
+   "number": "3.13.3",
+   "family": "System and Communications Protection",
+   "abbr": "SC",
+   "text": "Separate user functionality from system management functionality.",
+   "points": 1,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "policy",
+   "objectives": [
+    {
+     "id": "3.13.3[a]",
+     "text": "user functionality is identified.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-SC",
+     "reason": "System and Communications Protection policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/SC.md"
+     ]
+    },
+    {
+     "id": "3.13.3[b]",
+     "text": "system management functionality is identified.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-SC",
+     "reason": "System and Communications Protection policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/SC.md"
+     ]
+    },
+    {
+     "id": "3.13.3[c]",
+     "text": "user functionality is separated from system management functionality.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-SC",
+     "reason": "System and Communications Protection policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/SC.md"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "SC.L2-3.13.4",
+   "number": "3.13.4",
+   "family": "System and Communications Protection",
+   "abbr": "SC",
+   "text": "Prevent unauthorized and unintended information transfer via shared system resources.",
+   "points": 1,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "policy",
+   "objectives": [
+    {
+     "id": "3.13.4[a]",
+     "text": "unauthorized and unintended information transfer via shared system resources is prevented.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-SC",
+     "reason": "System and Communications Protection policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/SC.md"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "SC.L2-3.13.5",
+   "number": "3.13.5",
+   "family": "System and Communications Protection",
+   "abbr": "SC",
+   "text": "Implement subnetworks for publicly accessible system components that are physically or logically separated from internal networks.",
+   "points": 5,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "automated",
+   "objectives": [
+    {
+     "id": "3.13.5[a]",
+     "text": "publicly accessible system components are identified.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "firewall",
+     "reason": "public component: dmz-proxy",
+     "evidence": [
+      "snapshots/2026-10-15/firewall.json"
+     ]
+    },
+    {
+     "id": "3.13.5[b]",
+     "text": "subnetworks for publicly accessible system components are physically or logically separated from internal networks.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "firewall",
+     "reason": "public services only in the DMZ subnet",
+     "evidence": [
+      "snapshots/2026-10-15/firewall.json"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "SC.L2-3.13.6",
+   "number": "3.13.6",
+   "family": "System and Communications Protection",
+   "abbr": "SC",
+   "text": "Deny network communications traffic by default and allow network communications traffic by exception (i.e., deny all, permit by exception).",
+   "points": 5,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "automated",
+   "objectives": [
+    {
+     "id": "3.13.6[a]",
+     "text": "network communications traffic is denied by default.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "firewall",
+     "reason": "implicit deny-all",
+     "evidence": [
+      "snapshots/2026-10-15/firewall.json"
+     ]
+    },
+    {
+     "id": "3.13.6[b]",
+     "text": "network communications traffic is allowed by exception.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "firewall",
+     "reason": "every accept rule names its services",
+     "evidence": [
+      "snapshots/2026-10-15/firewall.json"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "SC.L2-3.13.7",
+   "number": "3.13.7",
+   "family": "System and Communications Protection",
+   "abbr": "SC",
+   "text": "Prevent remote devices from simultaneously establishing non-remote connections with organizational systems and communicating via some other connection to resources in external networks (i.e., split tunneling).",
+   "points": 1,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "automated",
+   "objectives": [
+    {
+     "id": "3.13.7[a]",
+     "text": "remote devices are prevented from simultaneously establishing non-remote connections with the system and communicating via some other connection to resources in external networks (i.e., split tunneling).",
+     "status": "MET",
+     "source": "automated",
+     "collector": "firewall",
+     "reason": "split tunneling disabled",
+     "evidence": [
+      "snapshots/2026-10-15/firewall.json"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "SC.L2-3.13.8",
+   "number": "3.13.8",
+   "family": "System and Communications Protection",
+   "abbr": "SC",
+   "text": "Implement cryptographic mechanisms to prevent unauthorized disclosure of CUI during transmission unless otherwise protected by alternative physical safeguards.",
+   "points": 3,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "automated",
+   "objectives": [
+    {
+     "id": "3.13.8[a]",
+     "text": "cryptographic mechanisms intended to prevent unauthorized disclosure of CUI are identified.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "firewall",
+     "reason": "TLS 1.3 for CUI in transit",
+     "evidence": [
+      "snapshots/2026-10-15/firewall.json"
+     ]
+    },
+    {
+     "id": "3.13.8[b]",
+     "text": "alternative physical safeguards intended to prevent unauthorized disclosure of CUI are identified.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-SC",
+     "reason": "System and Communications Protection policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/SC.md"
+     ]
+    },
+    {
+     "id": "3.13.8[c]",
+     "text": "either cryptographic mechanisms or alternative physical safeguards are implemented to prevent unauthorized disclosure of CUI during transmission.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "firewall",
+     "reason": "VPN in FIPS mode (TLS1.3 AES-256-GCM)",
+     "evidence": [
+      "snapshots/2026-10-15/firewall.json"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "SC.L2-3.13.9",
+   "number": "3.13.9",
+   "family": "System and Communications Protection",
+   "abbr": "SC",
+   "text": "Terminate network connections associated with communications sessions at the end of the sessions or after a defined period of inactivity.",
+   "points": 1,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "automated",
+   "objectives": [
+    {
+     "id": "3.13.9[a]",
+     "text": "a period of inactivity to terminate network connections associated with communications sessions is defined.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "firewall",
+     "reason": "VPN idle timeout 30 min",
+     "evidence": [
+      "snapshots/2026-10-15/firewall.json"
+     ]
+    },
+    {
+     "id": "3.13.9[b]",
+     "text": "network connections associated with communications sessions are terminated at the end of the sessions.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "firewall",
+     "reason": "sessions closed at logoff",
+     "evidence": [
+      "snapshots/2026-10-15/firewall.json"
+     ]
+    },
+    {
+     "id": "3.13.9[c]",
+     "text": "network connections associated with communications sessions are terminated after the defined period of inactivity.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "firewall",
+     "reason": "idle sessions dropped",
+     "evidence": [
+      "snapshots/2026-10-15/firewall.json"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "SC.L2-3.13.10",
+   "number": "3.13.10",
+   "family": "System and Communications Protection",
+   "abbr": "SC",
+   "text": "Establish and manage cryptographic keys for cryptography employed in organizational systems.",
+   "points": 1,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "policy",
+   "objectives": [
+    {
+     "id": "3.13.10[a]",
+     "text": "cryptographic keys are established whenever cryptography is employed.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-SC",
+     "reason": "System and Communications Protection policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/SC.md"
+     ]
+    },
+    {
+     "id": "3.13.10[b]",
+     "text": "cryptographic keys are managed whenever cryptography is employed.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-SC",
+     "reason": "System and Communications Protection policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/SC.md"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "SC.L2-3.13.11",
+   "number": "3.13.11",
+   "family": "System and Communications Protection",
+   "abbr": "SC",
+   "text": "Employ FIPS-validated cryptography when used to protect the confidentiality of CUI.",
+   "points": 5,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "automated",
+   "objectives": [
+    {
+     "id": "3.13.11[a]",
+     "text": "FIPS-validated cryptography is employed to protect the confidentiality of CUI.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "intune-devices",
+     "reason": "BitLocker with FIPS algorithm policy on every device; VPN in FIPS mode",
+     "evidence": [
+      "snapshots/2026-10-15/intune_devices.json",
+      "snapshots/2026-10-15/asset_inventory.csv"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "SC.L2-3.13.12",
+   "number": "3.13.12",
+   "family": "System and Communications Protection",
+   "abbr": "SC",
+   "text": "Prohibit remote activation of collaborative computing devices and provide indication of devices in use to users present at the device.[29].",
+   "points": 1,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "policy",
+   "objectives": [
+    {
+     "id": "3.13.12[a]",
+     "text": "collaborative computing devices are identified.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-SC",
+     "reason": "System and Communications Protection policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/SC.md"
+     ]
+    },
+    {
+     "id": "3.13.12[b]",
+     "text": "collaborative computing devices provide indication to users of devices in use.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-SC",
+     "reason": "System and Communications Protection policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/SC.md"
+     ]
+    },
+    {
+     "id": "3.13.12[c]",
+     "text": "remote activation of collaborative computing devices is prohibited.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-SC",
+     "reason": "System and Communications Protection policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/SC.md"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "SC.L2-3.13.13",
+   "number": "3.13.13",
+   "family": "System and Communications Protection",
+   "abbr": "SC",
+   "text": "Control and monitor the use of mobile code.",
+   "points": 1,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "policy",
+   "objectives": [
+    {
+     "id": "3.13.13[a]",
+     "text": "use of mobile code is controlled.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-SC",
+     "reason": "System and Communications Protection policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/SC.md"
+     ]
+    },
+    {
+     "id": "3.13.13[b]",
+     "text": "use of mobile code is monitored.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-SC",
+     "reason": "System and Communications Protection policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/SC.md"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "SC.L2-3.13.14",
+   "number": "3.13.14",
+   "family": "System and Communications Protection",
+   "abbr": "SC",
+   "text": "Control and monitor the use of Voice over Internet Protocol (VoIP) technologies.",
+   "points": 1,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "policy",
+   "objectives": [
+    {
+     "id": "3.13.14[a]",
+     "text": "use of Voice over Internet Protocol (VoIP) technologies is controlled.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-SC",
+     "reason": "System and Communications Protection policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/SC.md"
+     ]
+    },
+    {
+     "id": "3.13.14[b]",
+     "text": "use of Voice over Internet Protocol (VoIP) technologies is monitored.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-SC",
+     "reason": "System and Communications Protection policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/SC.md"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "SC.L2-3.13.15",
+   "number": "3.13.15",
+   "family": "System and Communications Protection",
+   "abbr": "SC",
+   "text": "Protect the authenticity of communications sessions.",
+   "points": 5,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "policy",
+   "objectives": [
+    {
+     "id": "3.13.15[a]",
+     "text": "the authenticity of communications sessions is protected.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-SC",
+     "reason": "System and Communications Protection policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/SC.md"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "SC.L2-3.13.16",
+   "number": "3.13.16",
+   "family": "System and Communications Protection",
+   "abbr": "SC",
+   "text": "Protect the confidentiality of CUI at rest.",
+   "points": 1,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "automated",
+   "objectives": [
+    {
+     "id": "3.13.16[a]",
+     "text": "the confidentiality of CUI at rest is protected.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "intune-devices",
+     "reason": "BitLocker on every laptop",
+     "evidence": [
+      "snapshots/2026-10-15/intune_devices.json",
+      "snapshots/2026-10-15/asset_inventory.csv"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "SI.L2-3.14.1",
+   "number": "3.14.1",
+   "family": "System and Information Integrity",
+   "abbr": "SI",
+   "text": "Identify, report, and correct system flaws in a timely manner.",
+   "points": 5,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "automated",
+   "objectives": [
+    {
+     "id": "3.14.1[a]",
+     "text": "the time within which to identify system flaws is specified.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "defender-vulns",
+     "reason": "2 open finding(s), none past the remediation deadline",
+     "evidence": [
+      "snapshots/2026-10-15/defender_vulns.json"
+     ]
+    },
+    {
+     "id": "3.14.1[b]",
+     "text": "system flaws are identified within the specified time frame.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "defender-vulns",
+     "reason": "2 open finding(s), none past the remediation deadline",
+     "evidence": [
+      "snapshots/2026-10-15/defender_vulns.json"
+     ]
+    },
+    {
+     "id": "3.14.1[c]",
+     "text": "the time within which to report system flaws is specified.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "defender-vulns",
+     "reason": "2 open finding(s), none past the remediation deadline",
+     "evidence": [
+      "snapshots/2026-10-15/defender_vulns.json"
+     ]
+    },
+    {
+     "id": "3.14.1[d]",
+     "text": "system flaws are reported within the specified time frame.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "defender-vulns",
+     "reason": "2 open finding(s), none past the remediation deadline",
+     "evidence": [
+      "snapshots/2026-10-15/defender_vulns.json"
+     ]
+    },
+    {
+     "id": "3.14.1[e]",
+     "text": "the time within which to correct system flaws is specified.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "defender-vulns",
+     "reason": "2 open finding(s), none past the remediation deadline",
+     "evidence": [
+      "snapshots/2026-10-15/defender_vulns.json"
+     ]
+    },
+    {
+     "id": "3.14.1[f]",
+     "text": "system flaws are corrected within the specified time frame.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "defender-vulns",
+     "reason": "2 open finding(s), none past the remediation deadline",
+     "evidence": [
+      "snapshots/2026-10-15/defender_vulns.json"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "SI.L2-3.14.2",
+   "number": "3.14.2",
+   "family": "System and Information Integrity",
+   "abbr": "SI",
+   "text": "Provide protection from malicious code at designated locations within organizational systems.",
+   "points": 5,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "automated",
+   "objectives": [
+    {
+     "id": "3.14.2[a]",
+     "text": "designated locations for malicious code protection are identified.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "intune-devices",
+     "reason": "Defender real-time protection on all 16 devices",
+     "evidence": [
+      "snapshots/2026-10-15/intune_devices.json",
+      "snapshots/2026-10-15/asset_inventory.csv"
+     ]
+    },
+    {
+     "id": "3.14.2[b]",
+     "text": "protection from malicious code at designated locations is provided.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "intune-devices",
+     "reason": "Defender real-time protection on all 16 devices",
+     "evidence": [
+      "snapshots/2026-10-15/intune_devices.json",
+      "snapshots/2026-10-15/asset_inventory.csv"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "SI.L2-3.14.3",
+   "number": "3.14.3",
+   "family": "System and Information Integrity",
+   "abbr": "SI",
+   "text": "Monitor system security alerts and advisories and take action in response.",
+   "points": 5,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "policy",
+   "objectives": [
+    {
+     "id": "3.14.3[a]",
+     "text": "response actions to system security alerts and advisories are identified.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-SI",
+     "reason": "System and Information Integrity policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/SI.md"
+     ]
+    },
+    {
+     "id": "3.14.3[b]",
+     "text": "system security alerts and advisories are monitored.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-SI",
+     "reason": "System and Information Integrity policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/SI.md"
+     ]
+    },
+    {
+     "id": "3.14.3[c]",
+     "text": "actions in response to system security alerts and advisories are taken.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-SI",
+     "reason": "System and Information Integrity policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/SI.md"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "SI.L2-3.14.4",
+   "number": "3.14.4",
+   "family": "System and Information Integrity",
+   "abbr": "SI",
+   "text": "Update malicious code protection mechanisms when new releases are available.",
+   "points": 5,
+   "deducted": 5,
+   "status": "NOT MET",
+   "poam_eligible": false,
+   "evidence_kind": "automated",
+   "objectives": [
+    {
+     "id": "3.14.4[a]",
+     "text": "malicious code protection mechanisms are updated when new releases are available.",
+     "status": "NOT MET",
+     "source": "automated",
+     "collector": "intune-devices",
+     "reason": "signatures out of date on SRP-LT06 (13 days), SRP-LT07 (13 days)",
+     "evidence": [
+      "snapshots/2026-10-15/intune_devices.json",
+      "snapshots/2026-10-15/asset_inventory.csv"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "SI.L2-3.14.5",
+   "number": "3.14.5",
+   "family": "System and Information Integrity",
+   "abbr": "SI",
+   "text": "Perform periodic scans of organizational systems and real-time scans of files from external sources as files are downloaded, opened, or executed.",
+   "points": 3,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "automated",
+   "objectives": [
+    {
+     "id": "3.14.5[a]",
+     "text": "the frequency for malicious code scans is defined.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "defender-vulns",
+     "reason": "last full scan 3 days ago (every 7 days)",
+     "evidence": [
+      "snapshots/2026-10-15/defender_vulns.json"
+     ]
+    },
+    {
+     "id": "3.14.5[b]",
+     "text": "malicious code scans are performed with the defined frequency.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "defender-vulns",
+     "reason": "last full scan 3 days ago (every 7 days)",
+     "evidence": [
+      "snapshots/2026-10-15/defender_vulns.json"
+     ]
+    },
+    {
+     "id": "3.14.5[c]",
+     "text": "real-time malicious code scans of files from external sources as files are downloaded, opened, or executed are performed.",
+     "status": "MET",
+     "source": "automated",
+     "collector": "defender-vulns",
+     "reason": "last full scan 3 days ago (every 7 days)",
+     "evidence": [
+      "snapshots/2026-10-15/defender_vulns.json"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "SI.L2-3.14.6",
+   "number": "3.14.6",
+   "family": "System and Information Integrity",
+   "abbr": "SI",
+   "text": "Monitor organizational systems, including inbound and outbound communications traffic, to detect attacks and indicators of potential attacks.",
+   "points": 5,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "policy",
+   "objectives": [
+    {
+     "id": "3.14.6[a]",
+     "text": "the system is monitored to detect attacks and indicators of potential attacks.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-SI",
+     "reason": "System and Information Integrity policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/SI.md"
+     ]
+    },
+    {
+     "id": "3.14.6[b]",
+     "text": "inbound communications traffic is monitored to detect attacks and indicators of potential attacks.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-SI",
+     "reason": "System and Information Integrity policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/SI.md"
+     ]
+    },
+    {
+     "id": "3.14.6[c]",
+     "text": "outbound communications traffic is monitored to detect attacks and indicators of potential attacks.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-SI",
+     "reason": "System and Information Integrity policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/SI.md"
+     ]
+    }
+   ],
+   "gap": null
+  },
+  {
+   "id": "SI.L2-3.14.7",
+   "number": "3.14.7",
+   "family": "System and Information Integrity",
+   "abbr": "SI",
+   "text": "Identify unauthorized use of organizational systems.",
+   "points": 3,
+   "deducted": 0,
+   "status": "MET",
+   "poam_eligible": false,
+   "evidence_kind": "policy",
+   "objectives": [
+    {
+     "id": "3.14.7[a]",
+     "text": "authorized use of the system is defined.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-SI",
+     "reason": "System and Information Integrity policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/SI.md"
+     ]
+    },
+    {
+     "id": "3.14.7[b]",
+     "text": "unauthorized use of the system is identified.",
+     "status": "MET",
+     "source": "policy",
+     "collector": "POL-SI",
+     "reason": "System and Information Integrity policy, approved 2026-03-02 by Dana Whitlock",
+     "evidence": [
+      "policies/SI.md"
+     ]
+    }
+   ],
+   "gap": null
+  }
+ ],
+ "collectors": [
+  {
+   "name": "entra-identity",
+   "title": "Entra ID accounts vs HR roster",
+   "kind": "automated",
+   "files": [
+    "entra_users.json",
+    "hr_roster.csv"
+   ],
+   "max_age_days": 35,
+   "objectives": 18
+  },
+  {
+   "name": "entra-policies",
+   "title": "Conditional access, password and device configuration",
+   "kind": "automated",
+   "files": [
+    "entra_policies.json"
+   ],
+   "max_age_days": 35,
+   "objectives": 12
+  },
+  {
+   "name": "intune-devices",
+   "title": "Intune devices vs asset inventory",
+   "kind": "automated",
+   "files": [
+    "intune_devices.json",
+    "asset_inventory.csv"
+   ],
+   "max_age_days": 35,
+   "objectives": 18
+  },
+  {
+   "name": "defender-vulns",
+   "title": "Defender vulnerability scan results",
+   "kind": "automated",
+   "files": [
+    "defender_vulns.json"
+   ],
+   "max_age_days": 35,
+   "objectives": 16
+  },
+  {
+   "name": "firewall",
+   "title": "Boundary firewall policy export",
+   "kind": "automated",
+   "files": [
+    "firewall.json"
+   ],
+   "max_age_days": 35,
+   "objectives": 28
+  },
+  {
+   "name": "audit",
+   "title": "Audit logging configuration",
+   "kind": "automated",
+   "files": [
+    "audit_config.json"
+   ],
+   "max_age_days": 35,
+   "objectives": 23
+  },
+  {
+   "name": "training",
+   "title": "LMS training completions",
+   "kind": "automated",
+   "files": [
+    "training.csv",
+    "hr_roster.csv",
+    "entra_users.json"
+   ],
+   "max_age_days": 35,
+   "objectives": 5
+  },
+  {
+   "name": "visitor-log",
+   "title": "Scanned visitor log + badge reader export",
+   "kind": "record",
+   "files": [
+    "visitor_log.csv",
+    "badge_access.csv"
+   ],
+   "max_age_days": 35,
+   "objectives": 3
+  }
+ ],
+ "manifest": [
+  {
+   "path": "gaps.yaml",
+   "sha256": "e1e4cc75be0b4795d294334b83bc4268caa07494da8818b0cb509702c0da4733",
+   "bytes": 635,
+   "kind": "plan",
+   "dated": "2026-10-15"
+  },
+  {
+   "path": "policies/AC.md",
+   "sha256": "6f4a3ef4b3b08151c5810169815766ba7fdc10b105b43a5ded58f5b05a035dd9",
+   "bytes": 2916,
+   "kind": "policy",
+   "dated": "2026-03-02"
+  },
+  {
+   "path": "policies/AT.md",
+   "sha256": "a7d7278565315d0971345ab9e6adbdd496ed2c4c70d02560145b181b3bd6d008",
+   "bytes": 926,
+   "kind": "policy",
+   "dated": "2026-03-02"
+  },
+  {
+   "path": "policies/AU.md",
+   "sha256": "550b07ec7fdfe10b9d58bd03559df69d88fbfb64d91dddaaf5dac10f297895a6",
+   "bytes": 1710,
+   "kind": "policy",
+   "dated": "2026-03-02"
+  },
+  {
+   "path": "policies/CA.md",
+   "sha256": "f4b6a50bb71a8f402b28c26855570c2771374256d2f58fe74ba3e164fa61e2c4",
+   "bytes": 1100,
+   "kind": "policy",
+   "dated": "2026-03-02"
+  },
+  {
+   "path": "policies/CM.md",
+   "sha256": "368c4daf34b7cd46c9f58210a636c65eee1a50bfd6d6ad58a9e3ea73b597605e",
+   "bytes": 1770,
+   "kind": "policy",
+   "dated": "2026-03-02"
+  },
+  {
+   "path": "policies/IA.md",
+   "sha256": "4c624f4e23c9fd174eeababc8962aa4a85be80fc1eb1a1839308c3f888715a5f",
+   "bytes": 1735,
+   "kind": "policy",
+   "dated": "2026-03-02"
+  },
+  {
+   "path": "policies/IR.md",
+   "sha256": "a4fdf84ccf2d4f4d0b07f6444e476a38da775244feda01b4f1c773bd28c26440",
+   "bytes": 806,
+   "kind": "policy",
+   "dated": "2026-03-02"
+  },
+  {
+   "path": "policies/MA.md",
+   "sha256": "814471a855696ed2b844bd11b9c741186d5ee61f2308468c79adb623fced6810",
+   "bytes": 1188,
+   "kind": "policy",
+   "dated": "2026-03-02"
+  },
+  {
+   "path": "policies/MP.md",
+   "sha256": "fd37de33ad6d7d2f852d4efc871169bb003a948619c69cb6280bdee55310b761",
+   "bytes": 1514,
+   "kind": "policy",
+   "dated": "2026-03-02"
+  },
+  {
+   "path": "policies/PE.md",
+   "sha256": "b0eb4e4b777227e39bc4ec0ff307906a5b78db0fa4975977145925356cba5006",
+   "bytes": 989,
+   "kind": "policy",
+   "dated": "2026-03-02"
+  },
+  {
+   "path": "policies/PS.md",
+   "sha256": "5505ff201d6525fc71247025df5b7b4005d6695bb9fe12840f1094bc9bfa3c13",
+   "bytes": 624,
+   "kind": "policy",
+   "dated": "2026-03-02"
+  },
+  {
+   "path": "policies/RA.md",
+   "sha256": "0220be839567d9d3d0bf7433a90a7dcdd7dc176dbce8aa3b643755441b66901b",
+   "bytes": 940,
+   "kind": "policy",
+   "dated": "2026-03-02"
+  },
+  {
+   "path": "policies/SC.md",
+   "sha256": "1c8bf81054f042a3e68d7554a5d3336d71eb9dfd9ec57201745f274d91307e06",
+   "bytes": 2862,
+   "kind": "policy",
+   "dated": "2026-03-02"
+  },
+  {
+   "path": "policies/SI.md",
+   "sha256": "dd61876ae06f54d02a8122f6e7c74da6051fc68cbfbd0c318178fdb1c26614e1",
+   "bytes": 1288,
+   "kind": "policy",
+   "dated": "2026-03-02"
+  },
+  {
+   "path": "records/R-CA-SELF.md",
+   "sha256": "f0c8a719fb392fadf822906c30ae8e89a73bec55308837dda28e391636128a3a",
+   "bytes": 303,
+   "kind": "record",
+   "dated": "2026-06-15"
+  },
+  {
+   "path": "records/R-IR-TABLETOP.md",
+   "sha256": "3850d72dff026206dde1b229bf76a2a719af8a92c92d881eac4de1eb1cf95a21",
+   "bytes": 296,
+   "kind": "record",
+   "dated": "2025-09-30"
+  },
+  {
+   "path": "records/R-MP-SANITIZE.md",
+   "sha256": "fc57dc118d390e941e70ab2b309294c0d2ade3a4cc761ce8048efd970f7685e3",
+   "bytes": 303,
+   "kind": "record",
+   "dated": "2026-04-22"
+  },
+  {
+   "path": "records/R-PE-WALK.md",
+   "sha256": "65bae76961b776e7df4fa59b9a31b95d1bfb97d75b1e0fcd9965d00414cb2617",
+   "bytes": 453,
+   "kind": "record",
+   "dated": "2026-07-20"
+  },
+  {
+   "path": "records/R-PS-SCREEN.md",
+   "sha256": "f685b32a4dad7f41ad118f516c291534bbba91c60b5d42407dc806bb85f5c04f",
+   "bytes": 302,
+   "kind": "record",
+   "dated": "2026-07-01"
+  },
+  {
+   "path": "records/R-RA-RISK.md",
+   "sha256": "8abab8636a94b51ef86793f9629745434aa7bb0b07cd2178b3bff8b9f17f86cf",
+   "bytes": 279,
+   "kind": "record",
+   "dated": "2026-05-01"
+  },
+  {
+   "path": "snapshots/2026-10-15/asset_inventory.csv",
+   "sha256": "6a96749ddd5c2336b61d2122976af6e8ff6edae14a9b68f9501a8dacf4d27ca2",
+   "bytes": 1281,
+   "kind": "automated",
+   "dated": "2026-10-15"
+  },
+  {
+   "path": "snapshots/2026-10-15/audit_config.json",
+   "sha256": "0fba50ea60283aa873a1271c69a5806d01d657836962871f12b0e71a9e2693dc",
+   "bytes": 429,
+   "kind": "automated",
+   "dated": "2026-10-15"
+  },
+  {
+   "path": "snapshots/2026-10-15/badge_access.csv",
+   "sha256": "9d7ac51c682a618ed0724108a7f07a8ce1d34bb3a6898488feb3ac907719ce6c",
+   "bytes": 365,
+   "kind": "record",
+   "dated": "2026-10-15"
+  },
+  {
+   "path": "snapshots/2026-10-15/defender_vulns.json",
+   "sha256": "4fa74a685cfdd8eb726696c326548ee8e123154b29da20ad8d45de69909ce3c6",
+   "bytes": 632,
+   "kind": "automated",
+   "dated": "2026-10-15"
+  },
+  {
+   "path": "snapshots/2026-10-15/entra_policies.json",
+   "sha256": "88139bb4a9b75c39e07ea3b1277f109212200b6e3ba816d1071894518ac66b46",
+   "bytes": 1396,
+   "kind": "automated",
+   "dated": "2026-10-15"
+  },
+  {
+   "path": "snapshots/2026-10-15/entra_users.json",
+   "sha256": "5330a6cb3bf36c9e2332cf508c4958a050d9287e5132307e4f07c9753e83c4f7",
+   "bytes": 9117,
+   "kind": "automated",
+   "dated": "2026-10-15"
+  },
+  {
+   "path": "snapshots/2026-10-15/firewall.json",
+   "sha256": "6c29c26a336b81adfc465432eeb103709765b9b54273dbc43e8109b421d79708",
+   "bytes": 1365,
+   "kind": "automated",
+   "dated": "2026-10-15"
+  },
+  {
+   "path": "snapshots/2026-10-15/hr_roster.csv",
+   "sha256": "bc516a97316b9801cd3e654fff1b5607a538989170c1b59adf495a7a88ca3873",
+   "bytes": 1290,
+   "kind": "automated",
+   "dated": "2026-10-15"
+  },
+  {
+   "path": "snapshots/2026-10-15/intune_devices.json",
+   "sha256": "69b110bd901323feac7d26f4aeeaa1d163f3d85ca2c3a71c820bd3bd0491176b",
+   "bytes": 8042,
+   "kind": "automated",
+   "dated": "2026-10-15"
+  },
+  {
+   "path": "snapshots/2026-10-15/training.csv",
+   "sha256": "c0833ebc2787cf8af2864fe778eff706d99631513d638807e6274d7ba6573835",
+   "bytes": 3542,
+   "kind": "automated",
+   "dated": "2026-10-15"
+  },
+  {
+   "path": "snapshots/2026-10-15/visitor_log.csv",
+   "sha256": "83a43dd952addd655cc21bbf49693767000b9dc4ead57cba25419c4007bfc2fd",
+   "bytes": 368,
+   "kind": "record",
+   "dated": "2026-10-15"
+  }
+ ],
+ "previous_bundle_hash": "219df39381b36aad569f46f11dd94c858483e9f0fe6ecbce57fac0fe35c94b15",
+ "bundle_hash": "714bd43a760a4e2dd47d00e38c2c8dd6f526db7625ad7697e255decd249ec138"
+}
